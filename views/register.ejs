@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title class="next-head">Đăng ký</title>
+    <meta charSet="utf-8" class="next-head" />
+    <link rel="apple-touch-icon" href="../images/logo-icon.png" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="white" />
+    <link rel="stylesheet" href="../css/register.css" />
+    <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
+</head>
+
+<body>
+    <div id="__next">
+        <div class="auth__ContainerLayout-sc-1yv6m8c-0 gytowE">
+            <div style="width:100%">
+                <form onsubmit="return ValidateUser()" action="/register" name="form" method="POST" class="style__ContainerStyle-a5uzus-1 dsCtbt">
+                    <div class="logoWrapper"><img class="style__LogoText-a5uzus-4 epSHkl" src="./images/logo.png" /></div>
+                    <div class="form">
+                        <h4 class="bp3-heading">Đăng ký tài khoản</h4>
+                        <div class="orWrapper">
+                            <div class="text"  id="err" style="color:red"><%= err? err : '' %></div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large"><span class="bp3-icon bp3-icon-user" icon="user"><svg data-icon="user" width="16" height="16" viewBox="0 0 16 16">
+                                            <desc>user</desc>
+                                            <path d="M7.99-.01A7.998 7.998 0 0 0 .03 8.77c.01.09.03.18.04.28.02.15.04.31.07.47.02.11.05.22.08.34.03.13.06.26.1.38.04.12.08.25.12.37.04.11.08.21.12.32a6.583 6.583 0 0 0 .3.65c.07.14.14.27.22.4.04.07.08.13.12.2l.27.42.1.13a7.973 7.973 0 0 0 3.83 2.82c.03.01.05.02.07.03.37.12.75.22 1.14.29l.2.03c.39.06.79.1 1.2.1s.81-.04 1.2-.1l.2-.03c.39-.07.77-.16 1.14-.29.03-.01.05-.02.07-.03a8.037 8.037 0 0 0 3.83-2.82c.03-.04.06-.08.09-.13.1-.14.19-.28.28-.42.04-.07.08-.13.12-.2.08-.13.15-.27.22-.41.04-.08.08-.17.12-.26.06-.13.11-.26.17-.39.04-.1.08-.21.12-.32.04-.12.08-.24.12-.37.04-.13.07-.25.1-.38.03-.11.06-.22.08-.34.03-.16.05-.31.07-.47.01-.09.03-.18.04-.28.02-.26.04-.51.04-.78-.03-4.41-3.61-7.99-8.03-7.99zm0 14.4c-1.98 0-3.75-.9-4.92-2.31.67-.36 1.49-.66 2.14-.95 1.16-.52 1.04-.84 1.08-1.27.01-.06.01-.11.01-.17-.41-.36-.74-.86-.96-1.44v-.01c0-.01-.01-.02-.01-.02-.05-.13-.09-.26-.12-.39-.28-.05-.44-.35-.5-.63-.06-.11-.18-.38-.15-.69.04-.41.2-.59.38-.67v-.06c0-.51.05-1.24.14-1.72.02-.13.05-.26.09-.39.17-.59.53-1.12 1.01-1.49.49-.38 1.19-.59 1.82-.59.62 0 1.32.2 1.82.59.48.37.84.9 1.01 1.49.04.13.07.26.09.4.09.48.14 1.21.14 1.72v.07c.18.08.33.26.37.66.03.31-.1.58-.16.69-.06.27-.21.57-.48.62-.03.13-.07.26-.12.38 0 .01-.01.04-.01.04-.21.57-.54 1.06-.94 1.42 0 .06.01.13.01.19.04.43-.12.75 1.05 1.27.65.29 1.47.6 2.14.95a6.415 6.415 0 0 1-4.93 2.31z"
+                                                fill-rule="evenodd"></path>
+                                        </svg></span><input type="text" placeholder="Nhập họ tên" name="username" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large"><span class="bp3-icon bp3-icon-envelope" icon="envelope"><svg data-icon="envelope" width="16" height="16" viewBox="0 0 16 16">
+                                            <desc>envelope</desc>
+                                            <path d="M0 3.06v9.88L4.94 8 0 3.06zM14.94 2H1.06L8 8.94 14.94 2zm-6.41 8.53c-.14.14-.32.22-.53.22s-.39-.08-.53-.22L6 9.06 1.06 14h13.88L10 9.06l-1.47 1.47zM11.06 8L16 12.94V3.06L11.06 8z"
+                                                fill-rule="evenodd"></path>
+                                        </svg></span><input type="text" placeholder="Nhập email" name="email" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large"><span class="bp3-icon bp3-icon-lock" icon="lock"><svg data-icon="lock" width="16" height="16" viewBox="0 0 16 16">
+                                            <desc>lock</desc>
+                                            <path d="M13.96 7H12V3.95C12 1.77 10.21 0 8 0S4 1.77 4 3.95V7H1.96c-.55 0-.96.35-.96.9v6.91c0 .54.41 1.19.96 1.19h12c.55 0 1.04-.65 1.04-1.19V7.9c0-.55-.49-.9-1.04-.9zM6 7V3.95c0-1.09.9-1.97 2-1.97s2 .88 2 1.97V7H6z"
+                                                fill-rule="evenodd"></path>
+                                        </svg></span><input type="password" placeholder="Nhập mật khẩu" name="password" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large"><span class="bp3-icon bp3-icon-lock" icon="lock"><svg data-icon="lock" width="16" height="16" viewBox="0 0 16 16">
+                                            <desc>lock</desc>
+                                            <path d="M13.96 7H12V3.95C12 1.77 10.21 0 8 0S4 1.77 4 3.95V7H1.96c-.55 0-.96.35-.96.9v6.91c0 .54.41 1.19.96 1.19h12c.55 0 1.04-.65 1.04-1.19V7.9c0-.55-.49-.9-1.04-.9zM6 7V3.95c0-1.09.9-1.97 2-1.97s2 .88 2 1.97V7H6z"
+                                                fill-rule="evenodd"></path>
+                                        </svg></span><input type="password" placeholder="Nhập lại mật khẩu" name="confirmPassword" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div><button type="submit" class="bp3-button bp3-fill bp3-large bp3-intent-primary"><span
+                                class="bp3-button-text">Đăng ký</span></button>
+                        <!-- <div class="orWrapper">
+                            <div class="separator"></div>
+                            <div class="text">hoặc</div>
+                        </div> -->
+                        <!-- <div class="buttonBar">
+                            <button type="button" class="bp3-button bp3-fill bp3-large">
+                                <img class="style__Image-a5uzus-2 iwlhHi" src="./images/brand/fb.png" />
+                                <span class="bp3-button-text">Facebook</span>
+                            </button>
+                        </div> -->
+                    </div>
+                    <div class="clearfix__Clearfix-w9lses-0 iNYUxR" height="24"></div>
+                    <div class="style__Bottom-a5uzus-5 hofvhp">
+                        <div class="flex__GridRow-nvok1k-0 NMWMs">Bạn đã có tài khoản?<a href="/login">Đăng nhập
+                                ngay</a></div>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix__Clearfix-w9lses-0 lafWWd" height="60"></div>
+    </div>
+    </div>
+
+    <script>
+        function ValidateUser() {
+            const reg = /^[a-zA-Z0-9]{4,45}$/;
+            const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var err = document.getElementById('err');
+            let confirmPass = form.confirmPassword.value;
+            if(form.username.length < 4 || form.email.value == '' || form.password.value == '' || confirmPass == '') {
+                err.innerHTML = "Vui lòng nhập đầy đủ thông tin !"
+                return false;
+            }
+            if(!reg.test(form.password.value) ||!regEmail.test(form.email.value)){
+                err.innerHTML = "Vui lòng nhập đúng định dạng !"
+                return false;
+            }
+            if(form.password.value != form.confirmPassword.value){
+                err.innerHTML = "Hai mật khẩu đã nhập phải giống nhau !"
+                return false;
+            }
+            else return true;
+        }
+       
+    </script>
+</body>
+
+</html>

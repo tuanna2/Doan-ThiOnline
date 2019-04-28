@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="277px" height="201px" viewBox="0 0 277 201" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group 3</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50.0069439%" y1="100%" x2="50.0069439%" y2="18.2862393%" id="linearGradient-1">
+            <stop stop-color="#D9F2FB" stop-opacity="0.992781929" offset="0%"></stop>
+            <stop stop-color="#10A2EC" offset="46.975239%"></stop>
+            <stop stop-color="#0F6FBA" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50.0069439%" y1="100%" x2="50.0069439%" y2="6.24762898%" id="linearGradient-2">
+            <stop stop-color="#3CC7F7" stop-opacity="0.0185405344" offset="0%"></stop>
+            <stop stop-color="#10A2EC" offset="24.1848808%"></stop>
+            <stop stop-color="#0B1EB4" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Landing-Page-Official" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pricing" transform="translate(-732.000000, -315.000000)">
+            <g id="Body" transform="translate(-2.000000, 106.000000)">
+                <g id="Price-table" transform="translate(108.000000, 180.039604)">
+                    <g id="Talented-ant" transform="translate(626.625000, 29.256436)">
+                        <g id="Group-3" transform="translate(-3.000000, 0.000000)">
+                            <path d="M3,21.379703 L278.625,21.379703 L278.625,186.29296 C265.733389,192.680337 255.611954,195.414049 248.260696,194.494096 C231.386345,192.382401 218.215157,174.731659 204.870715,180.473216 C181.334873,190.599708 172.714269,197.976181 154.043152,189.306921 C131.742097,178.952232 127.418153,186.29296 112.017309,192.420313 C94.822342,199.261473 77.8392894,174.709761 56.0107664,180.473216 C38.4078923,185.12096 20.7376368,189.794587 3,194.494096 L3,21.379703 Z" id="Rectangle-3" fill="url(#linearGradient-1)"></path>
+                            <path d="M0.712655602,-4.26325641e-14 L278.625,-4.26325641e-14 L278.625,200.044248 C266.111073,190.265498 256.147977,184.81816 248.735712,183.702231 C231.721325,181.140688 222.525041,202.84346 205.204324,200.044248 C176.779092,195.450428 173.775126,169.889985 159.281136,183.702231 C147.918216,194.530682 144.104508,196.413017 139.668828,195.497732 C124.686718,192.406234 127.262484,177.039489 116.041298,175.05207 C98.7860933,171.995948 90.0795932,195.497732 55.8830282,195.497732 C36.5499474,195.497732 18.1598232,187.341622 0.712655602,171.029402 L0.712655602,-4.26325641e-14 Z" id="Rectangle-3" fill="url(#linearGradient-2)"></path>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,119 @@
+.overlay.bp3-overlay-content.bp3-overlay-enter-done {
+  z-index: 31;
+}
+
+textarea.bp3-input.bp3-intent-danger,
+.bp3-intent-danger .select  > div:first-child {
+  border: 1px solid #e74c3c;
+}
+
+.select  > div:first-child:hover {
+  border: 1px solid #389bff;
+}
+
+.bp3-popover.minimalEditor {
+  border-radius: 4px;
+  box-shadow: 0 3px 24px 0px rgba(0, 0, 0, 0.1) !important;
+}
+
+.bp3-popover.minimalEditor .bp3-popover-arrow-border {
+  fill: transparent;
+}
+
+.bp3-popover.minimalEditor .bp3-popover-arrow::before {
+  box-shadow: 3px 0 8px 1px rgba(0, 0, 0, 0.05);
+}
+
+.bp3-popover.minimalEditor .bp3-icon {
+  color: #389bff;
+  width: 18px;
+  display: flex;
+  justify-content: center;
+}
+
+.bp3-popover.minimalEditor .bp3-menu-item {
+  font-size: 14px;
+  color: #389bff;
+  font-weight: 600;
+}
+
+.bp3-popover.minimalEditor .bp3-menu-item:hover {
+  background: #fafafa;
+}
+
+.bp3-input-group.bp3-large .bp3-input {
+  line-height: inherit;
+}
+
+.bp3-tab .bp3-button,
+.bp3-control-indicator,
+.rc-pagination-item,
+.bp3-large > .bp3-tab, .bp3-button {
+  outline: none !important;
+}
+
+#slate_latexPopover {
+  padding: 4px 8px;
+  position: absolute;
+  z-index: 100000;
+  top: -100px;
+  left: 0;
+  margin-top: -6px;
+  background-color: #fff;
+  box-shadow: rgb(229, 229, 229) 0px 1px 4px 0px;
+  border-radius: 3px;
+}
+
+#slate_latexPopover .katex {
+  cursor: pointer;
+  line-height: 0;
+}
+
+#slate_latexPopover.hide,
+#slate_menuPopover.hide {
+  z-index: -1;
+}
+
+#slate_latexPopover .error {
+  color: #ff7675;
+  display: block;
+  padding: 8px;
+}
+
+#slate_menuPopover {
+  padding: 0 8px;
+  position: absolute;
+  z-index: 100000;
+  top: -100px;
+  left: 0;
+  margin-top: -6px;
+  background-color: #fff;
+  box-shadow: 0 0 0 1px rgba(16, 22, 26, 0.1), 0 0 0 rgba(16, 22, 26, 0),
+    0 1px 1px rgba(16, 22, 26, 0.2);
+  border-radius: 4px;
+}
+
+#slate_menuPopover .bp3-button-group {
+  border-bottom: 1px solid #f7f7f7;
+  width: 100%;
+}
+#slate_menuPopover .bp3-button {
+  background: transparent;
+  box-shadow: none;
+  border-radius: 0;
+}
+#slate_menuPopover .bp3-button.bp3-active,
+#slate_menuPopover .bp3-button:hover {
+  background-color: #f6f6f6 !important;
+}
+#slate_menuPopover .bp3-icon {
+  color: #d4d4d4;
+  margin: 0;
+}
+
+#slate_latexPopover.fadeIn.animated,
+#slate_latexPopover.fadeOut.animated,
+#slate_menuPopover.fadeIn.animated,
+#slate_menuPopover.fadeOut.animated {
+  animation-duration: 0.2s !important;
+}

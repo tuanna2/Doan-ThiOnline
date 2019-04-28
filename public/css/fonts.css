@@ -1,0 +1,148 @@
+@font-face {
+    font-family: "Bookerly";
+    font-weight: 400;
+    src: url("/static/fonts/bookerly/Bookerly-Regular.ttf");
+  }
+  
+@font-face {
+  font-family: "Bookerly";
+  font-weight: 400;
+  font-style: italic;
+  src: url("/static/fonts/bookerly/Bookerly-RegularItalic.ttf");
+}
+@font-face {
+  font-family: "Bookerly";
+  font-weight: 600;
+  src: url("/static/fonts/bookerly/Bookerly-Bold.ttf");
+}
+
+@font-face {
+  font-family: "Bookerly";
+  font-weight: 600;
+  font-style: italic;
+  src: url("/static/fonts/bookerly/Bookerly-BoldItalic.ttf");
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 100;
+  src: local('SF UI Display Ultralight'), url('/static/fonts/sf-ui-display/SF-UI-Display-Ultralight.woff') format('woff');
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 200;
+  src: local('SF UI Display Light'), url('/static/fonts/sf-ui-display/SF-UI-Display-Light.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 300;
+  src: local('SF UI Display Thin'), url('/static/fonts/sf-ui-display/SF-UI-Display-Thin.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 400;
+  src: local('SF UI Display Regular'), url('/static/fonts/sf-ui-display/SF-UI-Display-Regular.woff') format('woff');
+  
+} 
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 500;
+  src: local('SF UI Display Medium'), url('/static/fonts/sf-ui-display/SF-UI-Display-Medium.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 600;
+  src: local('SF UI Display Semibold'), url('/static/fonts/sf-ui-display/SF-UI-Display-Semibold.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 700;
+  src: local('SF UI Display Bold'), url('/static/fonts/sf-ui-display/SF-UI-Display-Bold.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 800;
+  src: local('SF UI Display Heavy'), url('/static/fonts/sf-ui-display/SF-UI-Display-Heavy.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF UI Display';
+  font-style: normal;
+  font-weight: 900;
+  src: local('SF UI Display Black'), url('/static/fonts/sf-ui-display/SF-UI-Display-Black.woff') format('woff');
+  
+}
+
+
+/*---------------------------------------------------------------------------*
+ * SF Pro Text
+ *---------------------------------------------------------------------------*/
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 200;
+  src: local('SF Pro Text Light'), url('/static/fonts/sf-pro-text/SF-Pro-Text-Light.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 400;
+  src: local('SF Pro Text Regular'), url('/static/fonts/sf-pro-text/SF-Pro-Text-Regular.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 500;
+  src: local('SF Pro Text Medium'), url('/static/fonts/sf-pro-text/SF-Pro-Text-Medium.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 600;
+  src: local('SF Pro Text Semibold'), url('/static/fonts/sf-pro-text/SF-Pro-Text-Semibold.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 700;
+  src: local('SF Pro Text Ultralight'), url('/static/fonts/sf-pro-text/SF-Pro-Text-Bold.woff') format('woff');
+  
+}
+
+@font-face {
+  font-family: 'SF Pro Text';
+  font-style: normal;
+  font-weight: 800;
+  src: local('SF Pro Text Heavy'), url('/static/fonts/sf-pro-text/SF-Pro-Text-Heavy.woff') format('woff');
+  
+}

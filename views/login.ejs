@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title class="next-head">Đăng nhập</title>
+    <meta charSet="utf-8" class="next-head" />
+    <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
+    <link rel="stylesheet" href="../css/login.css" />
+</head>
+
+<body>
+    <div id="__next">
+        <div class="auth__ContainerLayout-sc-1yv6m8c-0 gytowE">
+            <div class="login__LoginStyled-bepndv-0 lglfkM">
+                <form onsubmit="return ValidateUser()" name="form" class="style__ContainerStyle-a5uzus-1 dsCtbt" action="/login" method="POST">
+                    <div class="logoWrapper"><img class="style__LogoText-a5uzus-4 epSHkl" src="../images/logo.png" /></div>
+                    <div class="form">
+                        <div class="login__HeadingFlex-bepndv-1 XWRgw">
+                            <h4 class="bp3-heading">Đăng nhập</h4>
+                            <div class="login__ForgotPasswordWrapper-bepndv-2 ijOoPv"><a href="/forgot-password">Quên
+                                    mật khẩu?</a></div>
+                        </div>
+                        <div class="orWrapper">
+                                <div class="text"  id="err" style="color:red"><%= err? err : '' %></div>
+                            </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large"><span class="bp3-icon bp3-icon-envelope" icon="envelope"><svg data-icon="envelope" width="16" height="16" viewBox="0 0 16 16">
+                                            <desc>envelope</desc>
+                                            <path d="M0 3.06v9.88L4.94 8 0 3.06zM14.94 2H1.06L8 8.94 14.94 2zm-6.41 8.53c-.14.14-.32.22-.53.22s-.39-.08-.53-.22L6 9.06 1.06 14h13.88L10 9.06l-1.47 1.47zM11.06 8L16 12.94V3.06L11.06 8z"
+                                                fill-rule="evenodd"></path>
+                                        </svg></span><input type="text" placeholder="Nhập email" name="email" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large"><span class="bp3-icon bp3-icon-lock" icon="lock"><svg data-icon="lock" width="16" height="16" viewBox="0 0 16 16">
+                                            <desc>lock</desc>
+                                            <path d="M13.96 7H12V3.95C12 1.77 10.21 0 8 0S4 1.77 4 3.95V7H1.96c-.55 0-.96.35-.96.9v6.91c0 .54.41 1.19.96 1.19h12c.55 0 1.04-.65 1.04-1.19V7.9c0-.55-.49-.9-1.04-.9zM6 7V3.95c0-1.09.9-1.97 2-1.97s2 .88 2 1.97V7H6z"
+                                                fill-rule="evenodd"></path>
+                                        </svg></span><input type="password" placeholder="Nhập mật khẩu" name="password" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div><button type="submit" class="bp3-button bp3-fill bp3-large bp3-intent-primary"><span
+                                class="bp3-button-text">Đăng nhập</span></button>
+                        <!-- <div class="orWrapper">
+                            <div class="separator"></div>
+                            <div class="text">hoặc</div>
+                        </div>
+                        <div class="buttonBar"><button type="button" class="bp3-button bp3-fill bp3-large">
+                                <img class="style__Image-a5uzus-2 iwlhHi" src="../images/brand/fb.png" />
+                                <span class="bp3-button-text">Facebook</span>
+                            </button>
+                        </div> -->
+                    </div>
+                    <div class="clearfix__Clearfix-w9lses-0 iNYUxR" height="24"></div>
+                    <div class="style__Bottom-a5uzus-5 hofvhp">
+                        <div class="flex__GridRow-nvok1k-0 NMWMs">Bạn chưa có tài khoản?<a href="/register">Đăng
+                                ký miễn phí</a></div>
+                    </div>
+                </form>
+            </div>
+            <div class="clearfix__Clearfix-w9lses-0 lafWWd" height="60"></div>
+        </div>
+    </div>
+    <script>
+        function ValidateUser() {
+            const regEmail = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/;
+            var err = document.getElementById('err');
+            if(form.email.value == '' || form.password.value == '') {
+                err.innerHTML = "Vui lòng nhập đầy đủ thông tin !"
+                return false;
+            }
+            if(!regEmail.test(form.email.value)){
+                err.innerHTML = "Vui lòng nhập đúng định dạng email!"
+                return false;
+            }
+            else return true;
+        }
+    </script>
+</body>
+
+</html>

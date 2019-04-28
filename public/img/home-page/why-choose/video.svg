@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="189px" height="95px" viewBox="0 0 189 95" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Group</title>
+    <desc>Created with Sketch.</desc>
+    <g id="Landing-Page-Official" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Carreer" transform="translate(-1123.000000, -1779.000000)">
+            <g id="Group" transform="translate(1124.000000, 1779.000000)">
+                <path d="M2.73770899,0 L187.875,0 L187.875,55.1215139 L30.1181342,55.1215139 C29.030147,55.1215139 28.0274324,54.5324644 27.4977189,53.5821384 L0.117293715,4.46062445 C-0.689386895,3.01340906 -0.170130857,1.18626534 1.27708454,0.379584725 C1.72366051,0.130662432 2.2264435,-3.01470652e-15 2.73770899,-3.10862447e-15 Z" id="Rectangle-9" fill="#31A5FF"></path>
+                <polygon id="Rectangle-10" fill="#007BDA" points="164 55 188 55 164 95"></polygon>
+            </g>
+        </g>
+    </g>
+</svg>

@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="1115px" height="371px" viewBox="0 0 1115 371" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 52.4 (67378) - http://www.bohemiancoding.com/sketch -->
+    <title>Combined Shape</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="77.9606906%" y1="20.2678683%" x2="-40.7407102%" y2="66.114021%" id="linearGradient-1">
+            <stop stop-color="#DFF0F7" offset="0%"></stop>
+            <stop stop-color="#10A2EC" offset="37.6806358%"></stop>
+            <stop stop-color="#55AEF2" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Landing-Page-Official" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="Pricing" transform="translate(-325.000000, -1214.000000)" fill="url(#linearGradient-1)">
+            <path d="M325.797516,1585 C337.31483,1578.98093 347.612013,1574.07433 356.375542,1570.49449 C461.829481,1527.41733 468.469511,1500.90982 572.327858,1480.52354 C683.075858,1458.78489 721.273036,1480.52354 785.914566,1480.52354 C886.970771,1480.52354 976.682888,1381.66568 1020.10639,1351.38236 C1063.5299,1321.09904 1093.30442,1299.32172 1151.80218,1278.6984 C1189.38501,1265.44862 1259.30282,1238.46532 1309.53732,1267.24519 C1437.03099,1340.28762 1422.695,1208 1448.4118,1208 C1474.12861,1208 1472.24565,1372.66895 1448.4118,1435.44895 C1424.57795,1498.22894 1361.88815,1422.59585 1282.76161,1480.52354 C1232.43864,1517.36443 1212.53385,1553.96146 1197.23209,1585 L325.797516,1585 Z" id="Combined-Shape"></path>
+        </g>
+    </g>
+</svg>
