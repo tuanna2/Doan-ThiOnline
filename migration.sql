@@ -17,7 +17,7 @@ CREATE TABLE `category` (
   `name` varchar(45) COLLATE utf8_unicode_ci NOT NULL,
   PRIMARY KEY (`id`));
 
-INSERT INTO `category` VALUES (1,'Đại học'),(2,'Phát triển phần mềm'),(3,'Ngôn ngữ khác'),(4,'THCS & THPT'),(5,'Bằng chuyên môn'),(6,'Bằng Anh văn'),(7,'Kiến thức xã hội');
+INSERT INTO `category` VALUES (1,'Đại học'),(2,'THCS & THPT'),(3,'Lập trình'),(4,'Chuyên môn'),(5,'Tiếng Anh'),(6,'Ngôn ngữ khác'),(7,'Kiến thức xã hội');
 
 
 --table tag
@@ -26,7 +26,7 @@ CREATE TABLE `ThiOnline`.`tag` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_category` int(11) NOT NULL,
   PRIMARY KEY (`id`)
-) 
+);
 
 ALTER TABLE `ThiOnline`.`tag` 
 ADD INDEX `fk_category_idx` (`id_category` ASC) VISIBLE;
@@ -46,6 +46,9 @@ CREATE TABLE `ThiOnline`.`tests` (
   `id_tag` INT(11) NOT NULL,
   `id_parent` INT(11) NOT NULL,
   `permission` VARCHAR(10) NULL,
+  `finnish` VARCHAR(10) NULL,
+  `time` INT(10) NOT NULL,
+  `created_at` DATE NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_tag_idx` (`id_tag` ASC) VISIBLE,

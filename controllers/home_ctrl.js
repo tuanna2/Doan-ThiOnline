@@ -15,8 +15,6 @@ class HomeController {
             res.render('home');
         }
     }
-
-
     
 }
 module.exports = HomeController;
