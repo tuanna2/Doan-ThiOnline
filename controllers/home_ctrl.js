@@ -1,15 +1,15 @@
-// const RequestModel = require('../models/request_model');
+const UserModel = require('../models/user_model');
 
 class HomeController {
     constructor() {
-        // this.requestModel = new RequestModel();
+        this.userModel = new UserModel();
     }
 
     async index(req, res) {
-        // const branchs = await this.branchModel.getAll();
-        // const status = await this.requestStatusModel.getAll();
         if(req.session.idUser){
-            res.render('home_logged');
+            const info = await this.userModel.get({id:req.session.idUser});
+            typeof info !== "undefined" ? res.render('home_logged',{info:info})
+            : res.redirect('/logout');
         }
         else{
             res.render('home');

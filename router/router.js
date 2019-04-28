@@ -14,14 +14,8 @@ class Router{
         return this.router;
     }
     config(){
-        // const optionCtrl = new OptionController();
-        // this.router.get('/option',optionCtrl.getAllOption.bind(optionCtrl));
-        // this.router.get('/option/:id',optionCtrl.getOption.bind(optionCtrl))
-        // this.router.post('/option',optionCtrl.addOption.bind(optionCtrl));
-        // this.router.put('/option',optionCtrl.updateOption.bind(optionCtrl));
-        // this.router.delete('/option/:id',optionCtrl.deleteOption.bind(optionCtrl));
         const homeCtrl = new HomeController();
-        this.router.get('/',homeCtrl.index);
+        this.router.get('/',homeCtrl.index.bind(homeCtrl));
         
 
         const userCtrl = new UserController();

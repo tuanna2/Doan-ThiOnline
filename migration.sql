@@ -49,6 +49,7 @@ CREATE TABLE `ThiOnline`.`tests` (
   `finnish` VARCHAR(10) NULL,
   `time` INT(10) NOT NULL,
   `created_at` DATE NOT NULL,
+  `url` VARCHAR(45) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_tag_idx` (`id_tag` ASC) VISIBLE,

@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser =require('body-parser');
+const UserController = require('../controllers/api/user_ctrl');
 const CategoryController = require('../controllers/api/category_ctrl');
 const TagController = require('../controllers/api/tag_ctrl');
 const TestController = require('../controllers/api/test_ctrl');
@@ -19,6 +20,13 @@ class ApiRouter{
         return this.router;
     }
     config(){
+        const userCtrl = new UserController();
+        this.router.get('/user',userCtrl.getAll.bind(userCtrl));
+        this.router.get('/user/:id',userCtrl.get.bind(userCtrl))
+        this.router.post('/user',userCtrl.add.bind(userCtrl));
+        this.router.put('/user',userCtrl.update.bind(userCtrl));
+        this.router.delete('/user/:id',userCtrl.delete.bind(userCtrl));
+
         const categoryCtrl = new CategoryController();
         this.router.get('/category',categoryCtrl.getAll.bind(categoryCtrl));
         this.router.get('/category/:id',categoryCtrl.get.bind(categoryCtrl))
