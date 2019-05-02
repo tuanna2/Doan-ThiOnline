@@ -28,6 +28,10 @@ CREATE TABLE `ThiOnline`.`tag` (
   PRIMARY KEY (`id`)
 );
 
+INSERT INTO `tag` VALUES (1,'Chính trị đại cương',1),(2,'Tư tưởng HCM',1),(3,'Đường lối ĐCS',1),(4,'Toán PTQG',2),(5,'Lý PTQG',2),(6,'Hoá PTQG',2),(7,'Javascript',3),(8,'Cơ sở dữ liệu',3),(9,'GMAT',4),(10,'IELTS',5),(11,'TOEIC',5),(12,'TOEFL',5),(13,'Tiếng Nhật',6),(14,'Tiếng Hàn',6),(15,'Tiếng Trung',6),(16,'Lịch Sử',7),(17,'Đố vui',7),(18,'Luật',7),(19,'Bằng lái xe',7);
+
+
+
 ALTER TABLE `ThiOnline`.`tag` 
 ADD INDEX `fk_category_idx` (`id_category` ASC) VISIBLE;
 ;
@@ -50,6 +54,7 @@ CREATE TABLE `ThiOnline`.`tests` (
   `time` INT(10) NOT NULL,
   `created_at` DATE NOT NULL,
   `url` VARCHAR(45) NOT NULL,
+  `description` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   INDEX `fk_tag_idx` (`id_tag` ASC) VISIBLE,
@@ -73,6 +78,8 @@ CREATE TABLE `ThiOnline`.`questions` (
   `B` VARCHAR(255) NOT NULL,
   `C` VARCHAR(255) NULL,
   `D` VARCHAR(255) NULL,
+  `E` VARCHAR(255) NULL,
+  `F` VARCHAR(255) NULL,
   `correct` VARCHAR(5) NULL,
   `id_test` INT(11) NOT NULL,
   PRIMARY KEY (`id`),
@@ -143,3 +150,20 @@ CREATE TABLE `ThiOnline`.`selected` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+--table follow category of user
+CREATE TABLE `ThiOnline`.`follow` (
+  `id` INT NOT NULL AUTO_INCREMENT,
+  `id_user` INT(11) NOT NULL,
+  `id_category` INT(11) NOT NULL,
+  PRIMARY KEY (`id`),
+  INDEX `fk_fl_category_idx` (`id_category` ASC) VISIBLE,
+  CONSTRAINT `fk_fl_user`
+    FOREIGN KEY (`id`)
+    REFERENCES `ThiOnline`.`users` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `fk_fl_category`
+    FOREIGN KEY (`id_category`)
+    REFERENCES `ThiOnline`.`category` (`id`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);

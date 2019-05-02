@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title class="next-head">Tạo đề thi | tata.vn</title>
+    <meta charSet="utf-8" class="next-head" />
+    <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
+    <link rel="apple-touch-icon" href="../images/logo-icon.png" />
+    <link rel="stylesheet" href="../css/create-test.css" />
+
+</head>
+
+<body>
+    <div id="__next">
+        <div class="create-test__Container-sc-10hw5l3-0 kolDBj">
+            <div class="create-test__Box-sc-10hw5l3-1 bEWpoi">
+                <div class="create-test__PageTitleContainer-sc-10hw5l3-2 fdIGfq">
+                    <img src="../images/logo-icon.png" class="logoIcon" />
+                    <h1 class="pageTitle">Tạo đề thi</h1>
+                </div>
+                <div>
+                    <form onsubmit="return createTest()" name ="form" action="/create-test" method="POST">
+                        <div class="bp3-form-group bp3-intent-">
+                            <label class="bp3-label">Tên đề thi
+                                <!-- --> <span class="bp3-text-muted"></span>
+                            </label>
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large">
+                                    <input type="text" placeholder="Nhập tên đề thi" name="name" value="" class="bp3-input" style="padding-right:10px" />
+                                </div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <label class="bp3-label">Mô tả đề thi
+                                <!-- --> <span class="bp3-text-muted"></span>
+                            </label>
+                            <div class="bp3-form-content">
+                                <textarea placeholder="Nhập mô tả đề thi" style="min-height:80px" name="description" type="textarea" class="bp3-input bp3-intent- bp3-fill bp3-large"></textarea>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <label class="bp3-label">Thời gian (phút)
+                                <!-- --> <span class="bp3-text-muted"></span>
+                            </label>
+                            <div class="bp3-form-content">
+                                <div class="bp3-input-group bp3-intent- bp3-large">
+                                    <input type="number" placeholder="Nhập thời gian" name="time" value="" class="bp3-input" style="padding-right:10px" /></div>
+                                <div class="bp3-form-helper-text"></div>
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                            <label class="bp3-label">Chuyên mục
+                                <!-- --> <span class="bp3-text-muted"></span>
+                            </label>
+                            <div class="bp3-form-content">
+                                <select onchange="getTag()" name="category" style="width: 100%; height: 40px; background-color: white;border-color: #d4d4dd;">
+                                            <option value = "0">Chọn chuyên mục</option>
+                                </select>
+                                <div class="bp3-form-helper-text"></div>
+                            
+                            </div>
+                        </div>
+                        <div class="bp3-form-group bp3-intent-">
+                                <label class="bp3-label">Tag
+                                    <!-- --> <span class="bp3-text-muted"></span>
+                                </label>
+                                <div class="bp3-form-content">
+                                    <select name="tag" style="width: 100%; height: 40px; background-color: white;border-color: #d4d4dd;">
+                                    </select>
+                                    <div class="bp3-form-helper-text"></div>
+                                
+                                </div>
+                            </div>
+                        <button type="submit" class="bp3-button bp3-fill bp3-large bp3-intent-primary">
+                            <span class="bp3-icon bp3-icon-plus" icon="plus">
+                                <svg data-icon="plus" width="16" height="16" viewBox="0 0 16 16">
+                                    <desc>plus</desc>
+                                    <path d="M13 7H9V3c0-.55-.45-1-1-1s-1 .45-1 1v4H3c-.55 0-1 .45-1 1s.45 1 1 1h4v4c0 .55.45 1 1 1s1-.45 1-1V9h4c.55 0 1-.45 1-1s-.45-1-1-1z"fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="bp3-button-text">Tạo đề thi</span>
+                        </button>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        fetch('/api/category')
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(res) {
+            res.data.forEach(e => {
+                let opt = document.createElement('option');
+                opt.value = e.id;
+                opt.innerHTML = e.name;
+                form.category.appendChild(opt);
+            });
+        })
+        .catch(err=>{
+            alert('Server đang lỗi,xin thử lại sau');
+            console.log(err)
+        });
+
+
+        function getTag(){
+            form.tag.innerHTML = "";
+            fetch('/api/tag?category='+form.category.value)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(res) {
+                res.data.forEach(e => {
+                    let opt = document.createElement('option');
+                    opt.value = e.id;
+                    opt.innerHTML = e.name;
+                    form.tag.appendChild(opt);
+                });
+            })
+            .catch(err=>{
+                alert('Server đang lỗi,xin thử lại sau');
+                console.log(err)
+            });
+        }
+
+        function createTest(){
+            fetch('/api/test',{
+                method: 'POST',
+                headers:{
+                'Content-Type': 'application/json',
+                },
+                body:JSON.stringify({
+                    name:form.name.value,
+                    time:form.time.value,
+                    id_tag:form.tag.value,
+                    
+                })
+            })
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(res) {
+                res.data.forEach(e => {
+                    let opt = document.createElement('option');
+                    opt.value = e.id;
+                    opt.innerHTML = e.name;
+                    form.category.appendChild(opt);
+                });
+            })
+            .catch(err=>{
+                alert('Server đang lỗi,xin thử lại sau');
+                console.log(err)
+            });
+        }
+    </script>
+</body>
+
+</html>

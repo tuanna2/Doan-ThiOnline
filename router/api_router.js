@@ -49,11 +49,12 @@ class ApiRouter{
         this.router.delete('/question/:id',questionCtrl.delete.bind(questionCtrl));
 
         const tagCtrl = new TagController();
-        this.router.get('/tag',tagCtrl.getAll.bind(tagCtrl));
+        this.router.get('/tag',tagCtrl.getTag.bind(tagCtrl));
         this.router.get('/tag/:id',tagCtrl.get.bind(tagCtrl))
         this.router.post('/tag',tagCtrl.add.bind(tagCtrl));
         this.router.put('/tag',tagCtrl.update.bind(tagCtrl));
         this.router.delete('/tag/:id',tagCtrl.delete.bind(tagCtrl));
+
 
         const savedCtrl = new SavedController();
         this.router.get('/saved',savedCtrl.getAll.bind(savedCtrl));

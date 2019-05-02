@@ -16,6 +16,8 @@ class Router{
     config(){
         const homeCtrl = new HomeController();
         this.router.get('/',homeCtrl.index.bind(homeCtrl));
+        this.router.get('/create-test',homeCtrl.isLoggedIn,homeCtrl.createTest);
+        this.router.get('/test/:id/questions',homeCtrl.isLoggedIn,homeCtrl.questionManager.bind(homeCtrl));
         
 
         const userCtrl = new UserController();

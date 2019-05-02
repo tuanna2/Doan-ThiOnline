@@ -20,7 +20,7 @@ class BaseModel {
     }
     add(data) {
         return new Promise( (resolve, reject) => {
-            db(this.tableName).returning('id').insert(data)
+            db(this.tableName).insert(data)
             .then( res => resolve(res))
             .catch( err => reject(err));
         })
