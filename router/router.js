@@ -17,8 +17,10 @@ class Router{
         const homeCtrl = new HomeController();
         this.router.get('/',homeCtrl.index.bind(homeCtrl));
         this.router.get('/create-test',homeCtrl.isLoggedIn,homeCtrl.createTest);
-        this.router.get('/test/:id/questions',homeCtrl.isLoggedIn,homeCtrl.questionManager.bind(homeCtrl));
-        
+        this.router.get('/test/:id/questions',homeCtrl.isLoggedIn,homeCtrl.addQuestion.bind(homeCtrl));
+        this.router.get('/test/:id/info/',homeCtrl.isLoggedIn,homeCtrl.infoQuestion.bind(homeCtrl));
+        this.router.get('/test/:id/questions/:question',homeCtrl.isLoggedIn,homeCtrl.editQuestion.bind(homeCtrl));
+
 
         const userCtrl = new UserController();
         this.router.get('/login',userCtrl.loginGet);

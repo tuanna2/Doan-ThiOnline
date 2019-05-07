@@ -9,8 +9,9 @@ CREATE TABLE `ThiOnline`.`users` (
   `password` VARCHAR(45) NOT NULL,
   `avatar` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
-  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE);
-
+  UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE),
+  UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
+  
 --table category
 CREATE TABLE `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -50,7 +51,6 @@ CREATE TABLE `ThiOnline`.`tests` (
   `id_tag` INT(11) NOT NULL,
   `id_parent` INT(11) NOT NULL,
   `permission` VARCHAR(10) NULL,
-  `finnish` VARCHAR(10) NULL,
   `time` INT(10) NOT NULL,
   `created_at` DATE NOT NULL,
   `url` VARCHAR(45) NOT NULL,

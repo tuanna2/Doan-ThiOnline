@@ -1,4 +1,3 @@
-
 const db = require('./dbconnect');
 class BaseModel {
     constructor(tableName) {
@@ -11,6 +10,13 @@ class BaseModel {
             .catch( err => reject(err));
         })
     }
+    getMany(data){
+        return new Promise( (resolve, reject) => {
+            db(this.tableName).where(data).select('*')
+            .then( res => resolve(res))
+            .catch( err => reject(err));
+        })
+    }
     getAll() {
         return new Promise( (resolve, reject) => {
             db(this.tableName).select('*')
@@ -20,9 +26,9 @@ class BaseModel {
     }
     add(data) {
         return new Promise( (resolve, reject) => {
-            db(this.tableName).insert(data)
+            return db(this.tableName).insert(data)
             .then( res => resolve(res))
-            .catch( err => reject(err));
+            .catch( err =>  reject(err) );
         })
     }
     update(data) {

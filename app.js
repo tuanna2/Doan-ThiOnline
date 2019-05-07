@@ -4,18 +4,21 @@ const session = require('express-session');
 const Router = require('./router/router');
 const ApiRouter = require('./router/api_router');
 const morgan = require('morgan');
+const FileStore = require('session-file-store')(session);
+
 
 app.use(session({
+    store: new FileStore,
     secret: 'secret',
-    resave: false,
+    resave: true,
     saveUninitialized: true,
     cookie: { maxAge:1000*60*60*24*30 }
 }));
 
 app.use(express.static('public'));
+app.use(morgan('dev'));
 app.set('view engine', 'ejs');
 app.set('views', './views');
-app.use(morgan('dev'));
 
 app.use('/api',new ApiRouter().getRouter());
 

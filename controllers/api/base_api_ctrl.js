@@ -3,8 +3,12 @@ class BaseApiController {
         this.model = new model();
     }
     async add(req,res){
-        const rs = await this.model.add(req.body);
-        res.json({ message: 'success', data: rs});
+        try{
+            const rs = await this.model.add(req.body);
+            res.json({ message: 'success', data: rs});
+        } catch(e){
+            res.status(500).send(e);
+        }
     }
     async get(req,res){
         const rs = await this.model.get({id:req.params.id});

@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charSet="utf-8" class="next-head" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="shortcut icon" type="image/png" href="/images/logo-icon.png" />
+    <link rel="stylesheet" href="/css/test-detail.css" />
+    <style>
+        ul {
+            list-style-type: none;
+        }
+
+        ul li {
+            display: inline;
+        }
+
+        .btn {
+            padding: 6px 10px !important;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="__next">
+        <div>
+            <div class="manage-test__Wrapper-sc-1tfg9qp-0 iuNqMr">
+                <div class="SideBar__Container-w1ieqv-0 dTxyFV">
+                    <div class="logoText LogoText__Wrapper-sc-1thv7jl-1 kqrXRo LogoText__Flex-sc-1thv7jl-0 dqvHHa">
+                        <span class="bp3-popover-wrapper">
+                            <span class="bp3-popover-target">
+                                <div
+                                    class="LogoText__LogoDropdownWrapper-sc-1thv7jl-3 dMKHQL LogoText__Flex-sc-1thv7jl-0 dqvHHa">
+                                    <div
+                                        class="LogoText__LogoWrapper-sc-1thv7jl-2 QNPmf LogoText__Flex-sc-1thv7jl-0 dqvHHa">
+                                        <img src="/images/logo-icon.png" class="logoIcon">
+                                        <h1 class="headerText LogoText__Text-sc-1thv7jl-4 dkReTf"
+                                            title="Quản lí đề thi">Quản lí đề thi</h1>
+                                    </div>
+                                </div>
+                            </span>
+                        </span>
+                    </div>
+                    <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16">
+                    </div>
+                    <div class="SideBar__MenuList-w1ieqv-2 gydJCC">
+                        <a class="SideBar__Item-w1ieqv-4 PlGcj" href="./info">
+                            <span class="bp3-icon bp3-icon-help menuIcon SideBar__Icon-w1ieqv-5 kcgHRG" icon="help">
+                                <svg data-icon="info-sign" width="16" height="16" viewBox="0 0 16 16">
+                                    <desc>info-sign</desc>
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zM7 3h2v2H7V3zm3 10H6v-1h1V7H6V6h3v6h1v1z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="menuLabel SideBar__Label-w1ieqv-6 bNFUst">Thông tin</span>
+                        </a>
+                        <a class="SideBar__Item-w1ieqv-4 eAzENX" href="./questions">
+                            <span class="bp3-icon bp3-icon-info-sign menuIcon SideBar__Icon-w1ieqv-5 kcgHRG"
+                                icon="info-sign">
+                                <svg data-icon="help" width="16" height="16" viewBox="0 0 16 16">
+                                    <desc>help</desc>
+                                    <path
+                                        d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z"
+                                        fill-rule="evenodd"></path>
+                                </svg>
+                            </span>
+                            <span class="menuLabel SideBar__Label-w1ieqv-6 bNFUst">Câu hỏi</span>
+                        </a>
+
+                    </div>
+                </div>
+                <div class="manage-test__Main-sc-1tfg9qp-1 iWkPXx">
+                    <div class="main" style="min-height: calc(100vh - 50px); overflow: auto; width: 1109px;">
+                        <div class="manage-test__LayoutHeader-sc-1tfg9qp-2 bupMIK">
+                            <h1 class="manage-test__Heading-sc-1tfg9qp-3 iIbZvV">Thông tin đề thi </h1>
+                        </div>
+                        <div>
+                            <div class="style__Main-sc-3hvnas-0 bomtwj">
+                                <div class="style__Center-sc-3hvnas-1 byVMTL" style="    background: rgb(255, 255, 255);
+                                padding: 16px 24px;
+                                border-radius: 4px;">
+                                        <form onsubmit="return editTest()" name ="form" method="" action="">
+                                            <input type="hidden" name="id_test" value ="<%-data.id%>">
+                                            <div class="bp3-form-group bp3-intent-">
+                                                <label class="bp3-label">Tên đề thi
+                                                    <!-- --> <span class="bp3-text-muted"></span>
+                                                </label>
+                                                <div class="bp3-form-content">
+                                                    <div class="bp3-input-group bp3-intent- bp3-large">
+                                                        <input type="text" placeholder="Nhập tên đề thi" name="name" value="<%-data.name%>" class="bp3-input" style="padding-right:10px" />
+                                                    </div>
+                                                    <div class="bp3-form-helper-text"></div>
+                                                </div>
+                                            </div>
+                                            <div class="bp3-form-group bp3-intent-">
+                                                <label class="bp3-label">Mô tả đề thi
+                                                    <!-- --> <span class="bp3-text-muted"></span>
+                                                </label>
+                                                <div class="bp3-form-content">
+                                                    <textarea placeholder="Nhập mô tả đề thi" style="min-height:80px" name="description" type="textarea" class="bp3-input bp3-intent- bp3-fill bp3-large"><%-data.description%></textarea>
+                                                    <div class="bp3-form-helper-text"></div>
+                                                </div>
+                                            </div>
+                                            <div class="bp3-form-group bp3-intent-">
+                                                <label class="bp3-label">Thời gian (phút)
+                                                    <!-- --> <span class="bp3-text-muted"></span>
+                                                </label>
+                                                <div class="bp3-form-content">
+                                                    <div class="bp3-input-group bp3-intent- bp3-large">
+                                                        <input type="number" placeholder="Nhập thời gian" name="time" value="<%-data.time%>" class="bp3-input" style="padding-right:10px" /></div>
+                                                    <div class="bp3-form-helper-text"></div>
+                                                </div>
+                                            </div>
+                                            <div class="bp3-form-group bp3-intent-">
+                                                <label class="bp3-label">Chuyên mục
+                                                    <!-- --> <span class="bp3-text-muted"></span>
+                                                </label>
+                                                <div class="bp3-form-content">
+                                                    <select onchange="getTag()" name="category" style="width: 100%; height: 40px; background-color: white;border-color: #d4d4dd;"></select>
+                                                    <div class="bp3-form-helper-text"></div>
+                                                
+                                                </div>
+                                            </div>
+                                            <div class="bp3-form-group bp3-intent-">
+                                                    <label class="bp3-label">Tag
+                                                        <!-- --> <span class="bp3-text-muted"></span>
+                                                    </label>
+                                                    <div class="bp3-form-content">
+                                                        <input type="hidden" value ="<%-data.id_tag%>" name="tag_active">
+                                                        <select name="tag" style="width: 100%; height: 40px; background-color: white;border-color: #d4d4dd;">
+                                                        </select>
+                                                        <div class="bp3-form-helper-text"></div>
+                                                    
+                                                    </div>
+                                                </div>
+                                            <input type="hidden" name="id" value =" <%- user%> ">
+                                            <button type="submit" class="bp3-button bp3-fill bp3-large bp3-intent-primary">
+                                                
+                                                <span class="bp3-button-text">Lưu chỉnh sửa</span>
+                                            </button>
+                                        </form>
+                                </div>
+                                <div class="style__Right-sc-3hvnas-2 dUYxCe">
+                                    <div>
+                                        <div style="padding-bottom: 0px;"></div>
+                                        <div class="questions__ToolBar-sc-1ryj3mv-0 dIrzwQ"
+                                            style="top: 16px; transform: translateZ(0px);">
+                                            <div id = "status">
+                                                    <input type="hidden" id="permission" value="<%-data.permission%>">
+                                                    <button onClick="request()" class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Công khai đề</button>
+                                                </div>
+                                            <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>
+                                            <div class="BoxOverviewCheck__TableChooseContainer-j2lapc-0 icVcMJ">
+                                                <div class="BoxOverviewCheck__WrapperHeading-j2lapc-1 bQIeIH">
+                                                    <div class="BoxOverviewCheck__HeadingLine-j2lapc-6 ccXQLM">Số câu
+                                                        hỏi: <%-count%></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+</body>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+    function request(){
+        fetch('/api/test',{
+                method: 'PUT',
+                headers:{
+                'Content-Type': 'application/json',
+                },
+                body:JSON.stringify({
+                    id:form.id_test.value,
+                    permission:"0"
+                })
+            })
+            .then(function(response) {
+                alert("Gửi yêu cầu thành công!");
+                location.reload()
+            })
+            .catch(err=>{
+                alert('Thất bại,thử lại sau');
+                console.log(err)
+            });
+    }
+
+      fetch('/api/tag/'+form.tag_active.value)
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(res) {
+            return res.data[0].id_category;
+        })
+        .then(category=>{
+            fetch('/api/category')
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(res) {
+                res.data.forEach(e => {
+                    let opt = document.createElement('option');
+                    if(e.id == category) opt.selected = "selected";
+                    opt.value = e.id;
+                    opt.innerHTML = e.name;
+                    form.category.appendChild(opt);
+                });
+                getTag(form.tag_active.value);
+            })
+            .catch(err=>{
+                alert('Server đang lỗi,xin thử lại sau');
+                console.log(err)
+            });
+        })
+        .catch(err=>{
+            alert('Server đang lỗi,xin thử lại sau');
+            console.log(err)
+        });
+     function getTag(active){
+            form.tag.innerHTML = "";
+            fetch('/api/tag?category='+form.category.value)
+            .then(function(response) {
+                return response.json();
+            })
+            .then(function(res) {
+                res.data.forEach(e => {
+                    let opt = document.createElement('option');
+                    if(active == e.id) opt.selected = "selected";
+                    opt.value = e.id;
+                    opt.innerHTML = e.name;
+                    form.tag.appendChild(opt);
+                });
+            })
+            .catch(err=>{
+                alert('Server đang lỗi,xin thử lại sau');
+                console.log(err)
+            });
+        }
+        function editTest(){
+            if(form.name.value == '' || form.time.value == '' || form.description.value == ''){
+                alert('Vui lòng điền đầy đủ thông tin');
+                return false;
+            }
+            fetch('/api/test',{
+                method: 'PUT',
+                headers:{
+                'Content-Type': 'application/json',
+                },
+                body:JSON.stringify({
+                    id:form.id_test.value,
+                    name:form.name.value,
+                    time:form.time.value,
+                    id_tag:form.tag.value,
+                    description:form.description.value
+                })
+            })
+            .then(function(response) {
+                alert("Lưu lại thành công!")
+            })
+            .catch(err=>{
+                alert('Thêm thất bại');
+                console.log(err)
+            });
+            return false;
+        }
+        $(document).ready(()=>{
+            if($('#permission').val() === "0"){
+                $('#status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Đang đợi duyệt</button>')
+            }
+            if($('#permission').val() === "1"){
+                $('#status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;color:rgb(15, 153, 96);">Đề đã được công khai</button>')
+            }
+        })
+</script>  
+
+</html>

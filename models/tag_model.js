@@ -7,7 +7,9 @@ class TagModel extends BaseModel {
     }
     getByCategory(id){
         return new Promise( (resolve, reject) => {
-            db(TABLE).where({id_category:id}).select('*')
+            db('tag').where({id_category:id})
+            .join('category','tag.id_category','category.id')
+            .select('tag.*','category.name as category')
             .then( res => resolve(res))
             .catch( err => reject(err));
         })   
