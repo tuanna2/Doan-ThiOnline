@@ -21017,7 +21017,7 @@ table.bp3-html-table tbody tr:hover td {
     position: relative;
     width: 100%;
     height: 250px;
-    background: url(../static/images/user/default-cover.jpg) center center no-repeat;
+    background: url(/images/user/default-cover.jpg) center center no-repeat;
     background-size: cover;
 }
 

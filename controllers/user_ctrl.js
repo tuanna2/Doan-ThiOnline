@@ -36,5 +36,9 @@ class UserController {
         req.session.destroy();
         res.redirect("/");
     }
+    async profile(req,res){
+        const info = await this.userModel.get({id:req.session.idUser});
+        res.render('profile',{info:info})
+    }
 }
 module.exports = UserController;

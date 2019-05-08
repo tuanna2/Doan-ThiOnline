@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser =require('body-parser');
 const HomeController = require('../controllers/home_ctrl');
 const UserController = require('../controllers/user_ctrl');
+const CreateTestController = require('../controllers/createTest_ctrl');
 
 class Router{
     constructor(){
@@ -16,10 +17,14 @@ class Router{
     config(){
         const homeCtrl = new HomeController();
         this.router.get('/',homeCtrl.index.bind(homeCtrl));
-        this.router.get('/create-test',homeCtrl.isLoggedIn,homeCtrl.createTest);
-        this.router.get('/test/:id/questions',homeCtrl.isLoggedIn,homeCtrl.addQuestion.bind(homeCtrl));
-        this.router.get('/test/:id/info/',homeCtrl.isLoggedIn,homeCtrl.infoQuestion.bind(homeCtrl));
-        this.router.get('/test/:id/questions/:question',homeCtrl.isLoggedIn,homeCtrl.editQuestion.bind(homeCtrl));
+
+        const createTestCtrl = new CreateTestController();
+        this.router.get('/create-test',homeCtrl.isLoggedIn,createTestCtrl.createTest);
+        this.router.get('/test/:id/questions',homeCtrl.isLoggedIn,createTestCtrl.addQuestion.bind(createTestCtrl));
+        this.router.get('/test/:id/info/',homeCtrl.isLoggedIn,createTestCtrl.infoQuestion.bind(createTestCtrl));
+        this.router.get('/test/:id/questions/:question',homeCtrl.isLoggedIn,createTestCtrl.editQuestion.bind(createTestCtrl));
+        this.router.get('/created',homeCtrl.isLoggedIn,createTestCtrl.created.bind(createTestCtrl));
+        this.router.get('/creating',homeCtrl.isLoggedIn,createTestCtrl.creating.bind(createTestCtrl));
 
 
         const userCtrl = new UserController();
@@ -28,6 +33,8 @@ class Router{
         this.router.post('/login',userCtrl.loginPost.bind(userCtrl));
         this.router.post('/register',userCtrl.signupPost.bind(userCtrl));        
         this.router.get('/logout',userCtrl.logout);
+        this.router.get('/profile',homeCtrl.isLoggedIn,userCtrl.profile.bind(userCtrl));
+
     }
 }
 

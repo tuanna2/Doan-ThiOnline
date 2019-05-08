@@ -5,7 +5,9 @@ const Router = require('./router/router');
 const ApiRouter = require('./router/api_router');
 const morgan = require('morgan');
 const FileStore = require('session-file-store')(session);
+const fileUpload = require('express-fileupload');
 
+app.use(fileUpload());
 
 app.use(session({
     store: new FileStore,

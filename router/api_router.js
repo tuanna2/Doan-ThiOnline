@@ -27,6 +27,8 @@ class ApiRouter{
         this.router.put('/user',userCtrl.update.bind(userCtrl));
         this.router.delete('/user/:id',userCtrl.delete.bind(userCtrl));
 
+        this.router.post('/upload',userCtrl.upload.bind(userCtrl));
+
         const categoryCtrl = new CategoryController();
         this.router.get('/category',categoryCtrl.getAll.bind(categoryCtrl));
         this.router.get('/category/:id',categoryCtrl.get.bind(categoryCtrl))
