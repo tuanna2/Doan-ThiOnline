@@ -53,7 +53,6 @@ CREATE TABLE `ThiOnline`.`tests` (
   `permission` VARCHAR(10) NULL,
   `time` INT(10) NOT NULL,
   `created_at` DATE NOT NULL,
-  `url` VARCHAR(45) NOT NULL,
   `description` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,

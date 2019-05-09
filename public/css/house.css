@@ -21653,9 +21653,6 @@ table.bp3-html-table tbody tr:hover td {
     border-radius: 4px;
     background-color: rgb(47, 53, 66);
 }
-input[type=checkbox]:checked + .overlay{
-    background-color:transparent;
-}
 
 .catergoryItem:hover .overlay{
     background-color:transparent;
