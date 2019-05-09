@@ -40,9 +40,10 @@ class CreateTestController {
         res.render('create-test/created.ejs',{data:rs});
     }
     async creating(req,res){
-        const rs = await this.testModel.getTestCreating({id_parent:req.session.idUser,permission:0},{id_parent:req.session.idUser,permission:null});
+        const rs = await this.testModel.getTestByCategory([1,2,3])
+        // const rs = await this.testModel.getTestCreating({id_parent:req.session.idUser,permission:0},{id_parent:req.session.idUser,permission:null});
         console.log(rs);
-        res.render('create-test/created.ejs',{data:rs});
+        // res.render('create-test/created.ejs',{data:rs});
     }
 }
 module.exports = CreateTestController;

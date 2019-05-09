@@ -12,5 +12,15 @@ class TestModel extends BaseModel {
             .catch( err => reject(err));
         })
     }
+    getTestByCategory(arr){
+        return new Promise( (resolve, reject) => {
+            db(TABLE).whereIn('category.id',arr)
+            .join('tag','tests.id_tag','tag.id')
+            .join('category','tag.id_category','category.id')
+            .select('tests.*','category.name as category','tag.name as tag')
+            .then( res => resolve(res))
+            .catch( err => reject(err));
+        })
+    }
 }
 module.exports = TestModel

@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title class="next-head">Đề gợi ý | tata.vn</title>
+    <meta charSet="utf-8" class="next-head" />
+    <meta name="description" content="Nền tảng đề thi trực tuyến giúp mọi cá nhân chia sẻ và phát triển kiến thức của mình.    " class="next-head" />
+    <meta name="keywords" content="trắc nghiệm trực tuyến, đề thi trắc nghiệm, trắc nghiệm tiếng anh, ôn thi THPT quốc gia, ôn luyện đại học, interview, test" class="next-head" />
+
+    <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
+    <link rel="apple-touch-icon" href="../images/logo-icon.png" />
+    <link rel="stylesheet" href="../css/house.css" />
+</head>
+
+<body>
+    <header class="header Header__HeaderWrapper-sc-1a0k2zv-0 jsrRBM">
+        <div class="Header__HeaderNav-wwhct2-0 jiKYVK">
+            <div class="Header__RightHead-wwhct2-4 LQUjt Flex-no3b20-0 cYoqhr">
+                <a href="#">
+                    <div class="Logo__LogoStyle-ju6la0-0 eoCuSN" src="../images/logo.png"></div>
+                </a>
+                <div class="Header__ClearDiv-wwhct2-5 ioPZqo"></div>
+                <div class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
+                    <div class="bp3-input-group bp3-large bp3-radius search__InputGroupStyled-sc-1dtjrnl-0 bmnola">
+                        <span class="bp3-icon bp3-icon-search" icon="search">
+                                    <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
+                                        <desc>search</desc>
+                                        <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
+                                    </svg>
+                                </span>
+                        <input type="text" class="bp3-input" value="" placeholder="Tìm kiếm ..." style="padding-right:10px">
+                    </div>
+                </div>
+            </div>
+            <div style="border-right:1px solid rgb(238, 238, 238);margin-right:10px" class="Header__HeaderGroup-wwhct2-1 eYtCOf Flex-no3b20-0 cYoqhr">
+                <div class="Create__CreateWrapper-eivfz7-0 kVVbFx">
+                    <a href="/create-test" class="create">
+                        <span class="bp3-icon bp3-icon-annotation" icon="annotation">
+                                    <svg data-icon="annotation" width="14" height="14" viewBox="0 0 16 16">
+                                        <desc>annotation</desc>
+                                        <path d="M15.52 2.77c.3-.29.48-.7.48-1.15C16 .73 15.27 0 14.38 0c-.45 0-.85.18-1.15.48l-1.34 1.34 2.3 2.3 1.33-1.35zM7.4 10.9l6.21-6.21-2.3-2.3L5.1 8.6l2.3 2.3zM14 14H2V2h6.34l2-2H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V5.66l-2 2V14zM3 13l3.58-1.29-2.29-2.27L3 13z" fill-rule="evenodd"></path>
+                                    </svg>
+                                </span>Tạo đề thi
+                    </a>
+                </div>
+        </div>
+        <a href="/profile" class="dropdownUserAvatar user-avatar__UserAvatarStyle-sc-12kuvrh-0 jwcHvZ">
+            <div class="avatar avatar__Circle-sc-1k5juv6-0 HeEnm" size="35">
+                <img style="border-radius: 17px" src=<%- info.avatar == null ? "/avatar-default.png" : info.avatar %> size="35" class="text">
+            </div>
+            <div class="userInfo user-avatar__InfoUser-sc-12kuvrh-3 kSwsUu">
+                <span class="user-avatar__Username-sc-12kuvrh-1 bCCEJz"><%- info.email%></span>
+                <span class="fullName"><%- info.username%></span>
+            </div>
+        </a>
+        </div>
+    </header>
+    <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
+    <div class="wrapper Wrapper-mxjqhp-0 fPglrh">
+        <div class="Wrapper__Container-mxjqhp-1">
+            <div class="icon-message__Container-sc-1rdjyy1-1 jerbyQ">
+                <div class="icon"><img class="icon-message__ImageView-sc-1rdjyy1-0 gnwBqT" src="/images/bulb.png">
+                </div>
+                <div class="message">
+                    <h4 class="bp3-heading">Bạn quan tâm đến những chuyên mục nào?</h4>
+                    <div>Điều này sẽ giúp tungtung.vn gợi ý các tag phù hợp với các chuyên mục bạn yêu thích?</div>
+                </div>
+            </div>
+            <div class="content">
+                <div class="categoryList fadeIn animated">
+                    <div class="tag-category-list__Container-sc-19ppbdx-0 bJpGVS">
+                        <div class="catergoryItem" onclick ="handleClick()">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/dai_hoc.png);"></div>
+                                <div class="overlay"></div><span class="text">Đại học</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="catergoryItem">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu"  style="background-image:url(/images/program.png)"></div>
+                                <div class="overlay"></div><span class="text">Phát triển phần mềm</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="catergoryItem">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu"  style="background-image:url(/images/language.png)" ></div>
+                                <div class="overlay"></div><span class="text">Ngôn ngữ khác</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="catergoryItem">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/thcs_thpt.png)"></div>
+                                <div class="overlay"></div><span class="text">THCS &amp; THPT</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="catergoryItem">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/chuyenmon.png)"></div>
+                                <div class="overlay"></div><span class="text">Bằng chuyên môn</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="catergoryItem">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/english.png)"></div>
+                                <div class="overlay"></div><span class="text">Bằng Anh văn</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                        <div class="catergoryItem">
+                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/xahoi.png)"></div>
+                                <div class="overlay"></div><span class="text">Kiến thức xã hội</span>
+                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                            class="bp3-control-indicator"></span></label></div>
+                            </div>
+                        </div>
+                    </div>
+                </div><button type="button" onclick = "addFollow()" class="bp3-button bp3-large bp3-intent-primary"
+                    tabindex="-1"><span class="bp3-icon bp3-icon-circle-arrow-right" icon="circle-arrow-right"><svg
+                            data-icon="circle-arrow-right" width="16" height="16" viewBox="0 0 16 16">
+                            <desc>circle-arrow-right</desc>
+                            <path
+                                d="M8.71 4.29a1.003 1.003 0 0 0-1.42 1.42L8.59 7H5c-.55 0-1 .45-1 1s.45 1 1 1h3.59L7.3 10.29c-.19.18-.3.43-.3.71a1.003 1.003 0 0 0 1.71.71l3-3c.18-.18.29-.43.29-.71 0-.28-.11-.53-.29-.71l-3-3zM8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6z"
+                                fill-rule="evenodd"></path>
+                        </svg></span><span class="bp3-button-text">Tiếp theo</span></button>
+            </div>
+    </div>
+
+    </div>
+
+    </div>
+    <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
+    <footer class="Footer__FooterLayout-sjil8q-0 glvqwo">
+        <div class="Footer__FooterContainer-sjil8q-1 jLcvsU" id="footer">
+            <span class="copyright">© 2018 TaTa Inc</span>
+            <div class="Footer__MenuList-sjil8q-2 dOaCfU">
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/home">
+                    <span class="bp3-icon bp3-icon-star" icon="star">
+                        <svg data-icon="star" width="14" height="14" viewBox="0 0 16 16">
+                            <desc>star</desc>
+                            <path d="M8 0l2.5 5.3 5.5.8-4 4.1.9 5.8L8 13.3 3.1 16l.9-5.8-4-4.1 5.5-.8z" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="title">Khám phá</span>
+                </a>
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/about" target="_blank">
+                    <span class="bp3-icon bp3-icon-home" icon="home">
+                        <svg data-icon="home" width="14" height="14" viewBox="0 0 16 16">
+                            <desc>home</desc>
+                            <path d="M2 10v5c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-5L8 4l-6 6zm13.71-2.71L14 5.59V2c0-.55-.45-1-1-1s-1 .45-1 1v1.59L8.71.29C8.53.11 8.28 0 8 0s-.53.11-.71.29l-7 7a1.003 1.003 0 0 0 1.42 1.42L8 2.41l6.29 6.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71z" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="title">Về chúng tôi</span>
+                </a>
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/terms-and-conditions" target="_blank">
+                    <span class="bp3-icon bp3-icon-book" icon="book">
+                        <svg data-icon="book" width="14" height="14" viewBox="0 0 16 16">
+                            <desc>book</desc>
+                            <path d="M2 1v14c0 .55.45 1 1 1h1V0H3c-.55 0-1 .45-1 1zm11-1h-1v7l-2-2-2 2V0H5v16h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1z" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="title">Điều khoản</span>
+                </a>
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#" target="_blank">
+                    <span class="bp3-icon bp3-icon-help" icon="help">
+                        <svg data-icon="help" width="14" height="14" viewBox="0 0 16 16">
+                            <desc>help</desc>
+                            <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="title">FAQ</span>
+                </a>
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#" target="_blank">
+                    <span class="bp3-icon bp3-icon-git-repo" icon="git-repo">
+                        <svg data-icon="git-repo" width="14" height="14" viewBox="0 0 16 16">
+                            <desc>git-repo</desc>
+                            <path d="M5 9H4v1h1V9zm10-9H1C.45 0 0 .45 0 1v13c0 .55.45 1 1 1h3v1l2-1 2 1v-1h7c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM4 13H2v-1h2v1zm10 0H8v-1h6v1zm0-2H3V2h11v9zM5 3H4v1h1V3zm0 4H4v1h1V7zm0-2H4v1h1V5z" fill-rule="evenodd"></path>
+                        </svg>
+                    </span>
+                    <span class="title">Tài liệu</span>
+                </a>
+
+            </div>
+        </div>
+    </footer>
+</body>
+    <script>
+        function addFollow(){
+            let arr = [];
+            var checked = document.getElementsByName('category');
+            checked.forEach((e,i) => {
+                if(e.checked === true) arr.push(i);
+            })
+            if(arr.length == 0) {
+                alert("Bạn phải nhập ít nhất 1 danh mục");
+                return false;
+            }
+            // fetch()
+        }
+        function handleClick(e){
+            var x = e.querySelector('input[type=checkbox]');
+            console.log(x)
+        }
+    </script>
+</html>

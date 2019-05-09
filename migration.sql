@@ -115,6 +115,7 @@ CREATE TABLE `ThiOnline`.`history` (
   `id_test` INT(11) NOT NULL,
   `id_user` INT(11) NOT NULL,
   `true` VARCHAR(10) NOT NULL,
+  `submit_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_historyTest_idx` (`id_test` ASC) VISIBLE,
   INDEX `fk_historyUser_idx` (`id_user` ASC) VISIBLE,
@@ -150,20 +151,15 @@ CREATE TABLE `ThiOnline`.`selected` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
---table follow category of user
-CREATE TABLE `ThiOnline`.`follow` (
+--table followed category of user
+CREATE TABLE `ThiOnline`.`followed` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_user` INT(11) NOT NULL,
-  `id_category` INT(11) NOT NULL,
+  `category_followed` VARCHAR(45) NULL,
   PRIMARY KEY (`id`),
-  INDEX `fk_fl_category_idx` (`id_category` ASC) VISIBLE,
-  CONSTRAINT `fk_fl_user`
-    FOREIGN KEY (`id`)
+  INDEX `fk_followUser_idx` (`id_user` ASC) VISIBLE,
+  CONSTRAINT `fk_followUser`
+    FOREIGN KEY (`id_user`)
     REFERENCES `ThiOnline`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_fl_category`
-    FOREIGN KEY (`id_category`)
-    REFERENCES `ThiOnline`.`category` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
