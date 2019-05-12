@@ -28,7 +28,7 @@ class BaseModel {
         return new Promise( (resolve, reject) => {
             return db(this.tableName).insert(data)
             .then( res => resolve(res))
-            .catch( err =>  reject(err) );
+            .catch( err => reject(err) );
         })
     }
     update(data) {

@@ -10,6 +10,8 @@
     <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
     <link rel="apple-touch-icon" href="../images/logo-icon.png" />
     <link rel="stylesheet" href="../css/house.css" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+
 </head>
 
 <body>
@@ -63,13 +65,13 @@
                 </div>
                 <div class="message">
                     <h4 class="bp3-heading">Bạn quan tâm đến những chuyên mục nào?</h4>
-                    <div>Điều này sẽ giúp tungtung.vn gợi ý các tag phù hợp với các chuyên mục bạn yêu thích?</div>
+                    <div>Điều này sẽ giúp chúng tôi gợi ý các tag phù hợp với các chuyên mục bạn yêu thích?</div>
                 </div>
             </div>
             <div class="content">
                 <div class="categoryList fadeIn animated">
                     <div class="tag-category-list__Container-sc-19ppbdx-0 bJpGVS">
-                        <div class="catergoryItem" onclick ="handleClick()">
+                        <div class="catergoryItem">
                             <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
                                 <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/dai_hoc.png);"></div>
                                 <div class="overlay"></div><span class="text">Đại học</span>
@@ -78,13 +80,37 @@
                             </div>
                         </div>
                         <div class="catergoryItem">
+                                <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                    <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/thcs_thpt.png)"></div>
+                                    <div class="overlay"></div><span class="text">THCS &amp; THPT</span>
+                                    <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                                class="bp3-control-indicator"></span></label></div>
+                                </div>
+                            </div>
+                        <div class="catergoryItem">
                             <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
                                 <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu"  style="background-image:url(/images/program.png)"></div>
-                                <div class="overlay"></div><span class="text">Phát triển phần mềm</span>
+                                <div class="overlay"></div><span class="text">Lập trình</span>
                                 <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
                                             class="bp3-control-indicator"></span></label></div>
                             </div>
                         </div>
+                        <div class="catergoryItem">
+                                <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                    <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/chuyenmon.png)"></div>
+                                    <div class="overlay"></div><span class="text">Chuyên môn</span>
+                                    <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                                class="bp3-control-indicator"></span></label></div>
+                                </div>
+                            </div>
+                            <div class="catergoryItem">
+                                    <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
+                                        <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/english.png)"></div>
+                                        <div class="overlay"></div><span class="text">Tiếng Anh</span>
+                                        <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
+                                                    class="bp3-control-indicator"></span></label></div>
+                                    </div>
+                                </div>
                         <div class="catergoryItem">
                             <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
                                 <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu"  style="background-image:url(/images/language.png)" ></div>
@@ -93,30 +119,8 @@
                                             class="bp3-control-indicator"></span></label></div>
                             </div>
                         </div>
-                        <div class="catergoryItem">
-                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
-                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/thcs_thpt.png)"></div>
-                                <div class="overlay"></div><span class="text">THCS &amp; THPT</span>
-                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
-                                            class="bp3-control-indicator"></span></label></div>
-                            </div>
-                        </div>
-                        <div class="catergoryItem">
-                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
-                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/chuyenmon.png)"></div>
-                                <div class="overlay"></div><span class="text">Bằng chuyên môn</span>
-                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
-                                            class="bp3-control-indicator"></span></label></div>
-                            </div>
-                        </div>
-                        <div class="catergoryItem">
-                            <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
-                                <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/english.png)"></div>
-                                <div class="overlay"></div><span class="text">Bằng Anh văn</span>
-                                <div class="bottomRight"><label class="bp3-control bp3-checkbox"><input type="checkbox" name="category"><span
-                                            class="bp3-control-indicator"></span></label></div>
-                            </div>
-                        </div>
+                        
+                        
                         <div class="catergoryItem">
                             <div class="category-item__Container-sc-1kdsauq-1 bfbYiL">
                                 <div class="image category-item__Image-sc-1kdsauq-0 dmkrxu" style="background-image:url(/images/xahoi.png)"></div>
@@ -139,7 +143,9 @@
 
     </div>
 
-    </div>
+    </div><input type="hidden" id ="idUser" value = "<%- info.id%>">
+        <input type = "hidden" id="checked" value = "<%- info.category_followed %>">
+
     <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
     <footer class="Footer__FooterLayout-sjil8q-0 glvqwo">
         <div class="Footer__FooterContainer-sjil8q-1 jLcvsU" id="footer">
@@ -196,21 +202,55 @@
     </footer>
 </body>
     <script>
+        $(document).ready(()=>{
+            if($('#checked').val() !== ''){
+                let checked = document.getElementsByName('category');
+                let overlay = document.getElementsByClassName('overlay');
+
+                let arr = $('#checked').val().split(',');
+                arr.forEach(e => {
+                    checked[e-1].checked = true;
+                    overlay[e-1].style.backgroundColor = 'transparent'
+                })
+            }
+        })
         function addFollow(){
             let arr = [];
-            var checked = document.getElementsByName('category');
+            let checked = document.getElementsByName('category');
             checked.forEach((e,i) => {
-                if(e.checked === true) arr.push(i);
+                if(e.checked === true) arr.push(i+1);
             })
             if(arr.length == 0) {
-                alert("Bạn phải nhập ít nhất 1 danh mục");
+                alert("Bạn phải chọn ít nhất 1 danh mục");
                 return false;
             }
-            // fetch()
+            const data = {
+                    id:$('#idUser').val(),
+                    category_followed:arr.toString()
+                }
+            fetch('/api/user',{
+                method: "PUT",
+                headers:{
+                'Content-Type': 'application/json',
+                },
+                body:JSON.stringify(data)
+            })
+            .then(function(response) {
+                location.href = "/"
+            })
+            
+            .catch(err=>{
+                alert("Server đang lỗi,vui lòng thử lại sau.");
+                console.log(err)
+            });
         }
-        function handleClick(){
-            // .querySelector('input[type=checkbox]');
-            // console.log(x)
-        }
+        
+        $('.catergoryItem').click(function (){
+            $(this).find('input[type=checkbox]').prop("checked") ? 
+                $(this).find('.overlay').css('background-color','')
+            :   $(this).find('.overlay').css('background-color','transparent')
+
+            $(this).find('input[type=checkbox]').prop("checked", !$(this).find('input[type=checkbox]').prop("checked"));
+        });
     </script>
 </html>

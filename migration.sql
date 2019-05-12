@@ -8,6 +8,10 @@ CREATE TABLE `ThiOnline`.`users` (
   `email` VARCHAR(45) NOT NULL,
   `password` VARCHAR(45) NOT NULL,
   `avatar` VARCHAR(255) NULL,
+  `category_followed` VARCHAR(20) NULL,
+  `sex` VARCHAR(10) NULL,
+  `phone` VARCHAR(20) NULL,
+  `introduction` VARCHAR(255) NULL,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
@@ -113,7 +117,8 @@ CREATE TABLE `ThiOnline`.`history` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `id_test` INT(11) NOT NULL,
   `id_user` INT(11) NOT NULL,
-  `true` VARCHAR(10) NOT NULL,
+  `point` VARCHAR(10) NOT NULL,
+  `selected` VARCHAR(255) NOT NULL,
   `submit_at` DATETIME NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_historyTest_idx` (`id_test` ASC) VISIBLE,
@@ -124,40 +129,6 @@ CREATE TABLE `ThiOnline`.`history` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION,
   CONSTRAINT `fk_historyUser`
-    FOREIGN KEY (`id_user`)
-    REFERENCES `ThiOnline`.`users` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
-
---table selected
-CREATE TABLE `ThiOnline`.`selected` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `id_history` INT(11) NOT NULL,
-  `id_question` INT(11) NOT NULL,
-  `selected` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_history_idx` (`id_history` ASC) VISIBLE,
-  INDEX `fk_question_idx` (`id_question` ASC) VISIBLE,
-  CONSTRAINT `fk_history`
-    FOREIGN KEY (`id_history`)
-    REFERENCES `ThiOnline`.`history` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `fk_question`
-    FOREIGN KEY (`id_question`)
-    REFERENCES `ThiOnline`.`questions` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
-
---table followed category of user
-CREATE TABLE `ThiOnline`.`followed` (
-  `id` INT NOT NULL AUTO_INCREMENT,
-  `id_user` INT(11) NOT NULL,
-  `category_followed` VARCHAR(45) NULL,
-  PRIMARY KEY (`id`),
-  INDEX `fk_followUser_idx` (`id_user` ASC) VISIBLE,
-  CONSTRAINT `fk_followUser`
     FOREIGN KEY (`id_user`)
     REFERENCES `ThiOnline`.`users` (`id`)
     ON DELETE NO ACTION

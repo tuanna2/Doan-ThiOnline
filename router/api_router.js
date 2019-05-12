@@ -7,7 +7,6 @@ const TestController = require('../controllers/api/test_ctrl');
 const QuestionController = require('../controllers/api/question_ctrl');
 const SavedController = require('../controllers/api/saved_ctrl')
 const HistoryController = require('../controllers/api/history_ctrl')
-const SelectedController = require('../controllers/api/selected_ctrl')
 
 class ApiRouter{
     constructor(){
@@ -71,14 +70,8 @@ class ApiRouter{
         this.router.post('/history',historyCtrl.add.bind(historyCtrl));
         this.router.put('/history',historyCtrl.update.bind(historyCtrl));
         this.router.delete('/history/:id',historyCtrl.delete.bind(historyCtrl));
-
-        const selectedCtrl = new SelectedController();
-        this.router.get('/selected',selectedCtrl.getAll.bind(selectedCtrl));
-        this.router.get('/selected/:id',selectedCtrl.get.bind(selectedCtrl))
-        this.router.post('/selected',selectedCtrl.add.bind(selectedCtrl));
-        this.router.put('/selected',selectedCtrl.update.bind(selectedCtrl));
-        this.router.delete('/selected/:id',selectedCtrl.delete.bind(selectedCtrl));
     }
+
 }
 
 module.exports = ApiRouter;

@@ -34,6 +34,11 @@ class Router{
         this.router.post('/register',userCtrl.signupPost.bind(userCtrl));        
         this.router.get('/logout',userCtrl.logout);
         this.router.get('/profile',homeCtrl.isLoggedIn,userCtrl.profile.bind(userCtrl));
+        this.router.get('/profile/follow',homeCtrl.isLoggedIn,userCtrl.following.bind(userCtrl));
+        this.router.get('/profile/setting',homeCtrl.isLoggedIn,userCtrl.settingInfo.bind(userCtrl));
+        this.router.get('/profile/setting/password',homeCtrl.isLoggedIn,userCtrl.changePass.bind(userCtrl));
+        this.router.post('/profile/setting/password',homeCtrl.isLoggedIn,userCtrl.apiChangePass.bind(userCtrl));
+        this.router.get('/profile/:id',homeCtrl.isLoggedIn,userCtrl.profileFriend.bind(userCtrl));
 
     }
 }

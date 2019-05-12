@@ -1,13 +1,11 @@
 const UserModel = require('../models/user_model');
 const TestModel = require('../models/test_model');
-const FollowedModel = require('../models/followed_model');
 
 
 class HomeController {
     constructor() {
         this.userModel = new UserModel();
         this.testModel = new TestModel();
-        this.followedModel = new FollowedModel();
     }
 
     async index(req, res) {
@@ -16,12 +14,11 @@ class HomeController {
             if(typeof info === "undefined"){
                 return res.redirect('/logout');
             }
-            const follow = await this.followedModel.get({id_user:req.session.idUser});
-            console.log(follow)
-            if(typeof follow === "undefined"){
-                return res.render('category_follow',{info,tests:null});
+            if(info.category_followed == null){
+                return res.render('profile/category_follow',{info,data:null});
             }
-            const tests = await this.testModel.getTestByCategory(follow);
+            let arrayFollow = info.category_followed.split(',');
+            const tests = await this.testModel.getTestByCategory(arrayFollow);
             res.render('home_logged',{info,tests})
         }
         else{

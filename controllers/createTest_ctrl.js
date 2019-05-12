@@ -1,10 +1,12 @@
 const TestModel = require('../models/test_model');
 const QuestionModel = require('../models/question_model');
+const UserModel = require('../models/user_model');
 
 class CreateTestController {
     constructor() {
         this.testModel = new TestModel();
         this.questionModel = new QuestionModel();
+        this.userModel = new UserModel();
     }
     createTest(req,res){
         res.render('create_test/create_test',{user:req.session.idUser});
@@ -35,15 +37,17 @@ class CreateTestController {
         else res.redirect('/');
     }
     async created(req,res){
-        const rs = await this.testModel.getMany({id_parent:req.session.idUser,permission:1});
-        console.log(rs)
-        res.render('create-test/created.ejs',{data:rs});
+        const info = await this.userModel.get({id:req.session.idUser});
+        const tests = await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:1});
+        console.log(tests)
+        res.render('create_test/created.ejs',{info,tests});
     }
     async creating(req,res){
-        const rs = await this.testModel.getTestByCategory([1,2,3])
-        // const rs = await this.testModel.getTestCreating({id_parent:req.session.idUser,permission:0},{id_parent:req.session.idUser,permission:null});
-        console.log(rs);
-        // res.render('create-test/created.ejs',{data:rs});
+        const info = await this.userModel.get({id:req.session.idUser});
+        const TestNull = await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:null})
+        const Testing =  await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:0})
+        const tests = [].concat(TestNull).concat(Testing);
+        res.render('create_test/creating.ejs',{info,tests});
     }
 }
 module.exports = CreateTestController;
