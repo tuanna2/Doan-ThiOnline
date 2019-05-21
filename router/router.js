@@ -3,6 +3,7 @@ const bodyParser =require('body-parser');
 const HomeController = require('../controllers/home_ctrl');
 const UserController = require('../controllers/user_ctrl');
 const CreateTestController = require('../controllers/createTest_ctrl');
+const PlayTestController = require('../controllers/playTest_ctrl');
 
 class Router{
     constructor(){
@@ -26,6 +27,14 @@ class Router{
         this.router.get('/created',homeCtrl.isLoggedIn,createTestCtrl.created.bind(createTestCtrl));
         this.router.get('/creating',homeCtrl.isLoggedIn,createTestCtrl.creating.bind(createTestCtrl));
 
+        const playTestCtrl = new PlayTestController();
+        this.router.get('/test/:id',homeCtrl.isLoggedIn,playTestCtrl.test.bind(playTestCtrl));
+        this.router.get('/test/:id/playing',homeCtrl.isLoggedIn,playTestCtrl.playTest.bind(playTestCtrl));
+        this.router.get('/saved/',homeCtrl.isLoggedIn,playTestCtrl.saved.bind(playTestCtrl));
+        this.router.get('/test/:id/histories',homeCtrl.isLoggedIn,playTestCtrl.history.bind(playTestCtrl));
+        this.router.post('/test/:id/submit',homeCtrl.isLoggedIn,playTestCtrl.submitTest.bind(playTestCtrl));
+        this.router.get('/suggestion',homeCtrl.isLoggedIn,playTestCtrl.suggestion.bind(playTestCtrl));
+        this.router.get('/histories',homeCtrl.isLoggedIn,playTestCtrl.allHistory.bind(playTestCtrl));
 
         const userCtrl = new UserController();
         this.router.get('/login',userCtrl.loginGet);

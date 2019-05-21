@@ -39,15 +39,14 @@ class CreateTestController {
     async created(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
         const tests = await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:1});
-        console.log(tests)
-        res.render('create_test/created.ejs',{info,tests});
+        res.render('create_test/created',{info,tests});
     }
     async creating(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
         const TestNull = await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:null})
         const Testing =  await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:0})
         const tests = [].concat(TestNull).concat(Testing);
-        res.render('create_test/creating.ejs',{info,tests});
+        res.render('create_test/creating',{info,tests});
     }
 }
 module.exports = CreateTestController;

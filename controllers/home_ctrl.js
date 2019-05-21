@@ -14,7 +14,7 @@ class HomeController {
             if(typeof info === "undefined"){
                 return res.redirect('/logout');
             }
-            if(info.category_followed == null){
+            else if(info.category_followed == null){
                 return res.render('profile/category_follow',{info,data:null});
             }
             let arrayFollow = info.category_followed.split(',');

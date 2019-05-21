@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title class="next-head"><%- test[0].name%></title>
+    <meta charSet="utf-8" class="next-head" />
+    <meta name="viewport" content="initial-scale=1.0, width=device-width" />
+    <link rel="shortcut icon" type="image/png" href="/images/logo-icon.png" />
+    <link rel="stylesheet" href="/css/house.css" />
+    <link rel="stylesheet" href="/css/style.css" />
+    <style>
+            .dropdownUserAvatar:hover{
+                border:1px solid #007EE5;
+                border-radius: 7px;
+                color:#007EE5;
+            }
+            .value {
+                font-size: 16px;
+                color: rgb(1, 126, 229);
+                padding-left: 8px;
+                font-weight: 600;
+            }
+            .bp3-heading{
+                line-height: 26px;
+            }
+            .bp3-tab{
+                outline: none;
+            }
+            .dEbEEE {
+            display: inline-block;
+            font-size: 14px;
+            font-weight: 500;
+            background-color: rgb(252, 242, 203);
+            color: rgb(241, 196, 15);
+            padding: 2px 4px;
+            border-radius: 2px;
+        }
+        .active{
+            font-weight: 600;
+        }
+        </style>
+</head>
+<body>
+    <div id="__next">
+        <div class="Layout__LayoutWrapper-sc-72xje9-0 gNMUod">
+                <header class="header Header__HeaderWrapper-sc-1a0k2zv-0 jsrRBM">
+                        <div class="Header__HeaderNav-wwhct2-0 jiKYVK">
+                            <div class="Header__RightHead-wwhct2-4 LQUjt Flex-no3b20-0 cYoqhr">
+                                <a href="/">
+                                    <div class="Logo__LogoStyle-ju6la0-0 eoCuSN" src="../images/logo.png"></div>
+                                </a>
+                                <div class="Header__ClearDiv-wwhct2-5 ioPZqo"></div>
+                                <div class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
+                                    <div class="bp3-input-group bp3-large bp3-radius search__InputGroupStyled-sc-1dtjrnl-0 bmnola">
+                                        <span class="bp3-icon bp3-icon-search" icon="search">
+                                                    <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
+                                                        <desc>search</desc>
+                                                        <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
+                                                    </svg>
+                                                </span>
+                                        <input type="text" class="bp3-input" value="" placeholder="Tìm kiếm ..." style="padding-right:10px">
+                                    </div>
+                                </div>
+                            </div>
+                            <div style="border-right:1px solid rgb(238, 238, 238);margin-right:10px" class="Header__HeaderGroup-wwhct2-1 eYtCOf Flex-no3b20-0 cYoqhr">
+                                <div class="Create__CreateWrapper-eivfz7-0 kVVbFx">
+                                    <a href="/create-test" class="create">
+                                        <span class="bp3-icon bp3-icon-annotation" icon="annotation">
+                                                    <svg data-icon="annotation" width="14" height="14" viewBox="0 0 16 16">
+                                                        <desc>annotation</desc>
+                                                        <path d="M15.52 2.77c.3-.29.48-.7.48-1.15C16 .73 15.27 0 14.38 0c-.45 0-.85.18-1.15.48l-1.34 1.34 2.3 2.3 1.33-1.35zM7.4 10.9l6.21-6.21-2.3-2.3L5.1 8.6l2.3 2.3zM14 14H2V2h6.34l2-2H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V5.66l-2 2V14zM3 13l3.58-1.29-2.29-2.27L3 13z" fill-rule="evenodd"></path>
+                                                    </svg>
+                                                </span>Tạo đề thi
+                                    </a>
+                                </div>
+                        </div>
+                        <a href="/profile" class="dropdownUserAvatar user-avatar__UserAvatarStyle-sc-12kuvrh-0 jwcHvZ">
+                            <div class="avatar avatar__Circle-sc-1k5juv6-0 HeEnm" size="35">
+                                <img style="border-radius: 17px" src=<%- info.avatar == null ? "/avatar-default.png" : info.avatar %> size="35" class="text">
+                            </div>
+                            <div class="userInfo user-avatar__InfoUser-sc-12kuvrh-3 kSwsUu">
+                                <span class="user-avatar__Username-sc-12kuvrh-1 bCCEJz"><%- info.email%></span>
+                                <span class="fullName"><%- info.username%></span>
+                            </div>
+                        </a>
+                        </div>
+                    </header>
+    <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
+    <div class="wrapper Wrapper-mxjqhp-0 fPglrh">
+        <div class="style__Container-ptzi3g-0 CqCql">
+            <div class="style__LeftCol-ptzi3g-1 fDcaZt">
+                <div class="box">
+                    <div class="animated fadeIn style__Box-sc-1ravu7g-3 cUbySJ white-box__WhileBoxContainer-sc-44su8e-0 dHXTFa">
+                        <div class="style__Flex-sc-1ravu7g-1 fhpJlj">
+                            <div class="style__TitleBox-sc-1ravu7g-0 fCLgIR" color="#0984E3"><a href="/test/<%- test[0].id%>" class="title" title="20 câu kiểm tra kiến thức cơ bản Nodejs"><%- test[0].name%></a></div>
+                            <div class="addon show style__AddonWrapper-sc-1ravu7g-2 gnbQfX" color="#8395A7">
+                                <div class="content" id="<%- test[0].id%>">
+                                    <div class="item" onclick = "saveTest(this)">
+                            <div><span class="bp3-popover-wrapper"><span class="bp3-popover-target">
+                                    <div class="save-test__IconWrapper-qs5ik2-0 fZkeJA" tabindex="0"><span class="bp3-icon bp3-icon-bookmark"
+                                            icon="bookmark">
+                                            <svg fill="#8395A7" data-icon="bookmark" width="16" height="16" viewBox="0 0 16 16">
+                                                <desc>bookmark</desc>
+                                                <path
+                                                    d="M11.2.01h-.15C11.03.01 11.02 0 11 0H5c-.02 0-.03.01-.05.01H4.8c-.44 0-.8.37-.8.82v14.75c0 .45.25.56.57.24l2.87-2.94c.31-.32.82-.32 1.13 0l2.87 2.94c.31.32.57.21.57-.24V.83C12 .38 11.64.01 11.2.01z"
+                                                    fill-rule="evenodd"></path>
+                                            </svg></span></div>
+                                </span>
+                            </span>
+                        </div>
+                    </div>
+
+                </div>
+                    </div>
+                </div>
+                <div class="style__TestWrapper-sc-1ravu7g-5 crOhCc">
+                    <div class="style__TestInfo-sc-1ravu7g-4 hjDFfQ" color="#0984E3">
+                        <div class="meta style__Meta-sc-1ravu7g-6 cBHwhQ" color="#EB5C55"><span class="bp3-icon bp3-icon-help" icon="help"><svg data-icon="help" width="15" height="15" viewBox="0 0 16 16"><desc>help</desc><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z" fill-rule="evenodd"></path></svg></span>
+                            <span class="info bold"><%- test[0].question%> câu</span>
+                        </div>
+                        <div class="meta style__Meta-sc-1ravu7g-6 cBHwhQ" color="#f1c40f"><span class="bp3-icon bp3-icon-time" icon="time"><svg data-icon="time" width="15" height="15" viewBox="0 0 16 16"><desc>time</desc><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z" fill-rule="evenodd"></path></svg></span>
+                            <span class="info bold"><%- test[0].time%> phút</span>
+                        </div>
+                        <div class="meta style__Meta-sc-1ravu7g-6 cBHwhQ" color="#2ECC71"><span class="bp3-icon bp3-icon-timeline-bar-chart" icon="timeline-bar-chart"><svg data-icon="timeline-bar-chart" width="15" height="15" viewBox="0 0 16 16"><desc>timeline-bar-chart</desc><path d="M8 12h1c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1zm5 0h1c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1zm2 1H2c-.55 0-1 .45-1 1s.45 1 1 1h13c.55 0 1-.45 1-1s-.45-1-1-1zM3 12h1c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1z" fill-rule="evenodd"></path></svg></span>
+                            <span class="info bold"><%- test[0].access%> lượt làm</span>
+                        </div>
+                        <div class="meta style__Meta-sc-1ravu7g-6 cBHwhQ">
+                            <a class="style__UserWrapperA-sc-1ravu7g-7 bmtztU" href="/profile/<%- test[0].id_parent%>">
+                                <div class="username user-avatar__UserAvatarStyle-sc-12kuvrh-0 jqsone"><img class="avatar avatar__Image-sc-1k5juv6-1 jEMRlP" src=<%- test[0].avatar == null ? "/avatar-default.png" : test[0].avatar %> size="15" />
+                                    <div class="userInfo user-avatar__InfoUser-sc-12kuvrh-1 jqwZLw">
+                                        <div class="user-avatar__Flex-sc-12kuvrh-2 dOcaUa"><span class="username"><%- test[0].parent%></span>
+                                            <div class="__react_component_tooltip place-top type-dark " data-id="tooltip"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="more style__TestInfo-sc-1ravu7g-4 hjDFfQ" color="#0984E3">
+                        <div class="tag__TagListStyle-sc-1jmlvd9-0 khuGIH" size="15"><a style="color:#007EE5" class="tag tag__TagItem-sc-1jmlvd9-1 iyxnyr"><%- test[0].tag%></a></div>
+                        <div class="right">
+                            <div class="meta style__Meta-sc-1ravu7g-6 cBHwhQ"><span class="bp3-icon bp3-icon-calendar" icon="calendar"><svg data-icon="calendar" width="15" height="15" viewBox="0 0 16 16"><desc>calendar</desc><path d="M11 3c.6 0 1-.5 1-1V1c0-.6-.4-1-1-1s-1 .4-1 1v1c0 .5.4 1 1 1zm3-2h-1v1c0 1.1-.9 2-2 2s-2-.9-2-2V1H6v1c0 1.1-.9 2-2 2s-2-.9-2-2V1H1c-.6 0-1 .5-1 1v12c0 .6.4 1 1 1h13c.6 0 1-.4 1-1V2c0-.6-.5-1-1-1zM5 13H2v-3h3v3zm0-4H2V6h3v3zm4 4H6v-3h3v3zm0-4H6V6h3v3zm4 4h-3v-3h3v3zm0-4h-3V6h3v3zM4 3c.6 0 1-.5 1-1V1c0-.6-.4-1-1-1S3 .4 3 1v1c0 .5.4 1 1 1z" fill-rule="evenodd"></path></svg></span>
+                                <span class="info"><%- test[0].created_at.toLocaleDateString()%></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="TestViewBox__DescriptionWrapper-sc-1fpc0cz-0 jrIXFd">
+                    <div class="markdown-display__Wrapper-iw8e43-0 cfuuLd" size="15">
+                        <p><%- test[0].descripttion%></p>
+                    </div>
+                </div>
+                <div class="animated fadeIn TestViewBox__ButtonWrapper-sc-1fpc0cz-1 khHLGv">
+                    <a href="/test/<%-test[0].id%>/playing" class="animated fadeIn Play__ButtonCustom-uoed40-0 HvDrU button__ButtonStyle-ff5vbp-0 eBaBMz" color="#fff" size="18"><span class="bp3-icon bp3-icon-play" icon="play"><svg fill="#fff" data-icon="play" width="18" height="18" viewBox="0 0 16 16"><desc>play</desc><path d="M12 8c0-.35-.19-.64-.46-.82l.01-.02-6-4-.01.02A.969.969 0 0 0 5 3c-.55 0-1 .45-1 1v8c0 .55.45 1 1 1 .21 0 .39-.08.54-.18l.01.02 6-4-.01-.02c.27-.18.46-.47.46-.82z" fill-rule="evenodd"></path></svg></span>
+                        <div class="clearfix__Clearfix-w9lses-0 nSccW" width="8"></div><span class="button__Span-ff5vbp-1 iDcKyq" color="#fff" size="18">Click để bắt đầu làm bài</span></a>
+                     <%if(history){%>   
+                    <div style="width:100%">
+                        <a href="/test/<%-test[0].id%>/histories" class="History__ButtonContainer-sc-1hh2dr6-0 wzjuy button__ButtonStyle-ff5vbp-0 bqzYQE" color="#fff" size="18"><span class="bp3-icon bp3-icon-history" icon="history"><svg fill="#fff" data-icon="history" width="18" height="18" viewBox="0 0 16 16"><desc>history</desc><path d="M8 3c-.55 0-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59V4c0-.55-.45-1-1-1zm0-3a7.95 7.95 0 0 0-6 2.74V1c0-.55-.45-1-1-1S0 .45 0 1v4c0 .55.45 1 1 1h4c.55 0 1-.45 1-1s-.45-1-1-1H3.54C4.64 2.78 6.23 2 8 2c3.31 0 6 2.69 6 6 0 2.61-1.67 4.81-4 5.63v-.01c-.63.23-1.29.38-2 .38-3.31 0-6-2.69-6-6 0-.55-.45-1-1-1s-1 .45-1 1c0 4.42 3.58 8 8 8 .34 0 .67-.03 1-.07.02 0 .04-.01.06-.01C12.98 15.4 16 12.06 16 8c0-4.42-3.58-8-8-8z" fill-rule="evenodd"></path></svg></span>
+                            <div class="clearfix__Clearfix-w9lses-0 nSccW" width="8"></div><span class="button__Span-ff5vbp-1 iDcKyq" color="#fff" size="18">Xem lịch sử làm bài</span></a>
+                    </div>
+                    <%}%>
+                </div>
+            </div>
+        </div>
+    </div>
+    <input type="hidden" value ="<%-info.id%>" id="username">
+    <script>
+        function saveTest(e){
+               fetch('/api/saved',{
+                           method: 'POST',
+                           headers: {
+                               'Content-Type': 'application/json'
+                           },
+                           body:JSON.stringify({
+                               id_user:document.getElementById('username').value,
+                               id_test:e.parentNode.id
+                           })
+                       })
+                       .then(function(response) {
+                           alert('Lưu lại thành công');
+                       })
+                       .catch(err=>{
+                           alert('Thất bại,thử lại sau');
+                           console.log(err)
+                   });
+           }
+   </script>
+    </div>
+    </div>
+    <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
+    <footer class="Footer__FooterLayout-sjil8q-0 glvqwo">
+        <div class="Footer__FooterContainer-sjil8q-1 jLcvsU" id="footer"><span class="copyright">© 2018 Tungtung Inc</span>
+            <div class="Footer__MenuList-sjil8q-2 dOaCfU"><a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/home"><span class="bp3-icon bp3-icon-star" icon="star"><svg data-icon="star" width="14" height="14" viewBox="0 0 16 16"><desc>star</desc><path d="M8 0l2.5 5.3 5.5.8-4 4.1.9 5.8L8 13.3 3.1 16l.9-5.8-4-4.1 5.5-.8z" fill-rule="evenodd"></path></svg></span><span class="title">Khám phá</span></a>
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="https://home.tungtung.vn/vi" target="_blank"><span class="bp3-icon bp3-icon-home" icon="home"><svg data-icon="home" width="14" height="14" viewBox="0 0 16 16"><desc>home</desc><path d="M2 10v5c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-5L8 4l-6 6zm13.71-2.71L14 5.59V2c0-.55-.45-1-1-1s-1 .45-1 1v1.59L8.71.29C8.53.11 8.28 0 8 0s-.53.11-.71.29l-7 7a1.003 1.003 0 0 0 1.42 1.42L8 2.41l6.29 6.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71z" fill-rule="evenodd"></path></svg></span>
+                    <span
+                        class="title">Về chúng tôi</span>
+                        </a><a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="https://help.tungtung.vn/terms-and-conditions" target="_blank"><span class="bp3-icon bp3-icon-book" icon="book"><svg data-icon="book" width="14" height="14" viewBox="0 0 16 16"><desc>book</desc><path d="M2 1v14c0 .55.45 1 1 1h1V0H3c-.55 0-1 .45-1 1zm11-1h-1v7l-2-2-2 2V0H5v16h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1z" fill-rule="evenodd"></path></svg></span><span class="title">Điều khoản</span></a>
+                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="https://help.tungtung.vn/faq" target="_blank"><span class="bp3-icon bp3-icon-help" icon="help"><svg data-icon="help" width="14" height="14" viewBox="0 0 16 16"><desc>help</desc><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z" fill-rule="evenodd"></path></svg></span>
+                            <span
+                                class="title">FAQ</span>
+                                </a><a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="https://help.tungtung.vn/" target="_blank"><span class="bp3-icon bp3-icon-git-repo" icon="git-repo"><svg data-icon="git-repo" width="14" height="14" viewBox="0 0 16 16"><desc>git-repo</desc><path d="M5 9H4v1h1V9zm10-9H1C.45 0 0 .45 0 1v13c0 .55.45 1 1 1h3v1l2-1 2 1v-1h7c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM4 13H2v-1h2v1zm10 0H8v-1h6v1zm0-2H3V2h11v9zM5 3H4v1h1V3zm0 4H4v1h1V7zm0-2H4v1h1V5z" fill-rule="evenodd"></path></svg></span><span class="title">Tài liệu</span></a>
+                <span class="bp3-popover-wrapper"><span class="bp3-popover-target"><div class="changeLang ChangeLanguage__LanguageContainer-sc-1xaegfg-1 dVmpWL"><button type="button" style="background-color:#eeeeee;box-shadow:none !important;background-image:none" class="bp3-button"><img class="ChangeLanguage__Image-sc-1xaegfg-0 inKcqK" src="/images/flags/vi.svg"/><span class="bp3-icon bp3-icon-chevron-up" icon="chevron-up"><svg data-icon="chevron-up" width="16" height="16" viewBox="0 0 16 16"><desc>chevron-up</desc><path d="M12.71 9.29l-4-4C8.53 5.11 8.28 5 8 5s-.53.11-.71.29l-4 4a1.003 1.003 0 0 0 1.42 1.42L8 7.41l3.29 3.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71z" fill-rule="evenodd"></path></svg></span></button>
+            </div>
+            </span>
+            </span>
+        </div>
+        </div>
+    </footer>
+    </div>
+    </div>
+</body>
+
+</html>

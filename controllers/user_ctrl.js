@@ -1,12 +1,14 @@
 const UserModel = require('../models/user_model');
 const CategoryModel = require('../models/category_model');
 const TestModel = require('../models/test_model');
+const HistoryModel = require('../models/history_model');
 
 class UserController {
     constructor() {
         this.userModel = new UserModel;
         this.categoryModel = new CategoryModel();
         this.testModel = new TestModel();
+        this.historyModel = new HistoryModel();
     }
 
     loginGet(req, res) {
