@@ -25,7 +25,7 @@ class TestModel extends BaseModel {
             db('tests').where(data)
             .join('tag','tests.id_tag','tag.id')
             .join('users','tests.id_parent','users.id')
-            .join('saved','tests.id','saved.id_test')
+            .leftJoin('saved','tests.id','saved.id_test')
             .leftJoin('questions','tests.id','questions.id_test')
             .leftJoin('history','tests.id','history.id_test')
             .select('tests.*','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??,count(DISTINCT history.id) as ??',['question','access']))

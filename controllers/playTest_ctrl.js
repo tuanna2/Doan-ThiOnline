@@ -81,8 +81,7 @@ class PlayTestController{
     }
     async allHistory(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
-        const tests = await this.testModel.getTestInfo({});
-        console.log(tests);
+        const tests = await this.testModel.getTestInfo({'history.id_user':req.session.idUser});
         res.render('play_test/all_history',{info,tests});
     }
 }
