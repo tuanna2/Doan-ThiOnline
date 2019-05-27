@@ -1,8 +1,9 @@
 const express = require('express');
 const app = express();
 const session = require('express-session');
-const Router = require('./router/router');
-const ApiRouter = require('./router/api_router');
+const Router = require('./routers/router');
+const ApiRouter = require('./routers/api_router');
+const AdminRouter = require('./routers/admin_router')
 const morgan = require('morgan');
 const FileStore = require('session-file-store')(session);
 const fileUpload = require('express-fileupload');
@@ -23,7 +24,7 @@ app.set('view engine', 'ejs');
 app.set('views', './views');
 
 app.use('/api',new ApiRouter().getRouter());
-
+app.use('/admin',new AdminRouter().getRouter());
 app.use('/',new Router().getRouter());
 
 app.listen(3000, () => console.log(`App listening on port 3000!`));

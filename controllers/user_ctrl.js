@@ -1,3 +1,4 @@
+const bcrypt = require("bcrypt");
 const UserModel = require('../models/user_model');
 const CategoryModel = require('../models/category_model');
 const TestModel = require('../models/test_model');
@@ -17,12 +18,18 @@ class UserController {
         :   res.render('login',{err:''});
     }
     async loginPost(req,res){
-            const rs = await this.userModel.get(req.body);
-            if(typeof rs !== "undefined"){
-                req.session.idUser = rs.id;
-                res.redirect('/');
+            const rs = await this.userModel.get({email:req.body.email});
+            if(typeof rs === "undefined"){
+                res.render('login',{err:'Tài khoản đã bị khoá hoặc không tồn tại trong hệ thống'});
             }
-            else res.render('login',{err:'Tài khoản hoặc mật khẩu không chính xác'})
+            else{
+                let checkPass = await bcrypt.compare(req.body.password, rs.password);
+                if(checkPass){
+                    req.session.idUser = rs.id;
+                    res.redirect('/');
+                }
+                else res.render('login',{err:'Tài khoản hoặc mật khẩu không chính xác'});
+            }
     }
     signupGet(req, res) {
         req.session.idUser ?
@@ -31,7 +38,8 @@ class UserController {
     }
     async signupPost(req,res){
         try{
-            const data = await this.userModel.add({username:req.body.username,email:req.body.email,password:req.body.password});
+            const password = await bcrypt.hash(req.body.password, 5);
+            const data = await this.userModel.add({username:req.body.username,email:req.body.email,password:password});
             req.session.idUser = data[0];
             res.redirect('/')
         } catch(e){
@@ -65,14 +73,16 @@ class UserController {
     }
     async apiChangePass(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
-        if(req.body.oldpass !== info.password){
+        let checkOldPass = await bcrypt.compare(req.body.oldpass, info.password);
+        if(!checkOldPass){
             return res.status(403).send('Mật khẩu cũ không chính xác !')
         }
         if(req.body.newpass !== req.body.repass){
             return res.status(403).send('Mật khẩu và nhập lại mật khẩu không khớp !')
         }
         try{
-            await this.userModel.update({id:req.session.idUser,password:req.body.newpass});
+            let newPassword = await bcrypt.hash(req.body.newpass, 5);
+            await this.userModel.update({id:req.session.idUser,password:newPassword});
             res.status(200).send('Đổi mật khẩu thành công');
         } catch(e){
             res.status(403).send(e);

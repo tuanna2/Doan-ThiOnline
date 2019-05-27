@@ -17,6 +17,7 @@
             padding: 6px 10px!important;
         }
     </style>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
 </head>
 
 <body>
@@ -130,10 +131,9 @@
     <input type="hidden" id="id" value ="<%-data.id%>">
     <input type="hidden" id="correct" value ="<%-data.correct%>">
 </body>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
-<script src="https://adminlte.io/themes/AdminLTE/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.all.min.js"></script>
+<script src="/jquery.min.js"></script>
+<script src="/bootstrap.min.js"></script>
+<script src="/bootstrap3-wysihtml5.all.min.js"></script>
 <script>
      $(document).ready(()=> {
         $('input:radio[name=correct]').val([$('#correct').val()]);
