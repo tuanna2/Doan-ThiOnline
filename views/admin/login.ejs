@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+    <meta name="author" content="Łukasz Holeczek">
+    <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+    <title>Admin Login</title>
+    <link href="/dist/node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+    <link href="/dist/css/style.min.css" rel="stylesheet">
+    <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+  </head>
+  <body class="app flex-row align-items-center">
+    <div class="container">
+      <div class="row justify-content-center">
+        <div class="col-md-6">
+          <div class="card mx-4">
+            <form name="form" action="/admin/login" method="POST" class="card-body p-4">
+              <h1 style="text-align: center">Login</h1><br/>
+              <%if(err ==1){%>
+              <p style="color:red;text-align: center">Incorrect account/password combination. Please try again.</p>
+              <%}%>
+              <p class="text-muted">Login to Dashboard</p>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="icon-user"></i>
+                  </span>
+                </div>
+                <input class="form-control" type="text" maxlength="20" name="user" placeholder="Username">
+              </div>
+              <div class="input-group mb-3">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">
+                    <i class="icon-lock"></i>
+                  </span>
+                </div>
+                <input class="form-control" type="password" maxlength="20" name="pass" placeholder="Password">
+              </div>
+              <br/>
+              <button class="btn btn-block btn-success" type="submit">Login</button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="/dist/node_modules/jquery/dist/jquery.min.js"></script>
+    <script src="/dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+  </body>
+</html>

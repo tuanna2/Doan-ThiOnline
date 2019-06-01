@@ -1,0 +1,103 @@
+<header class="app-header navbar">
+        <button class="navbar-toggler sidebar-toggler d-lg-none mr-auto" type="button" data-toggle="sidebar-show">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <a class="navbar-brand" href="/admin">
+          <img class="navbar-brand-full" src="/dist/img/package.png" width="89" height="25" alt="CoreUI Logo">
+        </a>
+        <button class="navbar-toggler sidebar-toggler d-md-down-none" type="button" data-toggle="sidebar-lg-show">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <ul class="nav navbar-nav ml-auto">
+          <li class="nav-item dropdown">
+            <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+              <img class="img-avatar" src="<%- info.avatar == null ? "/avatar-default.png" : info.avatar %>" alt="adminAvatar">
+            </a>
+            <div class="dropdown-menu dropdown-menu-right">
+              <div class="dropdown-header text-center">
+                <strong>Thông báo</strong>
+              </div>
+              <a class="dropdown-item" href="/admin/testing">
+                <i class="fa fa-bell-o"></i> Đề thi đợi duyệt
+                <span class="badge badge-info"><%- countTesting%></span>
+              </a>
+              <div class="dropdown-header text-center">
+                <strong>Cài đặt</strong>
+              </div>
+              <a class="dropdown-item" onclick="document.getElementById('filePhoto').click()">
+                  <input id="filePhoto" onchange="changePhoto(this.files)" type="file" accept="image/*" hidden="">
+                  <i class="fa fa-user"></i> Đổi hình đại diện</a>
+              <a class="dropdown-item" data-toggle="modal" data-target="#modalChangePass">
+                <i class="fa fa-shield"></i> Đổi mật khẩu</a>
+              <a class="dropdown-item" href="/logout">
+                <i class="fa fa-lock"></i> Đăng xuất</a>
+            </div>
+          </li>
+        </ul>
+        <button class="navbar-toggler aside-menu-toggler d-md-down-none" data-toggle="dropdown" role="button"
+          aria-haspopup="true" aria-expanded="false">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      </header>
+      <div class="modal fade" id="modalChangePass" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+        style="display: none;" aria-hidden="true">
+        <div class="modal-dialog modal-warning" role="document">
+          <form name="formChangePass" method = "POST" action="/profile/setting/password" onsubmit="return changePass()" class="modal-content">
+            <div class="modal-header">
+              <h4 class="modal-title">Đổi mật khẩu</h4>
+              <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">×</span>
+              </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label>Mật khẩu cũ</label>
+                    <input class="form-control" name="oldpass"  type="password">
+                  </div> 
+                  <div class="form-group">
+                      <label>Mật khẩu mới</label>
+                      <input class="form-control" name="newpass"  type="password">
+                    </div> 
+                    <div class="form-group">
+                        <label>Nhập lại mật khẩu mới</label>
+                        <input class="form-control" name="repass"  type="password">
+                      </div> 
+           </div>
+            <div class="modal-footer">
+              <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
+              <button class="btn btn-warning" type="submit">Lưu lại</button>
+            </div>
+          </form>
+        </div>
+      </div>
+      <script>
+    
+        function changePass() {
+          if (formChangePass.newpass.value !== formChangePass.repass.value) {
+            alert('Mật khẩu nhập lại không khớp');
+            return false;
+          }
+          return true;
+        }
+    
+        function changePhoto(file) {
+          let formData = new FormData();
+          formData.append('file', file[0]);
+          fetch('/api/upload', {
+            method: 'POST',
+            body: formData
+          })
+            .then(function (response) {
+              return response.json();
+            })
+            .then(function (res) {
+              res.status == 1 ?
+                location.reload()
+                : alert('Cập nhật ảnh thất bại');
+            })
+            .catch(err => {
+              alert('Cập nhật ảnh thất bại');
+              console.log(err)
+            });
+        }
+      </script>

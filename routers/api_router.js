@@ -15,7 +15,7 @@ class ApiRouter extends BaseRouter{
         const userCtrl = new UserController();
         this.router.get('/user',userCtrl.getAll.bind(userCtrl));
         this.router.get('/user/:id',userCtrl.get.bind(userCtrl))
-        this.router.post('/user',userCtrl.add.bind(userCtrl));
+        this.router.post('/user',userCtrl.addUser.bind(userCtrl));
         this.router.put('/user',userCtrl.update.bind(userCtrl));
         this.router.delete('/user/:id',userCtrl.delete.bind(userCtrl));
 
@@ -36,7 +36,7 @@ class ApiRouter extends BaseRouter{
         this.router.delete('/test/:id',testCtrl.delete.bind(testCtrl));
 
         const questionCtrl = new QuestionController();
-        this.router.get('/question',questionCtrl.getAll.bind(questionCtrl));
+        this.router.get('/question',questionCtrl.getQuestionsByTest.bind(questionCtrl));
         this.router.get('/question/:id',questionCtrl.get.bind(questionCtrl))
         this.router.post('/question',questionCtrl.add.bind(questionCtrl));
         this.router.put('/question',questionCtrl.update.bind(questionCtrl));

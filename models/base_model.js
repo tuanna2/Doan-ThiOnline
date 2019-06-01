@@ -45,9 +45,9 @@ class BaseModel {
             .catch( err => reject(err));
         })
     }
-    count() {
+    count(data) {
         return new Promise( (resolve, reject) => {
-            db(this.tableName).count('id')
+            db(this.tableName).where(data).count('id')
             .then( res => resolve(res[0]['count(`id`)']))
             .catch( err => reject(err));
         })

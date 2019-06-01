@@ -1,6 +1,7 @@
 const UserModel = require('../../models/user_model');
 const BaseApiCtrl = require('./base_api_ctrl');
 const path = require('path');
+const bcrypt = require("bcrypt");
 
 class UserController extends BaseApiCtrl{
     constructor() {
@@ -23,6 +24,17 @@ class UserController extends BaseApiCtrl{
         } catch(e){
             return res.status(500).send(e);
         }
+    }
+    async addUser(req,res){
+        try{
+            let data = req.body;
+            data.password = await bcrypt.hash(req.body.password, 5);
+            const rs = await this.userModel.add(data);
+            res.json({ message: 'success', data: rs});
+        } catch(e){
+            res.status(500).send({message:'falled',error:e});
+        }
+
     }
 }
 module.exports = UserController;

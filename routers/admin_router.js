@@ -7,7 +7,11 @@ class AdminRouter extends BaseRouter{
     }
     config(){
         const adminCtrl = new AdminController();
-        // this.router.get('/',homeCtrl.index.bind(homeCtrl));
+        this.router.get('/login',adminCtrl.loginView);
+        this.router.post('/login',adminCtrl.login.bind(adminCtrl));
+        this.router.get('/',adminCtrl.isLoggedIn,adminCtrl.index.bind(adminCtrl));
+        this.router.get('/tested',adminCtrl.isLoggedIn,adminCtrl.tested.bind(adminCtrl));
+        this.router.get('/testing',adminCtrl.isLoggedIn,adminCtrl.testing.bind(adminCtrl));
     }
 
 }

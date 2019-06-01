@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+  <title>Admin</title>
+  <link href="/dist/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <link href="/dist/css/style.min.css" rel="stylesheet">
+  <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+  <link href="/dist/datatable/dataTables.bootstrap.min.css" rel="stylesheet">
+
+  <style>
+    button:focus {
+      outline: 0 !important;
+    }
+
+    thead {
+      background-color: #c8ced3;
+      text-align: center
+    }
+
+    tbody {
+      text-align: center
+    }
+  </style>
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <%- include('./header')%>
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a style="color:khaki;background:transparent" class="nav-link" role="button">
+              <img class="img-avatar" width=30 height=30 style="margin-right:5px;"
+                src="<%- info.avatar == null ? "/avatar-default.png" : info.avatar %>">
+              Administrator
+            </a>
+            <a class="nav-link active" href="/admin">
+              <i class="nav-icon icon-user"></i> Quản lý người dùng
+            </a>
+          </li>
+          <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle" href="/admin/tests">
+              <i class="nav-icon icon-map"></i> Quản lý đề thi
+            </a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/tested">
+                  <i class="nav-icon fa fa-list-alt"></i> Tất cả đề
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/testing">
+                  <i class="nav-icon fa fa-list-alt"></i> Đang đợi duyệt
+                  <span class="badge badge-success"><%- countTesting%></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+    <main class="main">
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Users Table</div>
+                <div class="card-body">
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add">Thêm người dùng</button>
+                  <table id="data-users" class="table table-responsive-sm table-bordered">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Photo</th>
+                        <th>Họ tên</th>
+                        <th>Email</th>
+                        <th>Function</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(let i=data.length-1;i>=1;i--){ %>
+                      <tr>
+                        <td><%- data[i].id %></td>
+                        <td><img style="border-radius: 17px" width="40px" height="40px"
+                            src=<%- data[i].avatar == null ? "/avatar-default.png" : data[i].avatar %>></td>
+                        <td><%- data[i].username %></td>
+                        <td><%- data[i].email %></td>
+                        <td number="<%- data[i].id%>">
+                          <button class="btn btn-info" onclick="editUserView(this)">Sửa</button>
+                          <button class="btn btn-danger" onclick="deleteUser(this)">Xoá</button>
+                        </td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-primary" role="document">
+      <form name="formAdd" onsubmit="return addUser()" class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Thêm người dùng</h4>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <div class="col-sm-12">
+            <div class="form-group">
+              <label>Họ tên</label>
+              <input class="form-control" name="username" autocomplete="true" type="text" placeholder="Nhập họ tên">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input class="form-control" name="email" autocomplete="true" type="email" placeholder="Nhập email">
+            </div>
+            <div class="form-group">
+              <label>Mật khẩu</label>
+              <input class="form-control" name="password" type="password" placeholder="Nhập mật khẩu">
+            </div>
+            <div class="form-group">
+                <label>Giới tính</label>
+                <div class="radio"><input type="radio" name="sex" value="Nam"> Nam </div>
+                <div class="radio"><input type="radio" name="sex" value="Nữ"> Nữ </div>
+                <div class="radio"><input type="radio" name="sex" value="Khác"> Khác </div>
+              </div>
+            <div class="form-group">
+              <label>Danh mục theo dõi</label>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> Đại học</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> THCS & THPT</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> Lập trình</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> Chuyên môn</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> Tiếng anh</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> Ngôn ngữ khác</label>
+              </div>
+              <div class="checkbox">
+                <label><input type="checkbox" name="follow"> Kiến thức xã hộii</label>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary pull-left" type="button" data-dismiss="modal">Huỷ bỏ</button>
+          <button class="btn btn-primary" type="submit">Thêm</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <form name="formEdit" onsubmit ="return submitEdit()" class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Sửa thông tin</h4>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <div class="form-group">
+                <label>ID</label>
+                <input class="form-control" name="id" type="text" disabled>
+              </div>
+          <div class="form-group">
+            <label>Họ tên</label>
+            <input class="form-control" name="username" autocomplete="true" type="text" placeholder="Nhập họ tên">
+          </div>
+          <div class="form-group">
+            <label>Email</label>
+            <input class="form-control" disabled name="email" autocomplete="true" type="email" placeholder="Nhập email">
+          </div>
+          <div class="form-group">
+            <label>Ảnh đại diện</label>
+            <input class="form-control" name="avatar" type="text" placeholder="Nhập url ảnh">
+          </div>
+          <div class="form-group">
+            <label>Giới tính</label>
+            <div class="radio"><input type="radio" name="sex" value="Nam"> Nam </div>
+            <div class="radio"><input type="radio" name="sex" value="Nữ"> Nữ </div>
+            <div class="radio"><input type="radio" name="sex" value="Khác"> Khác </div>
+          </div>
+          <div class="form-group">
+            <label>Danh mục theo dõi</label>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> Đại học</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> THCS & THPT</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> Lập trình</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> Chuyên môn</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> Tiếng anh</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> Ngôn ngữ khác</label>
+            </div>
+            <div class="checkbox">
+              <label><input type="checkbox" name="follow"> Kiến thức xã hộii</label>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Số điện thoại</label>
+            <input class="form-control" name="phone" type="text" maxlength="11" placeholder="">
+          </div>
+          <div class="form-group">
+            <label>Giới thiệu</label>
+            <textarea class="form-control" maxlength="254" name="introduction"></textarea>
+          </div>
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ</button>
+          <button class="btn btn-primary" type="submit">Lưu thay đổi</button>
+        </div>
+      </form>
+
+    </div>
+
+  </div>
+
+  <script>
+    function addUser() {
+      if (formAdd.username.value == "" || formAdd.email.value == "" || formAdd.password.value == "") {
+        alert('Vui lòng nhập đủ thông tin');
+        return false;
+      }
+      let checkedFollow = [];
+      formAdd.follow.forEach((e,i) => {
+        if(e.checked === true){
+          checkedFollow.push(i+1);
+        }
+      });
+      fetch('/api/user', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          username: formAdd.username.value,
+          email: formAdd.email.value,
+          password: formAdd.password.value,
+          sex: formAdd.sex.value,
+          category_followed:checkedFollow.toString()
+        })
+      })
+        .then(function (response) {
+          response.ok ? location.reload()
+            : alert('Thêm thất bại,email đã có người sử dụng !');
+        })
+        .catch(function (err) {
+          alert('Thêm thất bại,email đã có người sử dụng !')
+        });
+      return false;
+    }
+  </script>
+
+  <script src="/dist/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/dist/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/dist/datatable/jquery.dataTables.min.js"></script>
+  <script src="/dist/datatable/DataTablesBS4.js"></script>
+  <script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+  <script src="/dist/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  <script src="/dist/node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+  <script>
+    function submitEdit() {
+      if (formEdit.username.value == "" ){
+        alert('Họ tên không được để trống !');
+        return false;
+      }
+      let checkedFollow = [];
+      formEdit.follow.forEach((e,i) => {
+        if(e.checked === true){
+          checkedFollow.push(i+1);
+        }
+      });
+      fetch('/api/user', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          id:formEdit.id.value,
+          username: formEdit.username.value,
+          avatar:formEdit.avatar.value,
+          sex:formEdit.sex.value,
+          category_followed:checkedFollow.toString(),
+          phone:formEdit.phone.value,
+          introduction:formEdit.introduction.value                    
+        })
+      })
+        .then(function (response) {
+          response.ok ? location.reload()
+            : alert('Sửa thông tin thất bại !');
+        })
+        .catch(function (err) {
+          alert('Sửa thông tin thất bại !')
+        });
+      return false;
+    }
+    function editUserView(e) {
+      let id = $(e).parent().attr('number');
+      $(e).html('<i class="fa fa-circle-o-notch fa-lg fa-spin"></i>');
+      $(e).attr('disabled', true);
+      fetch('/api/user/' + id, {
+        method: 'GET'
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            alert('Lỗi kết nối ! thử lại sau');
+            location.reload();
+          }
+          else return response.json();
+        })
+        .then(function (res) {
+          let follow =res.data[0].category_followed;
+          formEdit.follow.forEach(e => {
+            e.checked = false;            
+          });
+          if(follow){
+            let checked = follow.split(',');
+            checked.forEach(e => {
+              formEdit.follow[e-1].checked = true;
+            })
+          }
+          formEdit.id.value = res.data[0].id,
+          formEdit.username.value = res.data[0].username,
+          formEdit.email.value = res.data[0].email,
+          formEdit.avatar.value = res.data[0].avatar,
+          formEdit.sex.value = res.data[0].sex,
+          formEdit.phone.value = res.data[0].phone,
+          formEdit.introduction.value = res.data[0].introduction
+          $('#modal-edit').modal('show');
+        })
+        .catch(function (err) {
+          alert('Lỗi kết nối ! thử lại sau !');
+          location.reload();
+        });
+      $('#modal-edit').on('hidden.bs.modal', function () {
+        $(e).html('Sửa');
+        $(e).attr('disabled', false)
+      });
+    }
+    function deleteUser(e) {
+      let id = $(e).parent().attr('number');
+      if (confirm('Có chắc muốn xoá ? ')) {
+        fetch('/api/user/' + id, {
+          method: 'DELETE'
+        })
+          .then(function (response) {
+            !response.ok ? alert('Xoá thất bại ! thử lại sau') : location.reload();
+          })
+          .catch(function (err) {
+            alert('Xoá thất bại !')
+          });
+      }
+    }
+    $(document).ready(function () {
+      $('#data-users').DataTable({
+        'lengthChange': false,
+        'ordering': false
+      })
+    })
+  </script>
+</body>
+
+</html>
