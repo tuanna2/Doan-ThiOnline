@@ -7,9 +7,9 @@ const AdminRouter = require('./routers/admin_router')
 const morgan = require('morgan');
 const FileStore = require('session-file-store')(session);
 const fileUpload = require('express-fileupload');
-
+const sslRedirect = require('heroku-ssl-redirect');
+app.use(sslRedirect());
 app.use(fileUpload());
-
 app.use(session({
     store: new FileStore,
     secret: 'secret',
@@ -28,5 +28,4 @@ app.use('/',new Router().getRouter());
 
 app.use('/admin',new AdminRouter().getRouter());
 
-
-app.listen(3000, () => console.log(`App listening on port 3000!`));
+app.listen(process.env.PORT || 3000);
