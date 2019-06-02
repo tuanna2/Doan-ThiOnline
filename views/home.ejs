@@ -2,12 +2,13 @@
 <html>
 
 <head>
-    <title class="next-head">TRANG CHỦ | tungtung.vn</title>
+    <title class="next-head">TRANG CHỦ | ThiOnline.VN</title>
     <meta charSet="utf-8" class="next-head" />
     <meta name="description" content="Nền tảng đề thi trực tuyến giúp mọi cá nhân chia sẻ và phát triển kiến thức của mình.    " class="next-head" />
     <meta name="keywords" content="trắc nghiệm trực tuyến, đề thi trắc nghiệm, trắc nghiệm tiếng anh, ôn thi THPT quốc gia, ôn luyện đại học, interview, test" class="next-head" />
     <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
     <link rel="stylesheet" href="../css/home.css" />
+    <link rel="stylesheet" href="../css/house.css" />
 
 </head>
 
@@ -59,38 +60,33 @@
             </div>
         </div>
         </header>
-        <div>
-            <div class="home-page__HeaderContainer-bfz5d7-0 idrEZA" style="box-shadow:rgba(235, 232, 232, 0.498) 0px 3px 7px 0px;margin-bottom:16px">
+        <div class="home-page__HeaderContainer-bfz5d7-0 idrEZA" style="box-shadow:rgba(235, 232, 232, 0.498) 0px 3px 7px 0px;margin-bottom:16px">
                 <div class="home-page__HeaderNav-bfz5d7-1 jeQsvF">
-                    <div class="home-page__MenuList-bfz5d7-2 cfOUux">
+                    <div class="home-page__MenuList-bfz5d7-2 cfOUux" style="display: flex;">
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 fYXSUM" href="/home">TRANG CHỦ</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/1">ĐẠI HỌC</a>
                         </div>
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">THCS &amp; THPT</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/2">THCS &amp; THPT</a>
                         </div>
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">ĐẠI HỌC</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/3">LẬP TRÌNH</a>
                         </div>
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">LẬP TRÌNH</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/4">CHUYÊN MÔN</a>
                         </div>
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">CHUYÊN MÔN</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/5">TIẾNG ANH</a>
                         </div>
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">TIẾNG ANH</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/6">NGÔN NGỮ KHÁC</a>
                         </div>
                         <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">NGÔN NGỮ KHÁC</a>
-                        </div>
-                        <div class="menuItem">
-                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="#">KIẾN THỨC XÃ HỘI</a>
+                            <a class="home-page__Menu-bfz5d7-3 kcCnmc" href="/category/7">KIẾN THỨC XÃ HỘI</a>
                         </div>
                     </div>
                 </div>
             </div>
-        </div>
         <div class="wrapper Wrapper-mxjqhp-0 fPglrh">
             <div class="home__Container-sc-1mos7ys-0 dOZqof">
                 <div class="heroUnit HeroUnit__HeroUnitStyle-s37crj-0 xvdME">
@@ -119,7 +115,6 @@
                                 </span>
                             </div>
                             <div class="clearfix__Clearfix-w9lses-0 eBiGOA" width="16"></div>
-                            <a class="HeroUnit__LinkA-s37crj-7 bxynSL" target="_blank" href="/home-first">Tìm hiểu thêm</a>
                         </div>
                     </div>
                     <div class="HeroUnit__ImageWrapper-s37crj-1 gcfrSz">
@@ -129,7 +124,7 @@
                 <div class="testList ForYou__ForYouStyle-qh1998-0 cTIWxc">
                     <div class="ForYou__Container-qh1998-1 jwKPDm">
                         <div class="heading-flex__HeadingFlexStyle-sc-1ajihah-0 havYlU">
-                            <h4 class="heading-flex__Heading-sc-1ajihah-1 lpcowo" size="20" color="#1d1d1f">Dành cho bạn</h4>
+                            <h4 class="heading-flex__Heading-sc-1ajihah-1 lpcowo" size="20" color="#1d1d1f">Một số đề mới</h4>
                             <a class="heading-flex__LinkMore-sc-1ajihah-2 jKLDIL" href="/login">
                                 <span>
                                     <span class="bp3-icon bp3-icon-chevron-right" icon="chevron-right">
@@ -141,170 +136,74 @@
                                 </span>
                             </a>
                         </div>
+                        <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>  
+                                <%var length = tests.length > 5 ? 5 : tests.length; %>
+                                <%for(var i = 0;i< length;i++){%>
+                                    <div class="testItem">
+                                        <div class="animated fadeIn style__Box-sc-1ravu7g-3 dTubHF white-box__WhileBoxContainer-sc-44su8e-0 dHXTFa">
+                                            <div class="style__Flex-sc-1ravu7g-1 fhpJlj">
+                                                <div class="style__TitleBox-sc-1ravu7g-0 kZDlLi" color="#7F30C5"><a href="/test/<%- tests[i].id%>" class="title" title="20 câu kiểm tra kiến thức cơ bản Nodejs"><%- tests[i].name%></a></div>
+                                                <div class="addon style__AddonWrapper-sc-1ravu7g-2 gnbQfX" color="#8395A7">
+                                                    <div class="content" id="<%- tests[i].id%>">
+                                                        <div class="item" onclick = "saveTest(this)">
+                                                <div><span class="bp3-popover-wrapper"><span class="bp3-popover-target">
+                                                        <div class="save-test__IconWrapper-qs5ik2-0 fZkeJA" tabindex="0"><span class="bp3-icon bp3-icon-bookmark"
+                                                                icon="bookmark">
+                                                                <svg fill="#8395A7" data-icon="bookmark" width="16" height="16" viewBox="0 0 16 16">
+                                                                    <desc>bookmark</desc>
+                                                                    <path
+                                                                        d="M11.2.01h-.15C11.03.01 11.02 0 11 0H5c-.02 0-.03.01-.05.01H4.8c-.44 0-.8.37-.8.82v14.75c0 .45.25.56.57.24l2.87-2.94c.31-.32.82-.32 1.13 0l2.87 2.94c.31.32.57.21.57-.24V.83C12 .38 11.64.01 11.2.01z"
+                                                                        fill-rule="evenodd"></path>
+                                                                </svg></span></div>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                        </div>
+                
+                                    </div>
+                                    </div>
+                                </div>
+                                    <div class="style__TestWrapper-sc-1ravu7g-5 crOhCc">
+                                        <div class="style__TestInfo-sc-1ravu7g-4 hjDFfQ" color="#0984E3">
+                                            <div class="meta style__Meta-sc-1ravu7g-6 kJbyxy" color="#EB5C55"><span class="bp3-icon bp3-icon-help" icon="help"><svg data-icon="help" width="14" height="14" viewBox="0 0 16 16"><desc>help</desc><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z" fill-rule="evenodd"></path></svg></span>
+                                                <span class="info bold"><%- tests[i].question%> câu</span>
+                                            </div>
+                                            <div class="meta style__Meta-sc-1ravu7g-6 kJbyxy" color="#f1c40f"><span class="bp3-icon bp3-icon-time" icon="time"><svg data-icon="time" width="14" height="14" viewBox="0 0 16 16"><desc>time</desc><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm0 14c-3.31 0-6-2.69-6-6s2.69-6 6-6 6 2.69 6 6-2.69 6-6 6zm1-6.41V4c0-.55-.45-1-1-1s-1 .45-1 1v4c0 .28.11.53.29.71l2 2a1.003 1.003 0 0 0 1.42-1.42L9 7.59z" fill-rule="evenodd"></path></svg></span>
+                                                <span class="info bold"><%- tests[i].time%> phút</span>
+                                            </div>
+                                            <div class="meta style__Meta-sc-1ravu7g-6 kJbyxy" color="#2ECC71"><span class="bp3-icon bp3-icon-timeline-bar-chart" icon="timeline-bar-chart"><svg data-icon="timeline-bar-chart" width="14" height="14" viewBox="0 0 16 16"><desc>timeline-bar-chart</desc><path d="M8 12h1c.55 0 1-.45 1-1V2c0-.55-.45-1-1-1H8c-.55 0-1 .45-1 1v9c0 .55.45 1 1 1zm5 0h1c.55 0 1-.45 1-1V5c0-.55-.45-1-1-1h-1c-.55 0-1 .45-1 1v6c0 .55.45 1 1 1zm2 1H2c-.55 0-1 .45-1 1s.45 1 1 1h13c.55 0 1-.45 1-1s-.45-1-1-1zM3 12h1c.55 0 1-.45 1-1V7c0-.55-.45-1-1-1H3c-.55 0-1 .45-1 1v4c0 .55.45 1 1 1z" fill-rule="evenodd"></path></svg></span>
+                                                <span class="info bold"><%- tests[i].access%> lượt làm</span>
+                                            </div>
+                                            <div class="meta style__Meta-sc-1ravu7g-6 kJbyxy">
+                                                <a class="style__UserWrapperA-sc-1ravu7g-7 bmtztU" href="/profile/<%- tests[i].id_parent%>">
+                                                    <div class="username user-avatar__UserAvatarStyle-sc-12kuvrh-0 jqsone"><img class="avatar avatar__Image-sc-1k5juv6-1 jDmTwk" src=<%- tests[i].avatar == null ? "/avatar-default.png" : tests[i].avatar %> size="14">
+                                                        <div class="userInfo user-avatar__InfoUser-sc-12kuvrh-1 jqwZLw">
+                                                            <div class="user-avatar__Flex-sc-12kuvrh-2 dOcaUa"><span class="username"><%-tests[i].parent%></span>
+                                                                <div class="__react_component_tooltip place-top type-dark " data-id="tooltip"></div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </a>
+                                            </div>
+                                        </div>
+                                        <div class="more style__TestInfo-sc-1ravu7g-4 hjDFfQ" color="#0984E3">
+                                            <div class="tag__TagListStyle-sc-1jmlvd9-0 fksfhh" size="14"><div style="color: #007EE5;" class="tag tag__TagItem-sc-1jmlvd9-1 iyxnyr"><%- tests[i].tag%></div></div>
+                                            <div class="right">
+                                                <div class="meta style__Meta-sc-1ravu7g-6 cBHwhQ"><span class="bp3-icon bp3-icon-calendar" icon="calendar"><svg data-icon="calendar" width="14" height="14" viewBox="0 0 16 16"><desc>calendar</desc><path d="M11 3c.6 0 1-.5 1-1V1c0-.6-.4-1-1-1s-1 .4-1 1v1c0 .5.4 1 1 1zm3-2h-1v1c0 1.1-.9 2-2 2s-2-.9-2-2V1H6v1c0 1.1-.9 2-2 2s-2-.9-2-2V1H1c-.6 0-1 .5-1 1v12c0 .6.4 1 1 1h13c.6 0 1-.4 1-1V2c0-.6-.5-1-1-1zM5 13H2v-3h3v3zm0-4H2V6h3v3zm4 4H6v-3h3v3zm0-4H6V6h3v3zm4 4h-3v-3h3v3zm0-4h-3V6h3v3zM4 3c.6 0 1-.5 1-1V1c0-.6-.4-1-1-1S3 .4 3 1v1c0 .5.4 1 1 1z" fill-rule="evenodd"></path></svg></span>
+                                                    <span class="info"><%- tests[i].created_at.toLocaleDateString()%></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    </div>
+                                    </div>
+                                    <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>  
+                                    <%}%>
                         <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>
 
                     </div>
                 </div>
                 <div class="rating">
-                    <div class="Ratings__RatingListStyle-zg783r-0 fwKyNh">
-                        <div>
-                            <div class="Ratings__RatingList-zg783r-1 dHFlak" style="top:64px;height:calc(100vh - 64px)">
-                                <span class="heading">Cộng động đánh giá</span>
-                                <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>
-                                <div class="Ratings__RatingScrollView-zg783r-8 jzLeBC">
-                                    <div class="ratingItem">
-                                        <div class="Ratings__RatingContainer-zg783r-5 hxnpPX">
-                                            <div class="Ratings__AvatarWrapper-zg783r-6 cruCqL">
-                                                <div class="avatar__Circle-sc-1k5juv6-0 kfcujS" size="35">
-                                                    <span size="35" class="text">T</span>
-                                                </div>
-                                            </div>
-                                            <div class="Ratings__Content-zg783r-2 iAmXQM">
-                                                <div class="Flex-no3b20-0 lcmTbR" style="justify-content:space-between">
-                                                    <span class="Ratings__Username-zg783r-3 ckkRbE">thuyduyen</span>
-                                                    <div class="star__StarStyle-sc-1ukns1v-0 bYbpVA">
-                                                        <div style="display:inline-block;position:relative" class="dv-star-rating dv-star-rating-non-editable">
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_5" value="5" checked="" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_5">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_4" value="4" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_4">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_3" value="3" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_3">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_2" value="2" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_2">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_1" value="1" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_1">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__ContentRating-zg783r-4 esjoli Flex-no3b20-0 cYoqhr">
-                                                    <div class="content markdown-display__Wrapper-iw8e43-0 cfuuLd" size="15">
-                                                        <p>Tốt </p>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__Bottom-zg783r-7 iHBjxs">
-                                                    <span>tại </span>
-                                                    <a href="/test/De-minh-hoa-ky-thi-THPT-Quoc-Gia-nam-2019-mon-Toan-MVCrL" class="title">Đề minh họa kỳ thi THPT Quốc Gia năm 2019 môn Toán</a>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ratingItem">
-                                        <div class="Ratings__RatingContainer-zg783r-5 hxnpPX">
-                                            <div class="Ratings__AvatarWrapper-zg783r-6 cruCqL">
-                                                <div class="avatar__Circle-sc-1k5juv6-0 gErUDq" size="35">
-                                                    <span size="35" class="text">K</span>
-                                                </div>
-                                            </div>
-                                            <div class="Ratings__Content-zg783r-2 iAmXQM">
-                                                <div class="Flex-no3b20-0 lcmTbR" style="justify-content:space-between">
-                                                    <span class="Ratings__Username-zg783r-3 ckkRbE">Kizomeo</span>
-                                                    <div class="star__StarStyle-sc-1ukns1v-0 bYbpVA">
-                                                        <div style="display:inline-block;position:relative" class="dv-star-rating dv-star-rating-non-editable">
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_5" value="5" checked="" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_5">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_4" value="4" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_4">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_3" value="3" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_3">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_2" value="2" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_2">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                            <input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_1" value="1" />
-                                                            <label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_1">
-                                                                <i style="font-style:normal">★</i>
-                                                            </label>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__ContentRating-zg783r-4 esjoli Flex-no3b20-0 cYoqhr">
-                                                    <div class="content markdown-display__Wrapper-iw8e43-0 cfuuLd" size="15">
-                                                        <p>Không có tranh thì làm kiểu gì ạ?</p>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__Bottom-zg783r-7 iHBjxs"><span>tại </span><a href="/test/TOEIC-LISTENING-1-hgUhm" class="title">TOEIC
-                                                                LISTENING 1</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ratingItem">
-                                        <div class="Ratings__RatingContainer-zg783r-5 hxnpPX">
-                                            <div class="Ratings__AvatarWrapper-zg783r-6 cruCqL"><img class="avatar__Image-sc-1k5juv6-1 jsjhoc" src="/avatar-default.png" size="35"
-                                                /></div>
-                                            <div class="Ratings__Content-zg783r-2 iAmXQM">
-                                                <div class="Flex-no3b20-0 lcmTbR" style="justify-content:space-between"><span class="Ratings__Username-zg783r-3 ckkRbE">longrudzo936</span>
-                                                    <div class="star__StarStyle-sc-1ukns1v-0 bYbpVA">
-                                                        <div style="display:inline-block;position:relative" class="dv-star-rating dv-star-rating-non-editable"><input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_5" value="5" checked="" /><label style="float:right;cursor:default;color:#ffb400"
-                                                                class="dv-star-rating-star dv-star-rating-full-star" for="rate_5"><i style="font-style:normal">★</i></label><input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input"
-                                                                name="rate" id="rate_4" value="4" /><label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_4"><i style="font-style:normal">★</i></label><input
-                                                                type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_3" value="3" /><label style="float:right;cursor:default;color:#ffb400"
-                                                                class="dv-star-rating-star dv-star-rating-full-star" for="rate_3"><i style="font-style:normal">★</i></label><input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input"
-                                                                name="rate" id="rate_2" value="2" /><label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_2"><i style="font-style:normal">★</i></label><input
-                                                                type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_1" value="1" /><label style="float:right;cursor:default;color:#ffb400"
-                                                                class="dv-star-rating-star dv-star-rating-full-star" for="rate_1"><i style="font-style:normal">★</i></label></div>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__ContentRating-zg783r-4 esjoli Flex-no3b20-0 cYoqhr">
-                                                    <div class="content markdown-display__Wrapper-iw8e43-0 cfuuLd" size="15">
-                                                        <p>DDeef khos :) </p>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__Bottom-zg783r-7 iHBjxs"><span>tại </span><a href="/test/Khoi-dong-313-wkJJb" class="title">Khởi
-                                                                động 313</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="ratingItem">
-                                        <div class="Ratings__RatingContainer-zg783r-5 hxnpPX">
-                                            <div class="Ratings__AvatarWrapper-zg783r-6 cruCqL">
-                                                <div class="avatar__Circle-sc-1k5juv6-0 logpNi" size="35"><span size="35" class="text">D</span></div>
-                                            </div>
-                                            <div class="Ratings__Content-zg783r-2 iAmXQM">
-                                                <div class="Flex-no3b20-0 lcmTbR" style="justify-content:space-between"><span class="Ratings__Username-zg783r-3 ckkRbE">dao2001</span>
-                                                    <div class="star__StarStyle-sc-1ukns1v-0 bYbpVA">
-                                                        <div style="display:inline-block;position:relative" class="dv-star-rating dv-star-rating-non-editable"><input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_5" value="5" checked="" /><label style="float:right;cursor:default;color:#ffb400"
-                                                                class="dv-star-rating-star dv-star-rating-full-star" for="rate_5"><i style="font-style:normal">★</i></label><input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input"
-                                                                name="rate" id="rate_4" value="4" /><label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_4"><i style="font-style:normal">★</i></label><input
-                                                                type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_3" value="3" /><label style="float:right;cursor:default;color:#ffb400"
-                                                                class="dv-star-rating-star dv-star-rating-full-star" for="rate_3"><i style="font-style:normal">★</i></label><input type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input"
-                                                                name="rate" id="rate_2" value="2" /><label style="float:right;cursor:default;color:#ffb400" class="dv-star-rating-star dv-star-rating-full-star" for="rate_2"><i style="font-style:normal">★</i></label><input
-                                                                type="radio" style="display:none;position:absolute;margin-left:-9999px" class="dv-star-rating-input" name="rate" id="rate_1" value="1" /><label style="float:right;cursor:default;color:#ffb400"
-                                                                class="dv-star-rating-star dv-star-rating-full-star" for="rate_1"><i style="font-style:normal">★</i></label></div>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__ContentRating-zg783r-4 esjoli Flex-no3b20-0 cYoqhr">
-                                                    <div class="content markdown-display__Wrapper-iw8e43-0 cfuuLd" size="15">
-                                                        <p>Tốt </p>
-                                                    </div>
-                                                </div>
-                                                <div class="Ratings__Bottom-zg783r-7 iHBjxs"><span>tại </span><a href="/test/De-thi-thu-THPT-QG-2019-Mon-Su-THPT-Chuyen-Bac-Ninh-Lan-1-41zYa" class="title">Đề thi thử THPT QG 2019 - Môn Sử -
-                                                                THPT Chuyên Bắc Ninh - Lần 1 (có lời giải chi
-                                                                tiết)</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="introduction introduction__IntroductionWrapper-sc-1ipn6zt-0 hFBXac">
                     <div class="Solutions__SolutaionsWrapper-sc-1wsyjjs-0 dgrtFg">

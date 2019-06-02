@@ -19,10 +19,23 @@ class HomeController {
             }
             let arrayFollow = info.category_followed.split(',');
             const tests = await this.testModel.getTestByCategory(arrayFollow);
-            res.render('home_logged',{info,tests})
+            res.render('home_logged',{info,tests,category:0})
         }
         else{
-            res.render('home');
+            const tests = await this.testModel.getTestByCategory([1,2,3,4,5,6,7]);
+            res.render('home',{tests});
+        }
+    }
+    async testOfCategory(req,res){
+        const category = req.params.category;
+        const tests = await this.testModel.getTestInfo({'category.id':category,permission:1 });
+        if(req.session.idUser){
+            const info = await this.userModel.get({id:req.session.idUser});
+            res.render('home_logged',{info,tests,category})
+        }
+        else {
+            const tests = await this.testModel.getTestByCategory([category]);
+            res.render('home',{tests});
         }
     }
 

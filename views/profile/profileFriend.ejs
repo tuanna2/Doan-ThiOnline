@@ -42,48 +42,7 @@
 <body>
     <div id="__next">
         <div class="Layout__LayoutWrapper-sc-72xje9-0 gNMUod">
-                <header class="header Header__HeaderWrapper-sc-1a0k2zv-0 jsrRBM">
-                        <div class="Header__HeaderNav-wwhct2-0 jiKYVK">
-                            <div class="Header__RightHead-wwhct2-4 LQUjt Flex-no3b20-0 cYoqhr">
-                                <a href="/">
-                                    <div class="Logo__LogoStyle-ju6la0-0 eoCuSN" src="../images/logo.png"></div>
-                                </a>
-                                <div class="Header__ClearDiv-wwhct2-5 ioPZqo"></div>
-                                <div class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
-                                    <div class="bp3-input-group bp3-large bp3-radius search__InputGroupStyled-sc-1dtjrnl-0 bmnola">
-                                        <span class="bp3-icon bp3-icon-search" icon="search">
-                                                    <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
-                                                        <desc>search</desc>
-                                                        <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>
-                                        <input type="text" class="bp3-input" value="" placeholder="Tìm kiếm ..." style="padding-right:10px">
-                                    </div>
-                                </div>
-                            </div>
-                            <div style="border-right:1px solid rgb(238, 238, 238);margin-right:10px" class="Header__HeaderGroup-wwhct2-1 eYtCOf Flex-no3b20-0 cYoqhr">
-                                <div class="Create__CreateWrapper-eivfz7-0 kVVbFx">
-                                    <a href="/create-test" class="create">
-                                        <span class="bp3-icon bp3-icon-annotation" icon="annotation">
-                                                    <svg data-icon="annotation" width="14" height="14" viewBox="0 0 16 16">
-                                                        <desc>annotation</desc>
-                                                        <path d="M15.52 2.77c.3-.29.48-.7.48-1.15C16 .73 15.27 0 14.38 0c-.45 0-.85.18-1.15.48l-1.34 1.34 2.3 2.3 1.33-1.35zM7.4 10.9l6.21-6.21-2.3-2.3L5.1 8.6l2.3 2.3zM14 14H2V2h6.34l2-2H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V5.66l-2 2V14zM3 13l3.58-1.29-2.29-2.27L3 13z" fill-rule="evenodd"></path>
-                                                    </svg>
-                                                </span>Tạo đề thi
-                                    </a>
-                                </div>
-                        </div>
-                        <a href="/profile" class="dropdownUserAvatar user-avatar__UserAvatarStyle-sc-12kuvrh-0 jwcHvZ">
-                            <div class="avatar avatar__Circle-sc-1k5juv6-0 HeEnm" size="35">
-                                <img style="border-radius: 17px" src=<%- info.avatar == null ? "/avatar-default.png" : info.avatar %> size="35" class="text">
-                            </div>
-                            <div class="userInfo user-avatar__InfoUser-sc-12kuvrh-3 kSwsUu">
-                                <span class="user-avatar__Username-sc-12kuvrh-1 bCCEJz"><%- info.email%></span>
-                                <span class="fullName"><%- info.username%></span>
-                            </div>
-                        </a>
-                        </div>
-                    </header>
+                <%- include('../header')%>
     <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
     <div class="wrapper Wrapper-mxjqhp-0 fPglrh">
         <div class="profile__Container-sc-8m2709-0 edSYmb">

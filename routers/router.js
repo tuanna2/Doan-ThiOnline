@@ -11,6 +11,7 @@ class Router extends BaseRouter{
     config(){
         const homeCtrl = new HomeController();
         this.router.get('/',homeCtrl.index.bind(homeCtrl));
+        this.router.get('/category/:category',homeCtrl.testOfCategory.bind(homeCtrl));
 
         const createTestCtrl = new CreateTestController();
         this.router.get('/create-test',homeCtrl.isLoggedIn,createTestCtrl.createTest);

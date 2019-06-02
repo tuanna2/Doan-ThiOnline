@@ -19464,9 +19464,9 @@ table.bp3-html-table tbody tr:hover td {
 /* sc-component-id: HeroUnit__ImageWrapper-s37crj-1 */
 
 .gcfrSz {
-    position: absolute;
+    position: fixed;
     right: 0;
-    top: -20px;
+    bottom: 10%;
 }
 
 @media (max-width:768px) {

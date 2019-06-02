@@ -12,6 +12,7 @@ class AdminRouter extends BaseRouter{
         this.router.get('/',adminCtrl.isLoggedIn,adminCtrl.index.bind(adminCtrl));
         this.router.get('/tested',adminCtrl.isLoggedIn,adminCtrl.tested.bind(adminCtrl));
         this.router.get('/testing',adminCtrl.isLoggedIn,adminCtrl.testing.bind(adminCtrl));
+        this.router.get('/tags',adminCtrl.isLoggedIn,adminCtrl.tag.bind(adminCtrl));
     }
 
 }

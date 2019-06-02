@@ -2,12 +2,14 @@ const UserModel = require('../models/user_model');
 const TestModel = require('../models/test_model');
 const bcrypt = require("bcrypt");
 const CategoryModel = require('../models/category_model');
+const TagModel = require('../models/tag_model');
 
 class AdminController{
     constructor(){
         this.userModel = new UserModel();
         this.testModel = new TestModel();
         this.categoryModel = new CategoryModel();
+        this.tagModel = new TagModel();
     }
     async index(req,res){
         const info = await this.userModel.get({email:'admin'});
@@ -29,6 +31,13 @@ class AdminController{
         const category = await this.categoryModel.getAll();
         const countTesting = await this.testModel.count({permission:0});
         res.render('admin/testing',{info,category,data:tests,countTesting});
+    }
+    async tag(req,res){
+        const info = await this.userModel.get({email:'admin'});
+        const tag = await this.tagModel.getAllTag();
+        const category = await this.categoryModel.getAll();
+        const countTesting = await this.testModel.count({permission:0});
+        res.render('admin/tag',{info,category,data:tag,countTesting});
     }
 
     loginView(req,res){

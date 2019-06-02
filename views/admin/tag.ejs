@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+  <title>Admin</title>
+  <link href="/dist/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <link href="/dist/css/style.min.css" rel="stylesheet">
+  <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+  <link href="/dist/datatable/dataTables.bootstrap.min.css" rel="stylesheet">
+  <style>
+    button:focus {
+      outline: 0 !important;
+    }
+
+    thead {
+      background-color: #c8ced3;
+      text-align: center
+    }
+
+    tbody {
+      text-align: center
+    }
+  </style>
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <%- include('./header')%>
+  <div class="app-body">
+    <div class="sidebar">
+      <nav class="sidebar-nav">
+        <ul class="nav">
+          <li class="nav-item">
+            <a style="color:khaki;background:transparent" class="nav-link" role="button">
+              <img class="img-avatar" width=30 height=30 style="margin-right:5px;"
+                src="<%- info.avatar == null ? "/avatar-default.png" : info.avatar %>">
+              Administrator
+            </a>
+            <a class="nav-link" href="/admin">
+              <i class="nav-icon icon-user"></i> Quản lý người dùng
+            </a>
+          </li>
+          <li class="nav-item">
+              <a class="nav-link active" href="/admin/tags">
+                <i class="nav-icon cui-tags"></i> Quản lý Tags
+              </a>
+            </li>
+          <li class="nav-item nav-dropdown">
+            <a class="nav-link nav-dropdown-toggle">
+              <i class="nav-icon icon-map"></i> Quản lý đề thi
+            </a>
+            <ul class="nav-dropdown-items">
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/tested">
+                  <i class="nav-icon fa fa-list-alt"></i> Tất cả đề
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" href="/admin/testing">
+                  <i class="nav-icon fa fa-list-alt"></i> Đang đợi duyệt
+                  <span class="badge badge-success"><%- countTesting%></span>
+                </a>
+              </li>
+            </ul>
+          </li>
+        </ul>
+      </nav>
+      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+    </div>
+    <main class="main">
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i>Tags Table</div>
+                <div class="card-body">
+                    <div class="col-md-3" >
+                        <select class="form-control" id="category">
+                        <option value="">Tất cả danh mục</option>
+                        <% for(let i=0;i< category.length;i++){%>
+                          <option value="<%- category[i].id%>"><%- category[i].name%></option>
+                          <% }%>
+                        </select>
+                        </div>
+                  <table style="width: 100%" id="data-tag" class="table table-responsive-sm table-bordered">
+                    <thead>
+                      <tr>
+                        <th>ID</th>
+                        <th>Tên Tag</th>
+                        <th>Danh mục</th>
+                        <th>Tên danh mục</th>
+                        <th>Số đề thi</th>
+                        <th>Function</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <% for(let i=data.length-1;i>=0;i--){ %>
+                      <tr>
+                        <td><%- data[i].id %></td>
+                        <td><%- data[i].name %></td>
+                        <td><%- data[i].id_category %></td>
+                        <td><%- data[i].category %></td>
+                        <td><%- data[i].countTest %></td>
+                        <td number="<%- data[i].id%>">
+                          <button class="btn btn-info" onclick="editTagView(this)">Sửa</button>
+                          <button class="btn btn-danger" onclick="deleteTag(this)">Xoá</button>
+                        </td>
+                      </tr>
+                      <% } %>
+                    </tbody>
+                  </table>
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add">Thêm Tag</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal fade" id="modal-add" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+  style="display: none;" aria-hidden="true">
+  <div class="modal-dialog modal-primary" role="document">
+    <form name="formAdd" onsubmit="return addTag()" class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title">Thêm Tag</h4>
+        <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">×</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="col-sm-12">
+          <div class="form-group">
+            <label>Tên Tag</label>
+            <input class="form-control" name="name" autocomplete="true" type="text" placeholder="Nhập tag">
+          </div>
+          <div class="form-group">
+                <label>Danh mục</label>
+                <select name="category" class="form-control">
+                <option value="0">Chọn danh mục</option>
+                <% for(let i=0;i< category.length;i++){%>
+                  <option value="<%- category[i].id%>"><%- category[i].name%></option>
+                  <% }%>
+                </select>
+            </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" type="button" data-dismiss="modal">Huỷ bỏ</button>
+        <button class="btn btn-primary" type="submit">Thêm</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+  <div class="modal fade" id="modal-edit" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <form name="formEdit" onsubmit="return changeTag()" class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Tag</h4>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">
+                <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>ID</label>
+                            <input class="form-control" name="id" autocomplete="true" type="text" placeholder="ID">
+                        </div>
+                        <div class="form-group">
+                          <label>Tên Tag</label>
+                          <input class="form-control" name="name" autocomplete="true" type="text" placeholder="Nhập tag">
+                        </div>
+                        <div class="form-group">
+                              <label>Danh mục</label>
+                              <select name="category" class="form-control">
+                              <option value="0">Chọn danh mục</option>
+                              <% for(let i=0;i< category.length;i++){%>
+                                <option value="<%- category[i].id%>"><%- category[i].name%></option>
+                                <% }%>
+                              </select>
+                          </div>
+                      </div>
+            
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+          <button class="btn btn-primary" type="submit">Lưu thay đổi</button>
+        </div>
+    </form>
+
+    </div>
+
+  </div>
+
+
+  <script src="/dist/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/dist/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/dist/datatable/jquery.dataTables.min.js"></script>
+  <script src="/dist/datatable/DataTablesBS4.js"></script>
+  <script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+  <script src="/dist/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  <script src="/dist/node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+
+  <script>
+
+    const table = $('#data-tag').DataTable({
+        'lengthChange': false,
+        'ordering': false,
+        "columnDefs": [
+          {
+                "targets": [2],
+                "visible": false,
+                "searchable":true
+          }
+        ]
+      });
+      $('#category').change(function(){
+        table.columns(2).search(this.value).draw(); 
+      })
+
+      function addTag(){
+        if(formAdd.name.value == '' || formAdd.category.value== "0"){
+            alert('Vui lòng nhập đầy đủ thông tin');
+            return false;
+        }
+        fetch('/api/tag', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            name:formAdd.name.value,
+            id_category:formAdd.category.value
+        })
+      })
+        .then(function (response) {
+          response.ok ? location.reload()
+            : alert('Thêm thất bại,lỗi kết nối !');
+        })
+        .catch(function (err) {
+          alert('Thêm thất bại,lỗi kết nối!')
+        });
+      }
+    function deleteTag(e){
+      let id = $(e).parent().attr('number');
+      if (confirm('Có chắc muốn xoá ? ')) {
+        fetch('/api/tag/' + id, {
+          method: 'DELETE'
+        })
+          .then(function (response) {
+            !response.ok ? alert('Xoá thất bại ! thử lại sau') : location.reload();
+          })
+          .catch(function (err) {
+            alert('Xoá thất bại !')
+          });
+      }
+    }
+    function editTagView(e){
+        let id = $(e).parent().attr('number');
+        fetch('/api/tag/' + id, {
+        method: 'GET'
+      })
+        .then(function (response) {
+          if (!response.ok) {
+            alert('Lỗi kết nối ! thử lại sau');
+            location.reload();
+          }
+          else return response.json();
+        })
+        .then(function (res) {
+          formEdit.id.value = res.data[0].id,
+          formEdit.name.value = res.data[0].name,
+          formEdit.category.value = res.data[0].id_category,
+          $('#modal-edit').modal('show');
+        })
+        .catch(function (err) {
+          alert('Lỗi kết nối ! thử lại sau !');
+          location.reload();
+        });
+    }
+    
+    function changeTag(){
+        if(formEdit.name.value == '' || formEdit.category.value== "0"){
+            alert('Vui lòng nhập đầy đủ thông tin');
+            return false;
+        }
+        fetch('/api/tag', {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+            id:formEdit.id.value,
+            name:formEdit.name.value,
+            id_category:formEdit.category.value
+        })
+      })
+        .then(function (response) {
+          response.ok ? location.reload()
+            : alert('Thêm thất bại,lỗi kết nối,vui lòng tải lại trang !');
+        })
+        .catch(function (err) {
+          alert('Thêm thất bại,lỗi kết nối!');
+          location.reload();
+        });
+    }
+
+  </script>
+</body>
+
+</html>

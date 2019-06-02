@@ -323,6 +323,11 @@
               <i class="nav-icon icon-user"></i> Quản lý người dùng
             </a>
           </li>
+          <li class="nav-item">
+              <a class="nav-link" href="/admin/tags">
+                <i class="nav-icon cui-tags"></i> Quản lý Tags
+              </a>
+            </li>
           <li class="nav-item nav-dropdown">
             <a class="nav-link nav-dropdown-toggle active">
               <i class="nav-icon icon-map"></i> Quản lý đề thi
@@ -379,7 +384,7 @@
                       </tr>
                     </thead>
                     <tbody>
-                      <% for(let i=data.length-1;i>=1;i--){ %>
+                      <% for(let i=data.length-1;i>=0;i--){ %>
                       <tr>
                         <td><%- data[i].id %></td>
                         <td><%- data[i].name %></td>
@@ -392,8 +397,8 @@
                         <td><%- data[i].access %></td>
                         <td><%- data[i].created_at.toLocaleDateString() %></td>
                         <td number="<%- data[i].id%>" col ="<%- (data.length - i -1)%>">
-                          <button class="btn btn-info" onclick="showQuestion(this)">Xem</button>
-                          <button class="btn btn-danger" onclick="deleteTest(this)">Xoá</button>
+                          <button class="btn btn-info col-xs-6" onclick="showQuestion(this)">Xem</button>
+                          <button class="btn btn-danger col-xs-6 " onclick="deleteTest(this)">Xoá</button>
                         </td>
                       </tr>
                       <% } %>
