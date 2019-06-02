@@ -19,6 +19,17 @@
         .active {
             font-weight: 600;
         }
+        .btn-facebook {
+            color: #fff;
+            background-color: #4C67A1;
+        }
+        .btn-facebook:hover {
+            color: #fff!important;
+            background-color: #405D9B;
+        }
+        .btn-facebook:focus {
+            color: #fff!important;
+        }
     </style>
 </head>
 
@@ -42,7 +53,7 @@
                             </div>
                             <div class="SMenu__SubMenuContainer-sc-1lxz9p6-5 eiPHqz">
                                 <div class="subMenuItem">
-                                    <a class="SMenu__HeadingSubMenu-sc-1lxz9p6-2 fOqMXu" href="/suggestion">
+                                    <a class="SMenu__HeadingSubMenu-sc-1lxz9p6-2 ifgGJw" href="/suggestion">
                                         <div class="heading">
                                             <div class="SMenu__ImageWrapper-sc-1lxz9p6-4 fHtpVB">
                                                 <span class="bp3-popover-wrapper">
@@ -117,7 +128,7 @@
                                     </a>
                                 </div>
                                 <div class="subMenuItem">
-                                    <a class="SMenu__HeadingSubMenu-sc-1lxz9p6-2 fOqMXu" href="/created">
+                                    <a class="SMenu__HeadingSubMenu-sc-1lxz9p6-2 ifgGJw" href="/created">
                                         <div class="heading">
                                             <div class="SMenu__ImageWrapper-sc-1lxz9p6-4 fHtpVB">
                                                 <span class="bp3-popover-wrapper">
@@ -160,7 +171,7 @@
                                     <div class="style__Flex-sc-1ravu7g-1 fhpJlj">
                                         <div class="style__TitleBox-sc-1ravu7g-0 kZDlLi" color="#7F30C5"><a href="/test/<%- tests[i].id%>" class="title" title="20 câu kiểm tra kiến thức cơ bản Nodejs"><%- tests[i].name%></a></div>
                                         <div class="addon style__AddonWrapper-sc-1ravu7g-2 gnbQfX" color="#8395A7">
-                                            <div class="content" id="<%- tests[i].id%>">
+                                            <div class="content" id="<%- tests[i].id%>" title="<%- tests[i].name %>">
                                                 <div class="item" onclick = "saveTest(this)">
                                         <div><span class="bp3-popover-wrapper"><span class="bp3-popover-target">
                                                 <div class="save-test__IconWrapper-qs5ik2-0 fZkeJA" tabindex="0"><span class="bp3-icon bp3-icon-bookmark"
@@ -175,7 +186,9 @@
                                         </span>
                                     </div>
                                 </div>
-        
+                                <div class="item" onclick="shareTest(this)">
+                                        <span icon="share" class="bp3-icon bp3-icon-share"><svg data-icon="share" width="16" height="16" viewBox="0 0 16 16"><desc>share</desc><path d="M10.99 13.99h-9v-9h4.76l2-2H.99c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V7.24l-2 2v4.75zm4-14h-5c-.55 0-1 .45-1 1s.45 1 1 1h2.59L7.29 7.28a1 1 0 0 0-.3.71 1.003 1.003 0 0 0 1.71.71l5.29-5.29V6c0 .55.45 1 1 1s1-.45 1-1V1c0-.56-.45-1.01-1-1.01z" fill-rule="evenodd"></path></svg></span>
+                                </div>
                             </div>
                             </div>
                         </div>
@@ -216,24 +229,31 @@
                             <%}%>
                             <input type="hidden" value ="<%-info.id%>" id="username">
     </div> <script>
+         function shareTest(e){
+            const id =e.parentNode.id;
+            const title = e.parentNode.title;
+            $('.modal-title').html(title);
+            $('#url').val(document.location.origin+'/test/'+id);
+            $('#shareTest').modal('show');
+        }
          function saveTest(e){
                 fetch('/api/saved',{
-                            method: 'POST',
-                            headers: {
-                                'Content-Type': 'application/json'
-                            },
-                            body:JSON.stringify({
-                                id_user:document.getElementById('username').value,
-                                id_test:e.parentNode.id
-                            })
-                        })
-                        .then(function(response) {
-                            alert('Lưu lại thành công');
-                        })
-                        .catch(err=>{
-                            alert('Thất bại,thử lại sau');
-                            console.log(err)
-                    });
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json'
+                    },
+                    body:JSON.stringify({
+                        id_user:document.getElementById('username').value,
+                        id_test:e.parentNode.id
+                    })
+                })
+                .then(function(response) {
+                    alert('Lưu lại thành công');
+                })
+                .catch(err=>{
+                    alert('Thất bại,thử lại sau');
+                    console.log(err)
+            });
             }
     </script>
     </div>
@@ -245,58 +265,70 @@
     </div>
     <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
     <footer class="Footer__FooterLayout-sjil8q-0 glvqwo">
-        <div class="Footer__FooterContainer-sjil8q-1 jLcvsU" id="footer">
-            <span class="copyright">© 2018 TaTa Inc</span>
-            <div class="Footer__MenuList-sjil8q-2 dOaCfU">
-                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/home">
-                    <span class="bp3-icon bp3-icon-star" icon="star">
-                        <svg data-icon="star" width="14" height="14" viewBox="0 0 16 16">
-                            <desc>star</desc>
-                            <path d="M8 0l2.5 5.3 5.5.8-4 4.1.9 5.8L8 13.3 3.1 16l.9-5.8-4-4.1 5.5-.8z" fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="title">Khám phá</span>
-                </a>
-                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/about" target="_blank">
-                    <span class="bp3-icon bp3-icon-home" icon="home">
-                        <svg data-icon="home" width="14" height="14" viewBox="0 0 16 16">
-                            <desc>home</desc>
-                            <path d="M2 10v5c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-5L8 4l-6 6zm13.71-2.71L14 5.59V2c0-.55-.45-1-1-1s-1 .45-1 1v1.59L8.71.29C8.53.11 8.28 0 8 0s-.53.11-.71.29l-7 7a1.003 1.003 0 0 0 1.42 1.42L8 2.41l6.29 6.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71z" fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="title">Về chúng tôi</span>
-                </a>
-                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="/terms-and-conditions" target="_blank">
-                    <span class="bp3-icon bp3-icon-book" icon="book">
-                        <svg data-icon="book" width="14" height="14" viewBox="0 0 16 16">
-                            <desc>book</desc>
-                            <path d="M2 1v14c0 .55.45 1 1 1h1V0H3c-.55 0-1 .45-1 1zm11-1h-1v7l-2-2-2 2V0H5v16h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1z" fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="title">Điều khoản</span>
-                </a>
-                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#" target="_blank">
-                    <span class="bp3-icon bp3-icon-help" icon="help">
-                        <svg data-icon="help" width="14" height="14" viewBox="0 0 16 16">
-                            <desc>help</desc>
-                            <path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z" fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="title">FAQ</span>
-                </a>
-                <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#" target="_blank">
-                    <span class="bp3-icon bp3-icon-git-repo" icon="git-repo">
-                        <svg data-icon="git-repo" width="14" height="14" viewBox="0 0 16 16">
-                            <desc>git-repo</desc>
-                            <path d="M5 9H4v1h1V9zm10-9H1C.45 0 0 .45 0 1v13c0 .55.45 1 1 1h3v1l2-1 2 1v-1h7c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM4 13H2v-1h2v1zm10 0H8v-1h6v1zm0-2H3V2h11v9zM5 3H4v1h1V3zm0 4H4v1h1V7zm0-2H4v1h1V5z" fill-rule="evenodd"></path>
-                        </svg>
-                    </span>
-                    <span class="title">Tài liệu</span>
-                </a>
-
+            <div class="Footer__FooterContainer-sjil8q-1 jLcvsU" id="footer"><span class="copyright">© 2019 ThiOnline.vn</span>
+                <div class="Footer__MenuList-sjil8q-2 dOaCfU"><a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#"><span class="bp3-icon bp3-icon-star" icon="star"><svg data-icon="star" width="14" height="14" viewBox="0 0 16 16"><desc>star</desc><path d="M8 0l2.5 5.3 5.5.8-4 4.1.9 5.8L8 13.3 3.1 16l.9-5.8-4-4.1 5.5-.8z" fill-rule="evenodd"></path></svg></span><span class="title">Khám phá</span></a>
+                    <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#"><span class="bp3-icon bp3-icon-home" icon="home"><svg data-icon="home" width="14" height="14" viewBox="0 0 16 16"><desc>home</desc><path d="M2 10v5c0 .55.45 1 1 1h3v-5h4v5h3c.55 0 1-.45 1-1v-5L8 4l-6 6zm13.71-2.71L14 5.59V2c0-.55-.45-1-1-1s-1 .45-1 1v1.59L8.71.29C8.53.11 8.28 0 8 0s-.53.11-.71.29l-7 7a1.003 1.003 0 0 0 1.42 1.42L8 2.41l6.29 6.29c.18.19.43.3.71.3a1.003 1.003 0 0 0 .71-1.71z" fill-rule="evenodd"></path></svg></span>
+                        <span
+                            class="title">Về chúng tôi</span>
+                            </a><a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#"><span class="bp3-icon bp3-icon-book" icon="book"><svg data-icon="book" width="14" height="14" viewBox="0 0 16 16"><desc>book</desc><path d="M2 1v14c0 .55.45 1 1 1h1V0H3c-.55 0-1 .45-1 1zm11-1h-1v7l-2-2-2 2V0H5v16h8c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1z" fill-rule="evenodd"></path></svg></span><span class="title">Điều khoản</span></a>
+                    <a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#"><span class="bp3-icon bp3-icon-help" icon="help"><svg data-icon="help" width="14" height="14" viewBox="0 0 16 16"><desc>help</desc><path d="M8 0C3.58 0 0 3.58 0 8s3.58 8 8 8 8-3.58 8-8-3.58-8-8-8zm1 13H7v-2h2v2zm1.93-6.52c-.14.32-.35.64-.62.97L9.25 8.83c-.12.15-.24.29-.28.42-.04.13-.09.3-.09.52V10H7.12V8.88s.05-.51.21-.71L8.4 6.73c.22-.26.35-.49.44-.68.09-.19.12-.38.12-.58 0-.3-.1-.55-.28-.75-.18-.19-.44-.28-.76-.28-.33 0-.59.1-.78.29-.19.19-.33.46-.4.81-.03.11-.1.15-.2.14l-1.7-.25c-.12-.01-.16-.08-.14-.19.12-.82.46-1.47 1.03-1.94.57-.48 1.32-.72 2.25-.72.47 0 .9.07 1.29.22s.72.34 1 .59c.28.25.49.55.65.89.15.35.22.72.22 1.12s-.07.75-.21 1.08z" fill-rule="evenodd"></path></svg></span>
+                                <span
+                                    class="title">FAQ</span>
+                                    </a><a class="menuItem Footer__MenuItem-sjil8q-3 htZavj" href="#"><span class="bp3-icon bp3-icon-git-repo" icon="git-repo"><svg data-icon="git-repo" width="14" height="14" viewBox="0 0 16 16"><desc>git-repo</desc><path d="M5 9H4v1h1V9zm10-9H1C.45 0 0 .45 0 1v13c0 .55.45 1 1 1h3v1l2-1 2 1v-1h7c.55 0 1-.45 1-1V1c0-.55-.45-1-1-1zM4 13H2v-1h2v1zm10 0H8v-1h6v1zm0-2H3V2h11v9zM5 3H4v1h1V3zm0 4H4v1h1V7zm0-2H4v1h1V5z" fill-rule="evenodd"></path></svg></span><span class="title">Tài liệu</span></a>
             </div>
-        </div>
-    </footer>
+            </div>
+        </footer>
 </body>
 
+<link rel="stylesheet" href="/bootstrap.min.css">
+<div class="modal fade" id="shareTest" role="dialog">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <button type="button" class="close" data-dismiss="modal">&times;</button>
+              <h4 class="modal-title"></h4>
+            </div>
+            <div class="modal-body" style="background-color: rgb(235, 241, 245)">
+                Chia sẻ đề thi để nhiều người có thể truy cập ❤️ <br/><br/>
+                    <div>
+                        <input type="text" class="form-control" id="url" readonly>
+                        <button id="copy-url" class="btn btn-primary">
+                                <span icon="clipboard" class="bp3-icon bp3-icon-clipboard"><svg data-icon="clipboard" width="16" height="16" viewBox="0 0 16 16"><desc>clipboard</desc><path d="M11 2c0-.55-.45-1-1-1h.22C9.88.4 9.24 0 8.5 0S7.12.4 6.78 1H7c-.55 0-1 .45-1 1v1h5V2zm2 0h-1v2H5V2H4c-.55 0-1 .45-1 1v12c0 .55.45 1 1 1h9c.55 0 1-.45 1-1V3c0-.55-.45-1-1-1z" fill-rule="evenodd"></path></svg></span>
+                                Sao chép </button>
+                    </div>
+                    <p style="text-align: center;font-size:20px;">hoặc</p>
+                    <button onclick="shareFB()" style="width:100%;" type="button" class="btn btn-facebook btn-lg"><i class="fa fa-facebook fa-2"></i> Chia sẻ lên Facebook</button>
+            </div>
+          </div>
+          
+        </div>
+      </div>
+
+<script src="/jquery.min.js"></script>
+<script src="/bootstrap.min.js"></script>
+
+<div id="fb-root"></div>
+<script src="https://connect.facebook.net/en_US/sdk.js"></script>
+
+    <script>
+        FB.init({
+          appId   : 847291462303177,
+          status  : true,
+          xfbml   : true,
+          version : 'v3.3'
+        });
+        function shareFB(){
+            FB.ui({
+                method: 'share',
+                href: $('#url').val()
+            }, function(response){
+                $('#shareTest').modal('hide');
+            });
+        }
+            $('#copy-url').click(function(){
+                $('#url').select();
+                document.execCommand("copy");
+                alert('Đường dẫn đã được sao chép !');
+            })
+        </script>
 </html>

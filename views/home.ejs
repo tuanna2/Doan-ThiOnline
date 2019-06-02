@@ -22,17 +22,17 @@
                                 <div class="Logo__LogoStyle-ju6la0-0 eoCuSN" src="../images/logo.png"></div>
                             </a>
                             <div class="Header__ClearDiv-wwhct2-5 ioPZqo"></div>
-                            <div class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
+                            <form name="formSearch" method="GET" onsubmit = "return formSearch.value.value == '' ? false : true" action="/search" class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
                                 <div class="bp3-input-group bp3-large bp3-radius search__InputGroupStyled-sc-1dtjrnl-0 bmnola">
                                     <span class="bp3-icon bp3-icon-search" icon="search">
-                                        <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
-                                            <desc>search</desc>
-                                            <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
-                                        </svg>
-                                    </span>
-                                    <input type="text" class="bp3-input" placeholder="Tìm kiếm ..." style="padding-right:10px" />
+                                                <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
+                                                    <desc>search</desc>
+                                                    <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
+                                                </svg>
+                                            </span>
+                                    <input type="text" name="value" maxlength=254 class="bp3-input" value="" placeholder="Nhập từ khoá ..." style="padding-right:10px">
                                 </div>
-                            </div>
+                            </form>
                         </div>
                         <div class="Header__HeaderGroupForNewbie-wwhct2-2 fYGCxf Flex-no3b20-0 cYoqhr">
                             <a href="/create-test" class="create">
@@ -92,7 +92,7 @@
                 <div class="heroUnit HeroUnit__HeroUnitStyle-s37crj-0 xvdME">
                     <div class="HeroUnit__Container-s37crj-3 kUazRM">
                         <div class="HeroUnit__Info-s37crj-5 nvACw">
-                            <h2 class="bp3-heading">Chào mừng bạn đến với tungtung.vn</h2>
+                            <h2 class="bp3-heading">Chào mừng bạn đến với ThiOnline.vn</h2>
                             <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>
                             <span class="welcome">
                                 Nền tảng để mọi người đánh giá và phát triển năng lực thông qua việc cung cấp các
@@ -124,7 +124,9 @@
                 <div class="testList ForYou__ForYouStyle-qh1998-0 cTIWxc">
                     <div class="ForYou__Container-qh1998-1 jwKPDm">
                         <div class="heading-flex__HeadingFlexStyle-sc-1ajihah-0 havYlU">
-                            <h4 class="heading-flex__Heading-sc-1ajihah-1 lpcowo" size="20" color="#1d1d1f">Một số đề mới</h4>
+                            <h4 class="heading-flex__Heading-sc-1ajihah-1 lpcowo" size="20" color="#1d1d1f">
+                                <%- typeof valueSearch !== "undefined" ? "Kết quả tìm kiếm: " + valueSearch : "Một số đề mới" %>
+                            </h4>
                             <a class="heading-flex__LinkMore-sc-1ajihah-2 jKLDIL" href="/login">
                                 <span>
                                     <span class="bp3-icon bp3-icon-chevron-right" icon="chevron-right">
@@ -137,31 +139,12 @@
                             </a>
                         </div>
                         <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>  
-                                <%var length = tests.length > 5 ? 5 : tests.length; %>
+                                <%var length = tests.length >= 10 ? 10 : tests.length; %>
                                 <%for(var i = 0;i< length;i++){%>
                                     <div class="testItem">
                                         <div class="animated fadeIn style__Box-sc-1ravu7g-3 dTubHF white-box__WhileBoxContainer-sc-44su8e-0 dHXTFa">
                                             <div class="style__Flex-sc-1ravu7g-1 fhpJlj">
                                                 <div class="style__TitleBox-sc-1ravu7g-0 kZDlLi" color="#7F30C5"><a href="/test/<%- tests[i].id%>" class="title" title="20 câu kiểm tra kiến thức cơ bản Nodejs"><%- tests[i].name%></a></div>
-                                                <div class="addon style__AddonWrapper-sc-1ravu7g-2 gnbQfX" color="#8395A7">
-                                                    <div class="content" id="<%- tests[i].id%>">
-                                                        <div class="item" onclick = "saveTest(this)">
-                                                <div><span class="bp3-popover-wrapper"><span class="bp3-popover-target">
-                                                        <div class="save-test__IconWrapper-qs5ik2-0 fZkeJA" tabindex="0"><span class="bp3-icon bp3-icon-bookmark"
-                                                                icon="bookmark">
-                                                                <svg fill="#8395A7" data-icon="bookmark" width="16" height="16" viewBox="0 0 16 16">
-                                                                    <desc>bookmark</desc>
-                                                                    <path
-                                                                        d="M11.2.01h-.15C11.03.01 11.02 0 11 0H5c-.02 0-.03.01-.05.01H4.8c-.44 0-.8.37-.8.82v14.75c0 .45.25.56.57.24l2.87-2.94c.31-.32.82-.32 1.13 0l2.87 2.94c.31.32.57.21.57-.24V.83C12 .38 11.64.01 11.2.01z"
-                                                                        fill-rule="evenodd"></path>
-                                                                </svg></span></div>
-                                                    </span>
-                                                </span>
-                                            </div>
-                                        </div>
-                
-                                    </div>
-                                    </div>
                                 </div>
                                     <div class="style__TestWrapper-sc-1ravu7g-5 crOhCc">
                                         <div class="style__TestInfo-sc-1ravu7g-4 hjDFfQ" color="#0984E3">
@@ -210,8 +193,8 @@
                         <div class="Solutions__Row-sc-1wsyjjs-5 hxnhgX">
                             <div class="solutionItem Solutions__SolutionItemWrapper-sc-1wsyjjs-1 fUXOmF"><img class="Solutions__SolutionIcon-sc-1wsyjjs-2 geIrxk" src="../images/home-branding/for-common/why.png" />
                                 <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div><label class="Solutions__SolutionName-sc-1wsyjjs-3 eHeJqO">Tại
-                                            sao nên sử dụng tungtung.vn ?</label>
-                                <div class="clearfix__Clearfix-w9lses-0 htekTm" height="8"></div><span class="Solutions__SolutionDescription-sc-1wsyjjs-4 bEYCri">Tungtung.vn
+                                            sao nên sử dụng ThiOnline.vn ?</label>
+                                <div class="clearfix__Clearfix-w9lses-0 htekTm" height="8"></div><span class="Solutions__SolutionDescription-sc-1wsyjjs-4 bEYCri">ThiOnline.vn
                                             là nền tảng trắc nghiệm trực tuyến cung cấp cho bạn trải nghiệm thú vị với
                                             nhiều công cụ hữu ích trong quá trình chia sẻ và đánh giá kiến thức.</span>
                             </div>

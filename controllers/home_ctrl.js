@@ -34,8 +34,18 @@ class HomeController {
             res.render('home_logged',{info,tests,category})
         }
         else {
-            const tests = await this.testModel.getTestByCategory([category]);
             res.render('home',{tests});
+        }
+    }
+    async search(req,res){
+        const valueSearch = req.query.value;
+        const tests = await this.testModel.search(valueSearch);
+         if(req.session.idUser){
+            const info = await this.userModel.get({id:req.session.idUser});
+            res.render('home_logged',{info,tests,category:-1,valueSearch})
+        }
+        else {
+            res.render('home',{tests,valueSearch});
         }
     }
 

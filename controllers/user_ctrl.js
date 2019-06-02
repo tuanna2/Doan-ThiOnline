@@ -54,7 +54,7 @@ class UserController {
         const info = await this.userModel.get({id:req.session.idUser});
         const categoryFollow = info.category_followed ? 
             await this.categoryModel.getIn(info.category_followed.split(','))
-        :   null;
+        :   [];
         const created = await this.testModel.getTestInfo({id_parent:req.session.idUser});
         const played = await this.testModel.getTestInfo({'history.id_user':req.session.idUser});
         res.render('profile/profile',{info,categoryFollow,created,played});
@@ -94,9 +94,9 @@ class UserController {
         if(typeof friend === "undefined"){
             return res.redirect('/')
         }
-        const categoryFollow = info.category_followed ? 
-            await this.categoryModel.getIn(info.category_followed.split(','))
-        :   null;
+        const categoryFollow = friend.category_followed ? 
+            await this.categoryModel.getIn(friend.category_followed.split(','))
+        :   [];
         const created = await this.testModel.getTestInfo({id_parent:req.params.id});
         const played = await this.testModel.getTestInfo({'history.id_user':req.params.id});
         res.render('profile/profileFriend',{info,friend,categoryFollow,created,played});

@@ -5,7 +5,7 @@
                     <div class="Logo__LogoStyle-ju6la0-0 eoCuSN" src="../images/logo.png"></div>
                 </a>
                 <div class="Header__ClearDiv-wwhct2-5 ioPZqo"></div>
-                <div class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
+                <form name="formSearch" method="GET" onsubmit = "return formSearch.value.value == '' ? false : true" action="/search" class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
                     <div class="bp3-input-group bp3-large bp3-radius search__InputGroupStyled-sc-1dtjrnl-0 bmnola">
                         <span class="bp3-icon bp3-icon-search" icon="search">
                                     <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
@@ -13,9 +13,9 @@
                                         <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
                                     </svg>
                                 </span>
-                        <input type="text" class="bp3-input" value="" placeholder="Tìm kiếm ..." style="padding-right:10px">
+                        <input type="text" name="value" maxlength = 254 class="bp3-input" value="" placeholder="Nhập từ khoá ..." style="padding-right:10px">
                     </div>
-                </div>
+                </form>
             </div>
             <div style="border-right:1px solid rgb(238, 238, 238);margin-right:10px" class="Header__HeaderGroup-wwhct2-1 eYtCOf Flex-no3b20-0 cYoqhr">
                 <div class="Create__CreateWrapper-eivfz7-0 kVVbFx">
