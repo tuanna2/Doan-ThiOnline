@@ -145,6 +145,12 @@
               <input class="form-control" name="password" type="password" placeholder="Nhập mật khẩu">
             </div>
             <div class="form-group">
+                <label>Nghề nghiệp</label>
+                <div class="radio"><input type="radio" name="role" value="2"> Học sinh </div>
+                <div class="radio"><input type="radio" name="role" value="1"> Giáo viên </div>
+                <div class="radio"><input type="radio" name="role" value="3"> Khác </div>
+              </div>
+            <div class="form-group">
                 <label>Giới tính</label>
                 <div class="radio"><input type="radio" name="sex" value="Nam"> Nam </div>
                 <div class="radio"><input type="radio" name="sex" value="Nữ"> Nữ </div>
@@ -217,6 +223,12 @@
             <div class="radio"><input type="radio" name="sex" value="Khác"> Khác </div>
           </div>
           <div class="form-group">
+              <label>Nghề nghiệp</label>
+              <div class="radio"><input type="radio" name="role" value="2"> Học sinh </div>
+              <div class="radio"><input type="radio" name="role" value="1"> Giáo viên </div>
+              <div class="radio"><input type="radio" name="role" value="3"> Khác </div>
+            </div>
+          <div class="form-group">
             <label>Danh mục theo dõi</label>
             <div class="checkbox">
               <label><input type="checkbox" name="follow"> Đại học</label>
@@ -281,7 +293,8 @@
           email: formAdd.email.value,
           password: formAdd.password.value,
           sex: formAdd.sex.value,
-          category_followed:checkedFollow.toString()
+          category_followed:checkedFollow.toString(),
+          role: formAdd.role.value
         })
       })
         .then(function (response) {
@@ -323,11 +336,12 @@
         body: JSON.stringify({
           id:formEdit.id.value,
           username: formEdit.username.value,
-          avatar:formEdit.avatar.value,
+          avatar:formEdit.avatar.value == '' ? formEdit.avatar.value : null,
           sex:formEdit.sex.value,
           category_followed:checkedFollow.toString(),
           phone:formEdit.phone.value,
-          introduction:formEdit.introduction.value                    
+          introduction:formEdit.introduction.value,
+          role:formEdit.role.value                    
         })
       })
         .then(function (response) {
@@ -371,6 +385,8 @@
           formEdit.sex.value = res.data[0].sex,
           formEdit.phone.value = res.data[0].phone,
           formEdit.introduction.value = res.data[0].introduction
+          formEdit.role.value = res.data[0].role
+
           $('#modal-edit').modal('show');
         })
         .catch(function (err) {

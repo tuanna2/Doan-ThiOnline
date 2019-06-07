@@ -12,6 +12,7 @@ CREATE TABLE `ThiOnline`.`users` (
   `sex` VARCHAR(10) NULL,
   `phone` VARCHAR(20) NULL,
   `introduction` VARCHAR(255) NULL,
+  `role` INT(1) NOT NULL DEFAULT 2,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
@@ -122,6 +123,7 @@ CREATE TABLE `ThiOnline`.`history` (
   `point` VARCHAR(10) NOT NULL,
   `selected` VARCHAR(255) NOT NULL,
   `submit_at` DATETIME NOT NULL,
+  `time` INT(10) NOT NULL,
   PRIMARY KEY (`id`),
   INDEX `fk_historyTest_idx` (`id_test` ASC) VISIBLE,
   INDEX `fk_historyUser_idx` (`id_user` ASC) VISIBLE,

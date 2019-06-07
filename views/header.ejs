@@ -17,6 +17,7 @@
                     </div>
                 </form>
             </div>
+            <%if(info.role == 1 || info.role == 0){%>
             <div style="border-right:1px solid rgb(238, 238, 238);margin-right:10px" class="Header__HeaderGroup-wwhct2-1 eYtCOf Flex-no3b20-0 cYoqhr">
                 <div class="Create__CreateWrapper-eivfz7-0 kVVbFx">
                     <a href="/create-test" class="create">
@@ -29,6 +30,7 @@
                     </a>
                 </div>
         </div>
+        <%}%>
         <a href="/profile" class="dropdownUserAvatar user-avatar__UserAvatarStyle-sc-12kuvrh-0 jwcHvZ">
             <div class="avatar avatar__Circle-sc-1k5juv6-0 HeEnm" size="35">
                 <img style="border-radius: 17px" src=<%- info.avatar == null ? "/avatar-default.png" : info.avatar %> size="35" class="text">

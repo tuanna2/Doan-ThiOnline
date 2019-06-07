@@ -16,7 +16,7 @@ class ApiRouter extends BaseRouter{
         const userCtrl = new UserController();
         this.router.get('/user',middleware.adminIsLogged,userCtrl.getAll.bind(userCtrl));
         this.router.get('/user/:id',userCtrl.get.bind(userCtrl))
-        this.router.post('/user',userCtrl.addUser.bind(userCtrl));
+        this.router.post('/user',middleware.adminIsLogged,userCtrl.addUser.bind(userCtrl));
         this.router.put('/user',middleware.userIsLogged,userCtrl.update.bind(userCtrl));
         this.router.delete('/user/:id',middleware.adminIsLogged,userCtrl.delete.bind(userCtrl));
 

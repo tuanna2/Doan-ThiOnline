@@ -16,11 +16,10 @@ class UserController extends BaseApiCtrl{
             let avatar = req.files.file;
             let temp = avatar.name.split('.');
             let name = '/uploads/' + avatar.md5 +'.' + temp[temp.length-1];
-            let pathName = path.join(__dirname,'../../public'+name)
+            let pathName = path.join(__dirname,'../../public'+name);
             await avatar.mv(pathName);
-            await this.userModel.update({id:req.session.idUser,avatar:name})
+            await this.userModel.update({id:req.session.idUser,avatar:name});
             res.json({status:1,name:name});
-
         } catch(e){
             return res.status(500).send(e);
         }
@@ -28,6 +27,9 @@ class UserController extends BaseApiCtrl{
     async addUser(req,res){
         try{
             let data = req.body;
+            if(data.role != 1 && data.role != 2 != role !=3){
+                data.role = 3;
+            }
             data.password = await bcrypt.hash(req.body.password, 5);
             const rs = await this.userModel.add(data);
             res.json({ message: 'success', data: rs});

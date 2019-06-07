@@ -9,6 +9,7 @@
     <link rel="shortcut icon" type="image/png" href="/images/logo-icon.png">
     <link rel="stylesheet" href="/css/danglam.css">
     <script src="/jquery.min.js"></script>
+    <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
     <style>
     .gmoaEx {
     width: 78%;
@@ -143,9 +144,9 @@
                             <%}%>
                         </div>
                     </div>
+                    <input type="hidden" id="rules" value="<%- rules%>">
                     <div class="style__MainQuestions-bng1p4-1 gmoaEx">
                         <% for(let i=0;i< questions.length;i++){%>
-
                         <div id="question_<%= i+1%>" class="style__PlayContestBox-bng1p4-5 iyhlnS">
                                 <span class="question">Câu <%= i+1%>: </span>
                             <div class="style__QuestionWrapper-bng1p4-6 QKNEr">
@@ -191,7 +192,7 @@
                                                     </div>
                                                 <%}%>
                                                 <%if(questions[i].F){%>
-                                                    <div class="answer style__Wrapper-fvwsih-2 Wuuww">
+                                                    <div class="answer style__Wrapper-fvwsih -2 Wuuww">
                                                             <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX">
                                                                 <div class="style__AlphaCheck-fvwsih-4 bCNoNL select">F</div>
                                                             </div>
@@ -236,19 +237,24 @@
 </body>
 
 </html>
+<script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+
 <script>
+    
 const length = document.getElementById('length-question');
+const rules = document.getElementById('rules').value;
 const selected = Array(parseInt(length.value)).fill(null);
+const timeUp = parseInt($('#minutes').html());
 function selecting(id,select){
     selected[id] = select;
     $('#q'+id).find('span.wvnXF').remove();
     $('#q'+id).addClass('fqGVVP');
     $('#q'+id).append('<span class="wvnXF">'+select+'</span>');
 }
- const timeUp = new Date().getTime() + 60*1000* parseInt($('#minutes').html());
+ const dateline = new Date().getTime() + 60*1000* timeUp;
     const timer = setInterval(() => {
         let now = new Date().getTime();
-        let distance = timeUp - now;
+        let distance = dateline - now;
         let hours = Math.floor(distance / (1000 * 60 * 60));
         let minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
         let seconds = Math.floor((distance % (1000 * 60)) / 1000);
@@ -258,30 +264,34 @@ function selecting(id,select){
         if (distance < 1) {
             clearInterval(timer);
             $('#timer').html("Time Up");
-            submitting();
+            submitting(timeUp);
         }
     }, 1000);
 function submit(){
     if(confirm('Vẫn còn thời gian! Bạn có chắc chắn muốn nộp bài ngay ?')){
         clearInterval(timer);
-        submitting();
+        submitting(timeUp - parseInt($('#minutes').html()));
     }
 }
-function submitting(){
+function submitting(time){
     $('#__next').css('display','none');
     $('#loader').css('display','block');
     $('#submitting').css('display','block');
     setTimeout(function(){
         fetch('./submit', {
             method: 'POST',
-            body: JSON.stringify({selected:selected}),
+            body: JSON.stringify({selected,time,rules}),
             headers:{
                 'Content-Type': 'application/json'
             }
             }).then(response => response.json())
             .then(res => {
                 if(res.message == "success"){
-                    location.href="./histories"
+                    location.href="./histories/" + res.data[0];
+                }
+                else{
+                    alert('Server đang lỗi,thử lại sau!');
+                    location.href="/";
                 }
             })
             .catch(error => console.error('Error:', error));

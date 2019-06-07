@@ -21,7 +21,6 @@ class TestModel extends BaseModel {
         })
     }
     getTestInfo(data){
-        console.log(data)
         return new Promise( (resolve,reject) => {
             db('tests').where(data)
             .join('tag','tests.id_tag','tag.id')

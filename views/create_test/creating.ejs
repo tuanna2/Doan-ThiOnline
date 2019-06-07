@@ -10,6 +10,8 @@
     <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
     <link rel="apple-touch-icon" href="../images/logo-icon.png" />
     <link rel="stylesheet" href="../css/house.css" />
+    <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+
     <style>
         .dropdownUserAvatar:hover{
             border:1px solid #007EE5;
@@ -98,6 +100,7 @@
                             </div>
                         </div>
                     </div>
+                    <%if(info.role == 1 || info.role == 0){%>
                     <div class="menuItem">
                         <div class="SMenu__MenuContainer-sc-1lxz9p6-0 hBYiqG">
                             <div class="SMenu__Heading-sc-1lxz9p6-1 hLVxTO">
@@ -158,6 +161,7 @@
                             </div>
                         </div>
                     </div>
+                    <%}%>
                 </div>
             </div>
             <div class="container animated fadeIn">
@@ -294,8 +298,8 @@
             </div>
             </div>
         </footer>
-    <div id="slate_latexPopover" class="fadeIn animated"></div>
-    <div id="slate_menuPopover" class="fadeIn animated"></div>
-</body>
+        <script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+
+    </body>
 
 </html>

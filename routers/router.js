@@ -15,7 +15,7 @@ class Router extends BaseRouter{
         this.router.get('/search',homeCtrl.search.bind(homeCtrl));
 
         const createTestCtrl = new CreateTestController();
-        this.router.get('/create-test',homeCtrl.isLoggedIn,createTestCtrl.createTest);
+        this.router.get('/create-test',homeCtrl.isLoggedIn,createTestCtrl.createTest.bind(createTestCtrl));
         this.router.get('/test/:id/questions',homeCtrl.isLoggedIn,createTestCtrl.addQuestion.bind(createTestCtrl));
         this.router.get('/test/:id/info/',homeCtrl.isLoggedIn,createTestCtrl.infoQuestion.bind(createTestCtrl));
         this.router.get('/test/:id/questions/:question',homeCtrl.isLoggedIn,createTestCtrl.editQuestion.bind(createTestCtrl));
@@ -26,7 +26,7 @@ class Router extends BaseRouter{
         this.router.get('/test/:id',homeCtrl.isLoggedIn,playTestCtrl.test.bind(playTestCtrl));
         this.router.get('/test/:id/playing',homeCtrl.isLoggedIn,playTestCtrl.playTest.bind(playTestCtrl));
         this.router.get('/saved/',homeCtrl.isLoggedIn,playTestCtrl.saved.bind(playTestCtrl));
-        this.router.get('/test/:id/histories',homeCtrl.isLoggedIn,playTestCtrl.history.bind(playTestCtrl));
+        this.router.get('/test/:id/histories/:histories',homeCtrl.isLoggedIn,playTestCtrl.history.bind(playTestCtrl));
         this.router.post('/test/:id/submit',homeCtrl.isLoggedIn,playTestCtrl.submitTest.bind(playTestCtrl));
         this.router.get('/suggestion',homeCtrl.isLoggedIn,playTestCtrl.suggestion.bind(playTestCtrl));
         this.router.get('/histories',homeCtrl.isLoggedIn,playTestCtrl.allHistory.bind(playTestCtrl));
