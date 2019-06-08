@@ -250,6 +250,9 @@ function selecting(id,select){
     $('#q'+id).find('span.wvnXF').remove();
     $('#q'+id).addClass('fqGVVP');
     $('#q'+id).append('<span class="wvnXF">'+select+'</span>');
+    $('html,body').animate({
+            scrollTop: $("#question_"+(id+2)).offset().top - 50}
+    ,'slow');
 }
  const dateline = new Date().getTime() + 60*1000* timeUp;
     const timer = setInterval(() => {
