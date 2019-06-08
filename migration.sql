@@ -17,7 +17,7 @@ CREATE TABLE `ThiOnline`.`users` (
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);
   
-INSERT INTO `ThiOnline`.`users` (`id`, `username`, `email`, `password`) VALUES ('1', 'Administrator', 'admin', '$2y$12$cZrofhendcr3xwoWp0DIselAt17yqNbQmzJIZf5uK7h2Ub5JDanFu');
+INSERT INTO `ThiOnline`.`users` (`id`, `username`, `email`, `password`) VALUES (1, 'Administrator', 'admin', '$2y$12$cZrofhendcr3xwoWp0DIselAt17yqNbQmzJIZf5uK7h2Ub5JDanFu');
 
 --table category
 CREATE TABLE `category` (
