@@ -140,7 +140,7 @@
                         <div class="table-choose__BoxOverviewContainer-sc-1enzu2-2 jBeozc">
                             <input id="length-question" type="hidden" value="<%- questions.length%>">
                             <% for(let i=0;i< questions.length;i++){%>
-                                <a id="q<%= i%>" href="#question_<%= i+1%>" class="result cpAZmo"><%= i+1%></a>
+                                <a id="q<%= i%>" href="#" class="result cpAZmo"><%= i+1%></a>
                             <%}%>
                         </div>
                     </div>
@@ -311,6 +311,12 @@ $(document).ready(()=> {
         $(this).parents('.iyhlnS').find('.select').removeClass('aqt');
         $(this).find('.select').addClass('aqt');
         selecting(id_question,select);
+    });
+    $('.result').click(function(){
+        let id = parseInt($(this).attr('id').slice(1));
+        $('html,body').animate({
+            scrollTop: $("#question_"+(id+1)).offset().top - 50}
+        ,'slow');
     });
 });
 </script>
