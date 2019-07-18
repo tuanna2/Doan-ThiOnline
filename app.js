@@ -28,4 +28,4 @@ app.use('/',new Router().getRouter());
 app.use('/admin',new AdminRouter().getRouter());
 
 
-app.listen(3000, () => console.log(`App listening on port 3000!`));
+app.listen(3000);
