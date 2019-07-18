@@ -1,7 +1,7 @@
 const UserModel = require('../../models/user_model');
 const BaseApiCtrl = require('./base_api_ctrl');
 const path = require('path');
-const bcrypt = require("bcrypt");
+const bcrypt = require("bcryptjs");
 
 class UserController extends BaseApiCtrl{
     constructor() {
