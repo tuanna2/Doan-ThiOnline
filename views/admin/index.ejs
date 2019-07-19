@@ -294,7 +294,6 @@
           password: formAdd.password.value,
           sex: formAdd.sex.value,
           category_followed:checkedFollow.toString(),
-          role: formAdd.role.value
         })
       })
         .then(function (response) {
@@ -341,7 +340,6 @@
           category_followed:checkedFollow.toString(),
           phone:formEdit.phone.value,
           introduction:formEdit.introduction.value,
-          role:formEdit.role.value                    
         })
       })
         .then(function (response) {
@@ -385,8 +383,6 @@
           formEdit.sex.value = res.data[0].sex,
           formEdit.phone.value = res.data[0].phone,
           formEdit.introduction.value = res.data[0].introduction
-          formEdit.role.value = res.data[0].role
-
           $('#modal-edit').modal('show');
         })
         .catch(function (err) {
