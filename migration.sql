@@ -12,7 +12,6 @@ CREATE TABLE `ThiOnline`.`users` (
   `sex` VARCHAR(10) NULL,
   `phone` VARCHAR(20) NULL,
   `introduction` VARCHAR(255) NULL,
-  `role` INT(1) NOT NULL DEFAULT 2,
   PRIMARY KEY (`id`),
   UNIQUE INDEX `id_UNIQUE` (`id` ASC) VISIBLE,
   UNIQUE INDEX `email_UNIQUE` (`email` ASC) VISIBLE);

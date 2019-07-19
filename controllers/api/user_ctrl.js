@@ -27,9 +27,6 @@ class UserController extends BaseApiCtrl{
     async addUser(req,res){
         try{
             let data = req.body;
-            if(data.role != 1 && data.role != 2 != role !=3){
-                data.role = 3;
-            }
             data.password = await bcrypt.hash(req.body.password, 5);
             const rs = await this.userModel.add(data);
             res.json({ message: 'success', data: rs});

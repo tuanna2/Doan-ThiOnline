@@ -39,11 +39,7 @@ class UserController {
     async signupPost(req,res){
         try{
             const password = await bcrypt.hash(req.body.password, 5);
-            let role = req.body.role;
-            if(role != 1 && role != 2 && role != 3){
-                role = 3;
-            }
-            const data = await this.userModel.add({username:req.body.username,email:req.body.email,password:password,role:role});
+            const data = await this.userModel.add({username:req.body.username,email:req.body.email,password:password});
             req.session.idUser = data[0];
             res.redirect('/')
         } catch(e){
