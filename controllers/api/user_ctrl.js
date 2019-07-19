@@ -2,6 +2,7 @@ const UserModel = require('../../models/user_model');
 const BaseApiCtrl = require('./base_api_ctrl');
 const path = require('path');
 const bcrypt = require("bcryptjs");
+const sharp = require('sharp');
 
 class UserController extends BaseApiCtrl{
     constructor() {
@@ -15,11 +16,17 @@ class UserController extends BaseApiCtrl{
         try{
             let avatar = req.files.file;
             let temp = avatar.name.split('.');
-            let name = '/uploads/' + avatar.md5 +'.' + temp[temp.length-1];
+            let name = '/uploads/avatar' + req.session.idUser + '.' + temp[temp.length-1];
             let pathName = path.join(__dirname,'../../public'+name);
-            await avatar.mv(pathName);
+            if(avatar.size > 200000){
+                await sharp(avatar.data)
+                .resize(100,100)
+                .toFile(pathName);
+            }
+            else  await avatar.mv(pathName);
             await this.userModel.update({id:req.session.idUser,avatar:name});
             res.json({status:1,name:name});
+
         } catch(e){
             return res.status(500).send(e);
         }

@@ -8,7 +8,9 @@ const morgan = require('morgan');
 const FileStore = require('session-file-store')(session);
 const fileUpload = require('express-fileupload');
 
-app.use(fileUpload());
+app.use(fileUpload({
+    limits: { fileSize: 10 * 1024 * 1024 },
+}));
 
 app.use(session({
     store: new FileStore,
