@@ -9,6 +9,7 @@
     <link rel="stylesheet" href="/css/house.css" />
     <link rel="stylesheet" href="/css/style.css" />
     <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/home.css" />
 
     <style>
             .dropdownUserAvatar:hover{
@@ -62,8 +63,56 @@
 <body>
     <div id="__next">
     <div class="Layout__LayoutWrapper-sc-72xje9-0 gNMUod">
-        <%- include('../header')%>
-    <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
+        <% if(info){%>
+            <%- include('../header')%>
+        <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
+            <% }else{ %>
+            <header class="header Header__HeaderWrapper-sc-1a0k2zv-0 kUnFIo">
+                    <div class="Header__HeaderNav-wwhct2-0 jiKYVK">
+                        <div class="Header__RightHead-wwhct2-4 LQUjt Flex-no3b20-0 cYoqhr">
+                            <a href="/">
+                                <div class="Logo__LogoStyle-ju6la0-0 eoCuSN" src="../images/logo.png"></div>
+                            </a>
+                            <div class="Header__ClearDiv-wwhct2-5 ioPZqo"></div>
+                            <form name="formSearch" method="GET" onsubmit = "return formSearch.value.value == '' ? false : true" action="/search" class="style__SearchDropdownStyled-sc-1jkqjil-0 Hpwuf">
+                                <div class="bp3-input-group bp3-large bp3-radius search__InputGroupStyled-sc-1dtjrnl-0 bmnola">
+                                    <span class="bp3-icon bp3-icon-search" icon="search">
+                                                <svg data-icon="search" width="16" height="16" viewBox="0 0 16 16">
+                                                    <desc>search</desc>
+                                                    <path d="M15.55 13.43l-2.67-2.68a6.94 6.94 0 0 0 1.11-3.76c0-3.87-3.13-7-7-7s-7 3.13-7 7 3.13 7 7 7c1.39 0 2.68-.42 3.76-1.11l2.68 2.67a1.498 1.498 0 1 0 2.12-2.12zm-8.56-1.44c-2.76 0-5-2.24-5-5s2.24-5 5-5 5 2.24 5 5-2.24 5-5 5z" fill-rule="evenodd"></path>
+                                                </svg>
+                                            </span>
+                                    <input type="text" name="value" maxlength=254 class="bp3-input" value="" placeholder="Nhập từ khoá ..." style="padding-right:10px">
+                                </div>
+                            </form>
+                        </div>
+                        <div class="Header__HeaderGroupForNewbie-wwhct2-2 fYGCxf Flex-no3b20-0 cYoqhr">
+                            <a href="/create-test" class="create">
+                                <span class="bp3-icon bp3-icon-annotation" icon="annotation">
+                                    <svg data-icon="annotation" width="16" height="16" viewBox="0 0 16 16">
+                                        <desc>annotation</desc>
+                                        <path d="M15.52 2.77c.3-.29.48-.7.48-1.15C16 .73 15.27 0 14.38 0c-.45 0-.85.18-1.15.48l-1.34 1.34 2.3 2.3 1.33-1.35zM7.4 10.9l6.21-6.21-2.3-2.3L5.1 8.6l2.3 2.3zM14 14H2V2h6.34l2-2H1C.45 0 0 .45 0 1v14c0 .55.45 1 1 1h14c.55 0 1-.45 1-1V5.66l-2 2V14zM3 13l3.58-1.29-2.29-2.27L3 13z" fill-rule="evenodd"></path>
+                                    </svg>
+                                </span>Tạo đề thi
+                            </a>
+                            <a href="/register" class="register">Đăng ký</a>
+                            <a href="/login" class="register">Đăng nhập</a>
+                        </div>
+                        <div class="Header__ClientDropdown-wwhct2-3 ekXVnd">
+                            <span class="bp3-popover-wrapper">
+                                <span class="bp3-popover-target">
+                                    <div class="userWrapper">
+                        <span class="bp3-icon bp3-icon-caret-down" icon="caret-down">
+                                <a href="/register" class="register">Đăng ký</a>
+                                <a href="/login">Đăng nhập</a>
+                                        </span>
+                    </div>
+                    </span>
+                    </span>
+            </div>
+        </div>
+        </header>
+            <% } %>
     <div class="wrapper Wrapper-mxjqhp-0 fPglrh">
         <div class="style__Container-ptzi3g-0 CqCql">
             <div class="style__LeftCol-ptzi3g-1 fDcaZt">
@@ -73,6 +122,7 @@
                             <div class="style__TitleBox-sc-1ravu7g-0 fCLgIR" color="#0984E3"><a href="/test/<%- test[0].id%>" class="title" title="20 câu kiểm tra kiến thức cơ bản Nodejs"><%- test[0].name%></a></div>
                             <div class="addon show style__AddonWrapper-sc-1ravu7g-2 gnbQfX" color="#8395A7">
                                 <div class="content" id="<%- test[0].id%>" title="<%- test[0].name %>">
+                                    <% if(info){%>
                                     <div class="item" onclick = "saveTest(this)">
                             <div><span class="bp3-popover-wrapper"><span class="bp3-popover-target">
                                     <div class="save-test__IconWrapper-qs5ik2-0 fZkeJA" tabindex="0"><span class="bp3-icon bp3-icon-bookmark"
@@ -87,6 +137,29 @@
                             </span>
                         </div>
                     </div>
+                    <input type="hidden" value ="<%-info.id%>" id="username">
+                    <script>
+                        function saveTest(e){
+                               fetch('/api/saved',{
+                                           method: 'POST',
+                                           headers: {
+                                               'Content-Type': 'application/json'
+                                           },
+                                           body:JSON.stringify({
+                                               id_user:document.getElementById('username').value,
+                                               id_test:e.parentNode.id
+                                           })
+                                       })
+                                       .then(function(response) {
+                                           alert('Lưu lại thành công');
+                                       })
+                                       .catch(err=>{
+                                           alert('Thất bại,thử lại sau');
+                                           console.log(err)
+                                   });
+                           }
+                   </script>
+                                    <%}%>
                     <div class="item" onclick="shareTest(this)">
                             <span icon="share" class="bp3-icon bp3-icon-share"><svg data-icon="share" width="16" height="16" viewBox="0 0 16 16"><desc>share</desc><path d="M10.99 13.99h-9v-9h4.76l2-2H.99c-.55 0-1 .45-1 1v11c0 .55.45 1 1 1h11c.55 0 1-.45 1-1V7.24l-2 2v4.75zm4-14h-5c-.55 0-1 .45-1 1s.45 1 1 1h2.59L7.29 7.28a1 1 0 0 0-.3.71 1.003 1.003 0 0 0 1.71.71l5.29-5.29V6c0 .55.45 1 1 1s1-.45 1-1V1c0-.56-.45-1.01-1-1.01z" fill-rule="evenodd"></path></svg></span>
                     </div>
@@ -145,35 +218,7 @@
             </div>
         </div>
     </div>
-    <input type="hidden" value ="<%-info.id%>" id="username">
-    <script>
-                function shareTest(e){
-            const id =e.parentNode.id;
-            const title = e.parentNode.title;
-            $('.modal-title').html(title);
-            $('#url').val(document.location.origin+'/test/'+id);
-            $('#shareTest').modal('show');
-        }
-        function saveTest(e){
-               fetch('/api/saved',{
-                           method: 'POST',
-                           headers: {
-                               'Content-Type': 'application/json'
-                           },
-                           body:JSON.stringify({
-                               id_user:document.getElementById('username').value,
-                               id_test:e.parentNode.id
-                           })
-                       })
-                       .then(function(response) {
-                           alert('Lưu lại thành công');
-                       })
-                       .catch(err=>{
-                           alert('Thất bại,thử lại sau');
-                           console.log(err)
-                   });
-           }
-   </script>
+ 
     </div>
     </div>
     <div class="clearfix__Clearfix-w9lses-0 kQttEW" height="50"></div>
@@ -277,6 +322,13 @@
               xfbml   : true,
               version : 'v3.3'
             });
+            function shareTest(e){
+                const id =e.parentNode.id;
+                const title = e.parentNode.title;
+                $('.modal-title').html(title);
+                $('#url').val(document.location.origin+'/test/'+id);
+                $('#shareTest').modal('show');
+            }
             function shareFB(){
                 FB.ui({
                     method: 'share',

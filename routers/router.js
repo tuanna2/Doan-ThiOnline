@@ -23,7 +23,7 @@ class Router extends BaseRouter{
         this.router.get('/creating',homeCtrl.isLoggedIn,createTestCtrl.creating.bind(createTestCtrl));
 
         const playTestCtrl = new PlayTestController();
-        this.router.get('/test/:id',homeCtrl.isLoggedIn,playTestCtrl.test.bind(playTestCtrl));
+        this.router.get('/test/:id',playTestCtrl.test.bind(playTestCtrl));
         this.router.get('/test/:id/playing',homeCtrl.isLoggedIn,playTestCtrl.playTest.bind(playTestCtrl));
         this.router.get('/saved/',homeCtrl.isLoggedIn,playTestCtrl.saved.bind(playTestCtrl));
         this.router.get('/test/:id/histories/:histories',homeCtrl.isLoggedIn,playTestCtrl.history.bind(playTestCtrl));

@@ -21,11 +21,14 @@ class PlayTestController{
         res.render('play_test/saved',{info,tests});
     }
     async test(req,res){
-        const info = await this.userModel.get({id:req.session.idUser});
         const test = await this.testModel.getTestInfo({'tests.id':req.params.id});
         if(test[0].permission != 1){
             return res.redirect('/');
         }
+        if(!req.session.idUser){
+            return res.render('play_test/test',{info:null,test,history:[]});
+        }
+        const info = await this.userModel.get({id:req.session.idUser});
         const history = await this.historyModel.getMany({id_user:req.session.idUser,id_test:req.params.id});
         res.render('play_test/test',{info,test,history});
     }
