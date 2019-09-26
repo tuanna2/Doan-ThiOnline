@@ -1,9 +1,9 @@
 const knex = require('knex')({
     client: 'mysql',
     connection: {
-      host : 'ec2-3-15-165-79.us-east-2.compute.amazonaws.com',
-      user : 'tuan',
-      password : 'anhtuan9x',
+      host : '52.207.254.189',
+      user : 'thionline',
+      password : 'tundip',
       database : 'ThiOnline',
       // debug: ['ComQueryPacket']
     }
