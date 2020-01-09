@@ -2,7 +2,7 @@
 <html>
 
 <head>
-    <title class="next-head">Tạo đề thi | ThiOnline.vn</title>
+    <title class="next-head">Tạo đề thi</title>
     <meta charSet="utf-8" class="next-head" />
     <link rel="shortcut icon" type="image/png" href="../images/logo-icon.png" />
     <link rel="apple-touch-icon" href="../images/logo-icon.png" />
@@ -23,7 +23,7 @@
                     <form onsubmit="return createTest()" name ="form" action="/create-test" method="POST">
                         <div class="bp3-form-group bp3-intent-">
                             <label class="bp3-label">Tên đề thi
-                                <!-- --> <span class="bp3-text-muted"></span>
+                                <span class="bp3-text-muted"></span>
                             </label>
                             <div class="bp3-form-content">
                                 <div class="bp3-input-group bp3-intent- bp3-large">
@@ -34,7 +34,7 @@
                         </div>
                         <div class="bp3-form-group bp3-intent-">
                             <label class="bp3-label">Mô tả đề thi
-                                <!-- --> <span class="bp3-text-muted"></span>
+                                <span class="bp3-text-muted"></span>
                             </label>
                             <div class="bp3-form-content">
                                 <textarea placeholder="Nhập mô tả đề thi" style="min-height:80px" name="description" type="textarea" class="bp3-input bp3-intent- bp3-fill bp3-large"></textarea>
@@ -43,7 +43,7 @@
                         </div>
                         <div class="bp3-form-group bp3-intent-">
                             <label class="bp3-label">Thời gian (phút)
-                                <!-- --> <span class="bp3-text-muted"></span>
+                                <span class="bp3-text-muted"></span>
                             </label>
                             <div class="bp3-form-content">
                                 <div class="bp3-input-group bp3-intent- bp3-large">
@@ -53,7 +53,7 @@
                         </div>
                         <div class="bp3-form-group bp3-intent-">
                             <label class="bp3-label">Chuyên mục
-                                <!-- --> <span class="bp3-text-muted"></span>
+                                <span class="bp3-text-muted"></span>
                             </label>
                             <div class="bp3-form-content">
                                 <select onchange="getTag()" name="category" style="width: 100%; height: 40px; background-color: white;border-color: #d4d4dd;">
@@ -64,8 +64,8 @@
                             </div>
                         </div>
                         <div class="bp3-form-group bp3-intent-">
-                                <label class="bp3-label">Tag
-                                    <!-- --> <span class="bp3-text-muted"></span>
+                                <label class="bp3-label">Môn học
+                                    <span class="bp3-text-muted"></span>
                                 </label>
                                 <div class="bp3-form-content">
                                     <select name="tag" style="width: 100%; height: 40px; background-color: white;border-color: #d4d4dd;">
@@ -107,8 +107,6 @@
             alert('Server đang lỗi,xin thử lại sau');
             console.log(err)
         });
-
-
         function getTag(){
             form.tag.innerHTML = "";
             fetch('/api/tag?category='+form.category.value)
@@ -146,7 +144,6 @@
                     id_tag:form.tag.value,
                     description:form.description.value,
                     created_at:dateNow[0],
-                    id_parent:form.id.value
                 })
             })
             .then(function(response) {

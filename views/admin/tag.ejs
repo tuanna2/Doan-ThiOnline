@@ -8,7 +8,7 @@
   <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  <title>Admin</title>
+  <title>Quản lý môn học</title>
   <link href="/dist/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
   <link href="/dist/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
   <link href="/dist/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -35,46 +35,7 @@
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
   <%- include('./header')%>
   <div class="app-body">
-    <div class="sidebar">
-      <nav class="sidebar-nav">
-        <ul class="nav">
-          <li class="nav-item">
-            <a style="color:khaki;background:transparent" class="nav-link" role="button">
-              <img class="img-avatar" width=30 height=30 style="margin-right:5px;"
-                src="<%- info.avatar == null ? "/avatar-default.png" : info.avatar %>">
-              Administrator
-            </a>
-            <a class="nav-link" href="/admin">
-              <i class="nav-icon icon-user"></i> Quản lý người dùng
-            </a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link active" href="/admin/tags">
-                <i class="nav-icon cui-tags"></i> Quản lý Tags
-              </a>
-            </li>
-          <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle">
-              <i class="nav-icon icon-map"></i> Quản lý đề thi
-            </a>
-            <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/tested">
-                  <i class="nav-icon fa fa-list-alt"></i> Tất cả đề
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/testing">
-                  <i class="nav-icon fa fa-list-alt"></i> Đang đợi duyệt
-                  <span class="badge badge-success"><%- countTesting%></span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
+    <%- include('./sidebar', {avatar: info.avatar})%>
     <main class="main">
       <div class="container-fluid">
         <div class="animated fadeIn">
@@ -82,8 +43,10 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-align-justify"></i>Tags Table</div>
+                  <i class="fa fa-align-justify"></i>Quản lý môn học</div>
                 <div class="card-body">
+                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add">Thêm môn</button>
+
                     <div class="col-md-3" >
                         <select class="form-control" id="category">
                         <option value="">Tất cả danh mục</option>
@@ -97,7 +60,7 @@
                       <tr>
                         <th>ID</th>
                         <th>Tên Tag</th>
-                        <th>Danh mục</th>
+                        <th>Danh mục</th>
                         <th>Tên danh mục</th>
                         <th>Số đề thi</th>
                         <th>Function</th>
@@ -119,7 +82,6 @@
                       <% } %>
                     </tbody>
                   </table>
-                  <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add">Thêm Tag</button>
                 </div>
               </div>
             </div>
@@ -134,7 +96,7 @@
   <div class="modal-dialog modal-primary" role="document">
     <form name="formAdd" onsubmit="return addTag()" class="modal-content">
       <div class="modal-header">
-        <h4 class="modal-title">Thêm Tag</h4>
+        <h4 class="modal-title">Thêm môn học</h4>
         <button class="close" type="button" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">×</span>
         </button>
@@ -142,8 +104,8 @@
       <div class="modal-body">
         <div class="col-sm-12">
           <div class="form-group">
-            <label>Tên Tag</label>
-            <input class="form-control" name="name" autocomplete="true" type="text" placeholder="Nhập tag">
+            <label>Tên môn</label>
+            <input class="form-control" name="name" autocomplete="true" type="text" placeholder="Nhập tên">
           </div>
           <div class="form-group">
                 <label>Danh mục</label>
@@ -193,7 +155,6 @@
                               </select>
                           </div>
                       </div>
-            
         </div>
         <div class="modal-footer">
           <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>

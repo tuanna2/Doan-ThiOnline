@@ -7,17 +7,16 @@ class TestModel extends BaseModel {
     }
     getTestByCategory(arr){
         return new Promise( (resolve, reject) => {
-            db('tests').where('permission',1).whereIn('category.id',arr)
-            .join('tag','tests.id_tag','tag.id')
+            db('tests').where('status', 1).whereIn('category.id', arr)
+            .join('tag', 'tests.id_tag','tag.id')
             .join('users','tests.id_parent','users.id')
             .join('category','tag.id_category','category.id')
             .leftJoin('questions','questions.id_test','tests.id')
             .leftJoin('history','history.id_test','tests.id')
-            .select('tests.*','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??,count(DISTINCT history.id) as ??',['question','access']))
+            .select('tests.*','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??, count(DISTINCT history.id) as ??',['question','access']))
             .groupBy('id')
-            .then( res => resolve(res))
+            .then( res => resolve(handingData(res)))
             .catch( err => reject(err));
-
         })
     }
     getTestInfo(data){
@@ -29,9 +28,9 @@ class TestModel extends BaseModel {
             .leftJoin('saved','tests.id','saved.id_test')
             .leftJoin('questions','tests.id','questions.id_test')
             .leftJoin('history','tests.id','history.id_test')
-            .select('tests.*','category.id as category','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??,count(DISTINCT history.id) as ??',['question','access']))
+            .select('tests.*','category.id as category','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??, count(DISTINCT history.id) as ??',['question','access']))
             .groupBy('tests.id')
-            .then( res => resolve(res))
+            .then( res => resolve(handingData(res)))
             .catch( err => reject(err));
         })
     }
@@ -44,11 +43,19 @@ class TestModel extends BaseModel {
             .leftJoin('saved','tests.id','saved.id_test')
             .leftJoin('questions','tests.id','questions.id_test')
             .leftJoin('history','tests.id','history.id_test')
-            .select('tests.*','category.id as category','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??,count(DISTINCT history.id) as ??',['question','access']))
+            .select('tests.*','category.id as category','users.username as parent','users.avatar as avatar','tag.name as tag',db.raw('count(DISTINCT questions.id) as ??, count(DISTINCT history.id) as ??',['question','access']))
             .groupBy('tests.id')
-            .then( res => resolve(res))
+            .then( res => resolve(handingData(res)))
             .catch( err => reject(err));
         })
     }
+}
+function handingData(res){
+    res.forEach(e => {
+        if(e.id_parent == 1){
+            e.question = e.store.split(",").length;
+        }
+    });
+    return res;
 }
 module.exports = TestModel

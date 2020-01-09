@@ -16,7 +16,7 @@ class CreateTestController {
         const rs = await this.testModel.get({id:req.params.id,id_parent:req.session.idUser});
         if(typeof rs !== "undefined") {
             const questions = await this.questionModel.getMany({id_test:req.params.id});
-            res.render('create_test/all_question',{data:questions,permission:rs.permission,test:req.params.id});
+            res.render('create_test/all_question',{data:questions,status:rs.status,test:req.params.id});
         } 
         else res.redirect('/');
     }
@@ -38,13 +38,13 @@ class CreateTestController {
     }
     async created(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
-        const tests = await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:1});
+        const tests = await this.testModel.getTestInfo({id_parent:req.session.idUser,status:1});
         res.render('create_test/created',{info,tests});
     }
     async creating(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
-        const TestNull = await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:null})
-        const Testing =  await this.testModel.getTestInfo({id_parent:req.session.idUser,permission:0})
+        const TestNull = await this.testModel.getTestInfo({id_parent:req.session.idUser,status:null})
+        const Testing =  await this.testModel.getTestInfo({id_parent:req.session.idUser,status:0})
         const tests = [].concat(TestNull).concat(Testing);
         res.render('create_test/creating',{info,tests});
     }

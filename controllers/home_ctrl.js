@@ -28,7 +28,7 @@ class HomeController {
     }
     async testOfCategory(req,res){
         const category = req.params.category;
-        const tests = await this.testModel.getTestInfo({'category.id':category,permission:1 });
+        const tests = await this.testModel.getTestInfo({'category.id':category,status: 1 });
         if(req.session.idUser){
             const info = await this.userModel.get({id:req.session.idUser});
             res.render('home_logged',{info,tests,category})

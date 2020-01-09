@@ -8,7 +8,7 @@
   <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
   <meta name="author" content="Łukasz Holeczek">
   <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
-  <title>Admin</title>
+  <title>Đề đang đợi duyệt</title>
   <link href="/dist/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
   <link href="/dist/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
   <link href="/dist/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
@@ -310,46 +310,7 @@
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
   <%- include('./header')%>
   <div class="app-body">
-    <div class="sidebar">
-      <nav class="sidebar-nav">
-        <ul class="nav">
-          <li class="nav-item">
-            <a style="color:khaki;background:transparent" class="nav-link" role="button">
-              <img class="img-avatar" width=30 height=30 style="margin-right:5px;"
-                src="<%- info.avatar == null ? "/avatar-default.png" : info.avatar %>">
-              Administrator
-            </a>
-            <a class="nav-link" href="/admin">
-              <i class="nav-icon icon-user"></i> Quản lý người dùng
-            </a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/admin/tags">
-                <i class="nav-icon cui-tags"></i> Quản lý Tags
-              </a>
-            </li>
-          <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle active">
-              <i class="nav-icon icon-map"></i> Quản lý đề thi
-            </a>
-            <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                <a class="nav-link " href="/admin/tested">
-                  <i class="nav-icon fa fa-list-alt"></i> Tất cả đề
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link active" href="/admin/testing">
-                  <i class="nav-icon fa fa-list-alt"></i> Đang đợi duyệt
-                  <span class="badge badge-success"><%- countTesting%></span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
+    <%- include('./sidebar', {avatar: info.avatar})%>
     <main class="main">
       <div class="container-fluid">
         <div class="animated fadeIn">
@@ -357,7 +318,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-align-justify"></i> Tất cả đề đã duyệt</div>
+                  <i class="fa fa-align-justify"></i> Đề đang đợi duyệt</div>
                 <div class="card-body">
                     <div class="col-md-3" >
                         <select class="form-control" id="category">
@@ -373,7 +334,7 @@
                         <th>ID</th>
                         <th>Tên đề thi</th>
                         <th>Category</th>
-                        <th>Tag</th>
+                        <th>Môn</th>
                         <th>Mô tả</th>
                         <th>Người tạo (ID)</th>
                         <th>Thời gian (phút)</th>
@@ -448,13 +409,13 @@
   <script>
     function acceptTest(e){
         let id = $(e).parent().attr('number');
-        actionTest(id,1);
+        actionTest(id, 1);
     }
     function declineTest(e){
         let id = $(e).parent().attr('number');
-        actionTest(id,null);
+        actionTest(id, null);
     }
-    function actionTest(id,action){
+    function actionTest(id, action){
         fetch('/api/test',{
                 method: "PUT",
                 headers:{
@@ -462,12 +423,12 @@
                 },
                 body:JSON.stringify({
                     id:id,
-                    permission:action
+                    status:action
                 })
             })
             .then(function(response) {
                 if(response.ok){
-                    let success = action == 1 ? 'Phê duyệt hành công !' : 'Từ chối duyệt thành công !';
+                    let success = action == 1 ? 'Đã duyệt đề !' : 'Đã từ chối duyệt đề !';
                     alert(success);
                 }
                 else alert('Thất bại ! Thử lại sau');

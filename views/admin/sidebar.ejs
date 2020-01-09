@@ -1,0 +1,50 @@
+<div class="sidebar">
+  <nav class="sidebar-nav">
+    <ul class="nav">
+      <li class="nav-item">
+        <a style="color:khaki;background:transparent" class="nav-link" role="button">
+          <img class="img-avatar" width=30 height=30 style="margin-right:5px;"
+            src="<%- avatar == null ? "/avatar-default.png" : avatar %>">
+          Administrator
+        </a>
+        <a class="nav-link" href="/admin">
+          <i class="nav-icon icon-user"></i> Quản lý người dùng
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/tags">
+          <i class="nav-icon cui-tags"></i> Quản lý môn học
+        </a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/admin/store">
+          <i class="nav-icon fa fa-university"></i> Ngân hàng câu hỏi
+        </a>
+      </li>
+      <li class="nav-item nav-dropdown">
+        <a class="nav-link nav-dropdown-toggle" href="/admin/tests">
+          <i class="nav-icon icon-map"></i> Quản lý đề thi
+        </a>
+        <ul class="nav-dropdown-items">
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/create-test">
+              <i class="nav-icon fa fa-plus"></i> Tạo đề
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/tested">
+              <i class="nav-icon fa fa-table"></i> Tất cả đề
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/admin/testing">
+              <i class="nav-icon fa fa-list-alt"></i> Đang đợi duyệt
+              <span class="badge badge-success"><%- countTesting%></span>
+            </a>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </nav>
+  <button class="sidebar-minimizer brand-minimizer" type="button"></button>
+</div>

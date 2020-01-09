@@ -3,7 +3,7 @@ const TestModel = require('../models/test_model');
 const SavedModel = require('../models/saved_model');
 const HistoryModel = require('../models/history_model');
 const QuestionModel = require('../models/question_model');
-
+const StoreModel = require('../models/store_model');
 class PlayTestController{
     constructor(){
         this.testModel = new TestModel();
@@ -11,6 +11,7 @@ class PlayTestController{
         this.savedModel = new SavedModel();
         this.historyModel = new HistoryModel();
         this.questionModel = new QuestionModel();
+        this.storeModel = new StoreModel();
     }
     async suggestion(req,res){
         res.redirect('/');
@@ -22,7 +23,7 @@ class PlayTestController{
     }
     async test(req,res){
         const test = await this.testModel.getTestInfo({'tests.id':req.params.id});
-        if(test[0].permission != 1){
+        if(test[0].status != 1){
             return res.redirect('/');
         }
         if(!req.session.idUser){
@@ -35,31 +36,25 @@ class PlayTestController{
     async playTest(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
         const test = await this.testModel.getTestInfo({'tests.id':req.params.id});
-        let questions = await this.questionModel.getMany({id_test:req.params.id});
-        if(test[0].permission != 1 || !questions.length){
-            return res.redirect('/');
+        const questions = test[0].id_parent == 1 ?
+            await this.storeModel.getIn(test[0].store.split(","))
+            : await this.questionModel.getMany({id_test:req.params.id});
+        if(test[0].status != 1 || !questions.length){
+            return res.render('error');
         }
-        let rules = [];
-        for(let i = questions.length -1;i >= 0;i--){
-            let random = Math.floor(Math.random() * (i+1));
-            rules.push(random);
-            [questions[i],questions[random]] =  [questions[random],questions[i]]
-        } 
-        res.render('play_test/playing',{info,test,questions,rules});
+        res.render('play_test/playing',{info,test,questions});
     }
     async submitTest(req,res){
         try{
             const info = await this.userModel.get({id:req.session.idUser});
-            const questions = await this.questionModel.getMany({id_test:req.params.id});
-            let selected = req.body.selected;
-            const rules = req.body.rules.split(',');
-            if(typeof selected === "undefined" || typeof info ==="undefined" || rules.length != questions.length){
+            const test = await this.testModel.getMany({id: req.params.id});
+            const questions =  test[0].id_parent == 1 ?
+                    await this.storeModel.getIn(test[0].store.split(","))
+                    : await this.questionModel.getMany({id_test:req.params.id});
+            const selected = req.body.selected;
+            if(typeof selected === "undefined" || typeof info ==="undefined"){
                 return res.status(403).send({message:"falled"});
             }
-            for(let i = 0;i < selected.length;i++){
-                let rule = rules[selected.length - i -1];
-                [selected[i],selected[rule]] =  [selected[rule],selected[i]];
-            } 
             let correct = 0;
             selected.forEach((e,i) => {
                 e == questions[i].correct ? correct++ : correct;
@@ -72,30 +67,26 @@ class PlayTestController{
                     selected:selected.toLocaleString(),
                     submit_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
                     time:req.body.time,
-                    rules:req.body.rules
                 })
             res.json({
                 message:"success",
                 data:rs
             })
         } catch(e){
+            console.log(e)
             res.status(500).send(e);
         }
     }
     async history(req,res){
         const info = await this.userModel.get({id:req.session.idUser});
-        const test = await this.testModel.getTestInfo({'tests.id':req.params.id});
-        let questions = await this.questionModel.getMany({id_test:req.params.id});
+        const test = await this.testModel.getTestInfo({'tests.id': req.params.id});
+        const questions = test[0].id_parent == 1 ?
+            await this.storeModel.getIn(test[0].store.split(","))
+            : await this.questionModel.getMany({id_test:req.params.id});
         const history = await this.historyModel.get({id:req.params.histories});
-        let selected = history.selected.split(',');
-        const rules = history.rules.split(',');
-        if(test[0].permission != 1  || rules.length != questions.length || typeof history === "undefined" || !questions.length || history.id_user != req.session.idUser){
-            return res.redirect('/');
-        }
-        for(let i = questions.length -1;i >= 0;i--){
-            let rule = parseInt(rules[questions.length -i -1]);
-            [questions[i],questions[rule]] =  [questions[rule],questions[i]];
-            [selected[i],selected[rule]] =  [selected[rule],selected[i]];
+        const selected = history.selected.split(',');
+        if(test[0].status != 1  || typeof history === "undefined" || !questions.length || history.id_user != req.session.idUser){
+            return res.render('error');
         }
         res.render('play_test/history',{info,test,questions,history,selected});
     }

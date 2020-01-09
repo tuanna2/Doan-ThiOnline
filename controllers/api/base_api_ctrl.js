@@ -7,6 +7,7 @@ class BaseApiController {
             const rs = await this.model.add(req.body);
             res.json({ message: 'success', data: rs});
         } catch(e){
+            console.log(e);
             res.status(500).send(e);
         }
     }

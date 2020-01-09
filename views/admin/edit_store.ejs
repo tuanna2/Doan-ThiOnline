@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+  <title>Sửa câu hỏi</title>
+  <link href="/dist/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <link href="/dist/css/style.min.css" rel="stylesheet">
+  <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+  <link href="/dist/datatable/dataTables.bootstrap.min.css" rel="stylesheet">
+  <link href="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.css" rel="stylesheet">
+
+  <style>
+    button:focus {
+      outline: 0 !important;
+    }
+    thead {
+      background-color: #c8ced3;
+      text-align: center
+    }
+
+    tbody {
+      text-align: center
+    }
+    #data-store {
+        margin-top: 20px
+    }
+    .question{
+            line-height:12px;height: 60px!important;width: 100%;margin-bottom: 15px;
+    }
+  </style>
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <%- include('./header')%>
+  <div class="app-body">
+    <%- include('./sidebar', {avatar: info.avatar})%>
+    <main class="main">
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Sửa câu hỏi</div>
+                <div class="card-body">
+                    <a class="btn btn-info" href="/admin/store"><i class="fa fa-backward" aria-hidden="true"></i> Quay lại</a> <br/><br/>
+                    <div class="form-group">
+                        <label for="id">ID</label>
+                        <input type="text" class = "form-control" disabled id="id" value= "<%- data.id%>" />
+                    </div>
+                    <div class="form-group">
+                        <label for="tag">Chọn mức độ câu hỏi</label>
+                        <select class="form-control" id="level" name="level">
+                            <option <%- data.level == 1 ? "selected" : ""%> value = "1">Dễ</option>
+                            <option <%- data.level == 2 ? "selected" : ""%> value = "2">Trung bình</option>
+                            <option <%- data.level == 3 ? "selected" : ""%> value = "3">Khó</option>
+                        </select s>
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Chọn danh mục</label>
+                        <select onchange="getTag()" class="form-control" id="category" name="category">
+                            <option value = "0">Chọn danh mục</option>
+                            <% category.forEach(e =>{ %>
+                                <option <%- data.category == e.id ? "selected" : ""%> value = "<%- e.id%>" ><%- e.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="tag">Chọn môn học</label>
+                        <input type="hidden" value ="<%- data.tag_id%>" id="tag_active">
+                        <select  class="form-control" id="tag" name="tag">
+                        </select>
+                    </div>
+                    <div>
+                        <strong>Đề bài</strong>
+                        <div class="form-group">
+                            <textarea class="textarea" class="form-control" placeholder="Nội dung câu hỏi" id="question"><%- data.question%></textarea>                                   
+                        </div>
+                        <div >
+                            <strong>Đáp án</strong>
+                            <input type="hidden" id="correct" value ="<%- data.correct%>">
+                            <div class="form-group">
+                                <label class="radio-inline"><input type="radio" name="correct" value="A"> Correct</label><br/>
+                                <textarea id="answer_A" class="textarea question form-control" placeholder="Đáp án A"><%- data.A%></textarea> 
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline"><input type="radio" name="correct" value="B"> Correct</label><br/>
+                                <textarea id="answer_B" class="textarea question form-control" placeholder="Đáp án B"><%- data.B%></textarea> 
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline"><input type="radio" name="correct" value="C"> Correct</label><br/>
+                                <textarea id="answer_C" class="textarea question form-control" placeholder="Đáp án C"><%- data.C%></textarea> 
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline"><input type="radio" name="correct" value="D"> Correct</label><br/>
+                                <textarea id="answer_D" class="textarea question form-control" placeholder="Đáp án D"><%- data.D%></textarea> 
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline"><input type="radio" name="correct" value="E"> Correct</label><br/>
+                                <textarea id="answer_E" class="textarea question form-control" placeholder="Đáp án E"><%- data.E%></textarea> 
+                            </div>
+                            <div class="form-group">
+                                <label class="radio-inline"><input type="radio" name="correct" value="F"> Correct</label><br/>
+                                <textarea id="answer_F" class="textarea question form-control" placeholder="Đáp án F"><%- data.F%></textarea> 
+                            </div>
+                        </div>
+                        <button onclick="return update()" class="btn btn-primary pull-right"> Lưu lại</button>
+                    </div>
+                </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <script src="/dist/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/dist/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/dist/datatable/jquery.dataTables.min.js"></script>
+  <script src="/dist/datatable/DataTablesBS4.js"></script>
+  <script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+  <script src="/dist/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  <script src="/dist/node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+<script src="http://cdnjs.cloudflare.com/ajax/libs/summernote/0.8.12/summernote.js"></script>
+  <script>
+       getTag($('#tag_active').val());
+       const setup = {
+            toolbar:[
+                ['font', ['bold', 'italic', 'underline']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['table', ['table']],
+                ['insert', ['picture']],
+                ],
+            popover: {
+                image: [],
+                link: [],
+                air: []
+            }
+        }
+    $(document).ready(()=> {
+        $('input:radio[name=correct]').val([$('#correct').val()]);
+        $('#question').summernote({
+            placeholder: "Nội dung câu hỏi", height:120, ...setup
+        });
+        $('#answer_A').summernote({
+            placeholder: "Đáp án A", ...setup
+        });
+        $('#answer_B').summernote({
+            placeholder: "Đáp án B", ...setup
+        });
+        $('#answer_C').summernote({
+            placeholder: "Đáp án C", ...setup
+        });
+        $('#answer_D').summernote({
+            placeholder: "Đáp án D", ...setup
+        });
+        $('#answer_E').summernote({
+            placeholder: "Đáp án E", ...setup
+        });
+        $('#answer_F').summernote({
+            placeholder: "Đáp án F", ...setup
+        });
+    })
+    function nextCorrect(length){
+        switch(length){
+            case 2 : return "C";
+            case 3 : return "D";
+            case 4 : return "E";
+            case 5 : return "F";
+            default : return null;
+        }
+    }
+    function update(){
+        if($('#question').summernote('isEmpty') || $('#answer_A').summernote('isEmpty') || $('#answer_B').summernote('isEmpty')){
+            alert('Vui lòng nhập đầy đủ câu hỏi và tối thiếu 2 đáp án !');
+            return;
+        }
+        if($("input[name=correct]:checked").val() == undefined || $(`#answer_${$("input[name=correct]:checked").val()}`).summernote('isEmpty') ){
+            alert('Vui lòng chọn đáp án đúng');
+            return;
+        }
+        let answers = {
+            A: $('#answer_A').summernote('code'),
+            B: $('#answer_B').summernote('code')
+        };
+        for(let i = 2; i <=5; i++){
+            let answer = nextCorrect(i);
+            answers[answer] = $(`#answer_${answer}`).summernote('isEmpty') ? null : $(`#answer_${answer}`).summernote('code');
+        }
+        let data = {
+            id: $('#id').val(),
+            tag_id: $('#tag').val(),
+            level: $('#level').val(),
+            question:$('#question').summernote('code'),
+            correct:$("input[name=correct]:checked").val(),
+            ... answers
+        }
+        fetch('/api/store',{
+            method: 'PUT',
+            headers:{
+            'Content-Type': 'application/json',
+            },
+            body:JSON.stringify(data)
+        })
+        .then(function(response) {
+            if(response.ok){
+                alert("Lưu lại thành công");
+                location.reload();
+            }
+            else alert('Something went wrong !!');
+            return;
+        })
+        .catch(err => {
+            alert('Something went wrong !!');
+            console.log(err);
+        });
+    }
+    function getTag(active){
+        const tag = document.getElementById('tag');
+        tag.innerHTML = "";
+        fetch('/api/tag?category='+ $('#category').val())
+        .then(function(response) {
+            return response.json();
+        })
+        .then(function(res) {
+            res.data.forEach(e => {
+                let opt = document.createElement('option');
+                if(active == e.id) opt.selected = "selected";
+                opt.value = e.id;
+                opt.innerHTML = e.name;
+                tag.appendChild(opt);
+            });
+        })
+        .catch(err=>{
+            alert('Server đang lỗi,xin thử lại sau');
+            console.log(err)
+        });
+    }
+  </script>
+</body>
+
+</html>

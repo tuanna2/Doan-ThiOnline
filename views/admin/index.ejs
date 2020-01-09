@@ -36,46 +36,7 @@
 <body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
   <%- include('./header')%>
   <div class="app-body">
-    <div class="sidebar">
-      <nav class="sidebar-nav">
-        <ul class="nav">
-          <li class="nav-item">
-            <a style="color:khaki;background:transparent" class="nav-link" role="button">
-              <img class="img-avatar" width=30 height=30 style="margin-right:5px;"
-                src="<%- info.avatar == null ? "/avatar-default.png" : info.avatar %>">
-              Administrator
-            </a>
-            <a class="nav-link active" href="/admin">
-              <i class="nav-icon icon-user"></i> Quản lý người dùng
-            </a>
-          </li>
-          <li class="nav-item">
-              <a class="nav-link" href="/admin/tags">
-                <i class="nav-icon cui-tags"></i> Quản lý Tags
-              </a>
-            </li>
-          <li class="nav-item nav-dropdown">
-            <a class="nav-link nav-dropdown-toggle" href="/admin/tests">
-              <i class="nav-icon icon-map"></i> Quản lý đề thi
-            </a>
-            <ul class="nav-dropdown-items">
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/tested">
-                  <i class="nav-icon fa fa-list-alt"></i> Tất cả đề
-                </a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="/admin/testing">
-                  <i class="nav-icon fa fa-list-alt"></i> Đang đợi duyệt
-                  <span class="badge badge-success"><%- countTesting%></span>
-                </a>
-              </li>
-            </ul>
-          </li>
-        </ul>
-      </nav>
-      <button class="sidebar-minimizer brand-minimizer" type="button"></button>
-    </div>
+    <%- include('./sidebar', {avatar: info.avatar})%>
     <main class="main">
       <div class="container-fluid">
         <div class="animated fadeIn">
@@ -83,7 +44,7 @@
             <div class="col-lg-12">
               <div class="card">
                 <div class="card-header">
-                  <i class="fa fa-align-justify"></i> Users Table</div>
+                  <i class="fa fa-align-justify"></i> Quản lý người dùng</div>
                 <div class="card-body">
                   <button class="btn btn-primary" data-toggle="modal" data-target="#modal-add">Thêm người dùng</button>
                   <table id="data-users" style="width: 100%" class="table table-responsive-sm table-bordered">
@@ -93,7 +54,7 @@
                         <th>Photo</th>
                         <th>Họ tên</th>
                         <th>Email</th>
-                        <th>Function</th>
+                        <th>Actions</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -335,8 +296,8 @@
         body: JSON.stringify({
           id:formEdit.id.value,
           username: formEdit.username.value,
-          avatar:formEdit.avatar.value == '' ? formEdit.avatar.value : null,
-          sex:formEdit.sex.value,
+          avatar: formEdit.avatar.value ? formEdit.avatar.value : "/avatar-default.png",
+          sex: formEdit.sex.value,
           category_followed:checkedFollow.toString(),
           phone:formEdit.phone.value,
           introduction:formEdit.introduction.value,

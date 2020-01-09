@@ -2,13 +2,13 @@
 <html>
 
 <head>
+    <title>Quản lý câu hỏi</title>
     <meta charSet="utf-8" class="next-head" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <link rel="shortcut icon" type="image/png" href="/images/logo-icon.png" />
     <link rel="stylesheet" href="/css/test-detail.css" />
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
     <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
-
      <style>
         ul{
             list-style-type: none;
@@ -108,9 +108,8 @@
                             <div class="style__Center-sc-3hvnas-1 byVMTL">
                                 <div class="QuestionsInput__MainWrapper-sc-18w6gix-0 dHmCWA">
                                     <div class="QuestionsInput__Questions-sc-18w6gix-1 btEfro">
-                                        <a class ="btn btn-primary pull-left" role="button" href="#form-add">Thêm câu hỏi</a><br/>
-                                        <% for(var i = 0; i< data.length ;i++){ %>
-
+                                        <a class ="btn btn-primary pull-left" role="button" href="javascript:history.back()">Quay lại</a><br/>
+                                        <% for(let i = 0; i< data.length ;i++){ %>
                                         <div class="questionItem">
                                             <div class="QuestionView__Wrapper-p27pmp-0 iNAlyr white-box__WhileBoxContainer-sc-44su8e-0 dHXTFa">
                                                 <div class="QuestionView__Tool-p27pmp-1 hXiwOv">
@@ -210,9 +209,9 @@
                             <div>
                                 <div style="padding-bottom: 0px;"></div>
                                 <div class="questions__ToolBar-sc-1ryj3mv-0 dIrzwQ" style="top: 16px; transform: translateZ(0px);">
-                                    <div id = "status">
-                                        <input type="hidden" id="permission" value="<%-permission%>">
-                                        <button onClick="request()" class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Công khai đề</button>
+                                    <div id = "btn_status">
+                                        <input type="hidden" id="status" value="<%-status%>">
+                                        <button onClick="request()" class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Yêu cầu duyệt đề</button>
                                     </div>
                                     <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>
                                     <div class="BoxOverviewCheck__TableChooseContainer-j2lapc-0 icVcMJ">
@@ -254,7 +253,7 @@
                 },
                 body:JSON.stringify({
                     id:$('#id_test').val(),
-                    permission:"0"
+                    status:"0"
                 })
             })
             .then(function(response) {
@@ -285,22 +284,22 @@
 
   $(document).ready(()=> {
     $('.textarea').wysihtml5();
-    if($('#permission').val() === "0"){
-        $('#status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Đang đợi duyệt</button>')
+    if($('#status').val() === "0"){
+        $('#btn_status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Đang đợi duyệt</button>')
     }
-    if($('#permission').val() === "1"){
-        $('#status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;color:rgb(15, 153, 96);">Đề đã được công khai</button>')
+    if($('#status').val() === "1"){
+        $('#btn_status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;color:rgb(15, 153, 96);">Đề đã được công khai</button>')
     }
     $('#add').click(()=>{
         if($('#question').val() == '' || $('#answer_A').val() == '' || $('#answer_B').val() == ''){
-            alert('Vui lòng điền đầy đủ câu hỏi và đáp án !');
+            alert('Vui lòng nhập đầy đủ câu hỏi và tối thiếu 2 đáp án !');
             return;
         }
-        if($("input[name=correct]:checked").val() == undefined){
+        if($("input[name=correct]:checked").val() == undefined || $(`#answer_${$("input[name=correct]:checked").val()}`).val() == ''){
             alert('Vui lòng chọn đáp án đúng');
             return;
         }
-        var data ={
+        let data ={
             id_test:$('#id_test').val(),
             question:$('#question').val(),
             A:$('#answer_A').val(),
@@ -319,10 +318,8 @@
             body:JSON.stringify(data)
         })
         .then(function(response) {
-            return response.json();
-        })
-        .then(function(res) {
-            location.reload();
+            response.ok ? location.reload() : alert('Thêm thất bại, vui lòng kiểm tra lại');
+            return;
         })
         .catch(err => {alert('Thêm thất bại, vui lòng kiểm tra lại');console.log(err)});
     })

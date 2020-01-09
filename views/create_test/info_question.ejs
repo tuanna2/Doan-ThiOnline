@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <title><%-data.name %></title>
     <meta charSet="utf-8" class="next-head" />
     <meta name="viewport" content="initial-scale=1.0, width=device-width" />
     <link rel="shortcut icon" type="image/png" href="/images/logo-icon.png" />
@@ -80,8 +81,9 @@
                         <div>
                             <div class="style__Main-sc-3hvnas-0 bomtwj">
                                 <div class="style__Center-sc-3hvnas-1 byVMTL" style="    background: rgb(255, 255, 255);
-                                padding: 16px 24px;
                                 border-radius: 4px;">
+                        <a class ="btn btn-primary pull-left" role="button" href="javascript:history.back()">Quay lại</a><br/><br/>
+
                                         <form onsubmit="return editTest()" name ="form" method="" action="">
                                             <input type="hidden" name="id_test" value ="<%-data.id%>">
                                             <div class="bp3-form-group bp3-intent-">
@@ -148,9 +150,9 @@
                                         <div style="padding-bottom: 0px;"></div>
                                         <div class="questions__ToolBar-sc-1ryj3mv-0 dIrzwQ"
                                             style="top: 16px; transform: translateZ(0px);">
-                                            <div id = "status">
-                                                    <input type="hidden" id="permission" value="<%-data.permission%>">
-                                                    <button onClick="request()" class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Công khai đề</button>
+                                            <div id = "btn_status">
+                                                    <input type="hidden" id="status" value="<%-data.status%>">
+                                                    <button onClick="request()" class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Yêu cầu duyệt đề</button>
                                                 </div>
                                             <div class="clearfix__Clearfix-w9lses-0 bkPuTF" height="16"></div>
                                             <div class="BoxOverviewCheck__TableChooseContainer-j2lapc-0 icVcMJ">
@@ -180,7 +182,7 @@
                 },
                 body:JSON.stringify({
                     id:form.id_test.value,
-                    permission:"0"
+                    status:"0"
                 })
             })
             .then(function(response) {
@@ -272,11 +274,11 @@
             return false;
         }
         $(document).ready(()=>{
-            if($('#permission').val() === "0"){
-                $('#status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Đang đợi duyệt</button>')
+            if($('#status').val() === "0"){
+                $('#btn_status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;">Đang đợi duyệt</button>')
             }
-            if($('#permission').val() === "1"){
-                $('#status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;color:rgb(15, 153, 96);">Đề đã được công khai</button>')
+            if($('#status').val() === "1"){
+                $('#btn_status').html('<button disabled class="bp3-button bp3-fill bp3-large bp3-minimal saveButtonQuestion" style="outline: none;color:rgb(15, 153, 96);">Đề đã được công khai</button>')
             }
         })
 </script>  

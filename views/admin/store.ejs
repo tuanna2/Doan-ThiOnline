@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+  <meta name="description" content="CoreUI - Open Source Bootstrap Admin Template">
+  <meta name="author" content="Łukasz Holeczek">
+  <meta name="keyword" content="Bootstrap,Admin,Template,Open,Source,jQuery,CSS,HTML,RWD,Dashboard">
+  <title>Ngân hàng câu hỏi</title>
+  <link href="/dist/node_modules/@coreui/icons/css/coreui-icons.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/flag-icon-css/css/flag-icon.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+  <link href="/dist/node_modules/simple-line-icons/css/simple-line-icons.css" rel="stylesheet">
+  <link href="/dist/css/style.min.css" rel="stylesheet">
+  <link href="/dist/vendors/pace-progress/css/pace.min.css" rel="stylesheet">
+  <link href="/dist/datatable/dataTables.bootstrap.min.css" rel="stylesheet">
+  <style>
+    .iyhlnS {
+      background-color: rgb(255, 255, 255);
+      max-width: 740px;
+      height: 424px;
+      box-shadow: rgba(235, 232, 232, 0.498) 0px 1px 4px 0px;
+      padding: 16px 24px;
+      margin: 0px auto 24px;
+  }
+  .bp3-icon {
+      display: inline-block;
+      -webkit-box-flex: 0;
+      flex: 0 0 auto;
+  }
+  .iyhlnS .question {
+      font-weight: 500;
+      color: rgb(9, 132, 227);
+  }
+  .QKNEr {
+      font-size: 18px;
+      color: rgb(51, 51, 51);
+  }
+  .noidung_cauhoi {
+      padding-top: 8px;
+      padding-bottom: 5px;
+  }
+  .bkPuTF {
+      height: 16px;
+  }
+  
+  .aqtF {
+      color: rgb(255, 255, 255);
+      background-color: rgb(235, 92, 85);
+      text-decoration: line-through;
+  }
+  .bCNoNL {
+      position: relative;
+      font-size: 14px;
+      font-weight: 600;
+      color: rgb(59, 59, 59);
+      text-transform: uppercase;
+      width: 35px;
+      height: 35px;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+      margin-right: 16px;
+      background-color: rgb(238, 238, 238);
+      border-radius: 50%;
+  }
+  .Wuuww {
+      padding-left: 10px;
+      width: 100%;
+      height: 52px;
+      padding-top: 8px;
+      padding-bottom: 8px;
+      border-top-width: 1px;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      transition: all 0.1s linear 0s;
+  }
+      .gmoaEx {
+      width: 78%;
+      position: absolute;
+      right: 0;
+      }
+      .hRRepO{
+          width:22%;
+      }
+      @media (max-width: 1000px){
+          .hRRepO{
+              display:none;
+          }
+          .gmoaEx{
+              width:100%;
+          }
+      }
+      .iyhlnS{
+          height: 100%;
+      }
+      .wvnXF{
+          width: 15px;
+          height: 15px;
+          font-size: 10px;
+          background-color: rgb(9, 132, 227);
+          color: rgb(255, 255, 255);
+          position: absolute;
+          right: 0px;
+          bottom: 0px;
+          display: flex;
+          -webkit-box-pack: center;
+          justify-content: center;
+          -webkit-box-align: center;
+          align-items: center;
+      }
+      .noidung_cauhoi img{
+          max-width:600px;
+          max-height:200px;
+      }
+      img{
+              margin-left:10px;
+              max-width:400px;
+              max-height:60px;
+          }
+          #loader {
+              position: absolute;
+              left: 50%;
+              top: 50%;
+              z-index: 1;
+              margin: -75px 0 0 -75px;
+              border: 16px solid #f3f3f3;
+              border-radius: 50%;
+              border-top: 16px solid #3498db;
+              width: 120px;
+              height: 120px;
+              -webkit-animation: spin 2s linear infinite;
+              animation: spin 3s linear infinite;
+              display:none;
+              }
+              @-webkit-keyframes spin {
+              0% { -webkit-transform: rotate(0deg); }
+              100% { -webkit-transform: rotate(360deg); }
+              }
+  
+              @keyframes spin {
+              0% { transform: rotate(0deg); }
+              100% { transform: rotate(360deg); }
+              }
+  
+          .aq{
+              background-color:rgba(92, 112, 128, 0.05);
+          }
+          .aqt{
+              background-color:rgb(9, 132, 227);
+              color: rgb(255, 255, 255);        }
+          .aqtF{
+              color: rgb(255, 255, 255);
+              background-color: rgb(235, 92, 85);
+              text-decoration: line-through;
+          }
+          .aqtS{
+              color: rgb(255, 255, 255);
+              background-color: rgb(46, 204, 113)!important;
+          }
+          #submitting{
+              text-align: center;
+              display:none;
+          }
+          .gkWwtY {
+              width: 20%;
+              height: 40px;
+              color: rgb(235, 92, 85);
+              font-weight: 600;
+              display: flex;
+              -webkit-box-pack: center;
+              justify-content: center;
+              -webkit-box-align: center;
+              align-items: center;
+              position: relative;
+              border-width: 1px;
+              border-style: solid;
+              border-color: rgb(238, 238, 238);
+              border-image: initial;
+              text-decoration: none;
+          }
+          .t{
+              color:rgb(46, 204, 113)!important;
+          }
+          .f{
+              color:rgb(235, 92, 85)!important;
+              text-decoration: line-through;
+          }
+          .lbigpT {
+      color: rgb(155, 155, 155);
+  }.dcjqJd {
+      position: fixed;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      z-index: 30;
+      display: flex;
+      -webkit-box-pack: center;
+      justify-content: center;
+      -webkit-box-align: center;
+      align-items: center;
+  }
+  .kwZnUZ {
+      position: absolute;
+      left: 0px;
+      right: 0px;
+      top: 0px;
+      bottom: 0px;
+      z-index: 1;
+      background: rgba(0, 0, 0, 0.5);
+  }
+  .ePNGug {
+      background-color: rgb(255, 255, 255);
+      width: 700px;
+      display: flex;
+      flex-wrap: wrap;
+      -webkit-box-align: center;
+      align-items: center;
+      margin-left: auto;
+      margin-right: auto;
+      z-index: 2;
+      position: relative;
+      padding: 16px 24px;
+      border-radius: 8px;
+  }
+  .hGJONr {
+      flex: 1 1 0%;
+  }
+  .lbHbrS {
+      color: rgb(153, 153, 153);
+      box-shadow: none;
+      padding: 0px;
+  }
+  .gjHBuc {
+      font-size: 16px;
+      -webkit-box-align: center;
+      align-items: center;
+      flex: 1 1 0%;
+      padding: 20px;
+  }
+  .cfuuLd {
+      word-break: break-word;
+      font-family: "SF Pro Text";
+      font-size: 15px;
+      color: rgb(153, 153, 153);
+      line-height: 27px;
+  }
+  .MkOrP {
+      flex-direction: row;
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+      background-color: rgb(9, 132, 227);
+      padding: 8px 16px;
+      border-radius: 4px;
+  }
+  .cLpElf {
+      font-size: 48px;
+      text-align: center;
+      font-weight: 500;
+  }
+  .lhxhGR {
+      display: flex;
+      -webkit-box-align: center;
+      align-items: center;
+      -webkit-box-pack: center;
+      justify-content: center;
+  }
+  .lhxhGR .label {
+      text-align: center;
+      font-size: 16px;
+      font-weight: 500;
+      color: rgb(9, 132, 227);
+      border-radius: 4px;
+      padding: 4px 16px;
+      border-width: 1px;
+      border-style: solid;
+      border-color: rgb(9, 132, 227);
+      border-image: initial;
+  }
+  </style>
+  <style>
+    button:focus {
+      outline: 0 !important;
+    }
+    thead {
+      background-color: #c8ced3;
+      text-align: center
+    }
+
+    tbody {
+      text-align: center
+    }
+    #data-store {
+        margin-top: 20px
+    }
+  </style>
+</head>
+
+<body class="app header-fixed sidebar-fixed aside-menu-fixed sidebar-lg-show">
+  <%- include('./header')%>
+  <div class="app-body">
+    <%- include('./sidebar', {avatar: info.avatar})%>
+    <main class="main">
+      <div class="container-fluid">
+        <div class="animated fadeIn">
+          <div class="row">
+            <div class="col-lg-12">
+              <div class="card">
+                <div class="card-header">
+                  <i class="fa fa-align-justify"></i> Quản lý ngân hàng câu hỏi</div>
+                <div class="card-body">
+                    <a href="/admin/store/create" class="btn btn-primary pull-right" >Thêm câu hỏi</a>
+                    <div class="col-md-3" >
+                      <select class="form-control" id="category">
+                      <option value="">Tất cả danh mục</option>
+                      <% for(let i=0;i< category.length;i++){%>
+                        <option value="<%- category[i].id%>"><%- category[i].name%></option>
+                        <% }%>
+                      </select>
+                    </div>
+                    <table id="data-store" style="width: 100%" class="table table-responsive-sm table-bordered">
+                        <thead>
+                          <tr>
+                            <th>ID</th>
+                            <th>Câu hỏi</th>
+                            <th>Danh mục</th>
+                            <th>Môn</th>
+                            <th>Mức độ</th>
+                            <th>Actions</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <% for(let i= data.length-1;i>=0;i--){ %>
+                          <tr>
+                            <td><%- data[i].id %></td>
+                            <td><%- data[i].question %></td>
+                            <td><%- data[i].category %></td>
+                            <td><%- data[i].tag %></td>
+                            <td><%- data[i].level == 1 ? "Dễ" : (data[i].level == 2 ? "Trung bình" : "Khó") %></td>
+                            <td number="<%- data[i].id%>" col ="<%- (data.length - i -1)%>">
+                              <button class="btn btn-info col-xs-6" onclick="detailQuestion(this)">Xem</button>
+                              <a class="btn btn-warning col-xs-6" href="/admin/store/<%- data[i].id%>">Sửa</a>
+                              <button class="btn btn-danger col-xs-6 " onclick="deleteQuestion(this)">Xoá</button>
+                            </td>
+                          </tr>
+                          <% } %>
+                        </tbody>
+                      </table>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+  </div>
+
+  <div class="modal fade" id="modal-detail" tabindex="-1" role="dialog" style="display: none;" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h4 class="modal-title">Xem câu hỏi</h4>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body" id="question">
+        </div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Đóng</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script src="/dist/node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="/dist/node_modules/popper.js/dist/umd/popper.min.js"></script>
+  <script src="/dist/node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+  <script src="/dist/datatable/jquery.dataTables.min.js"></script>
+  <script src="/dist/datatable/DataTablesBS4.js"></script>
+  <script src="/dist/node_modules/pace-progress/pace.min.js"></script>
+  <script src="/dist/node_modules/perfect-scrollbar/dist/perfect-scrollbar.min.js"></script>
+  <script src="/dist/node_modules/@coreui/coreui/dist/js/coreui.min.js"></script>
+  <script>
+   const table = $('#data-store').DataTable({
+        'lengthChange': false,
+        'ordering': false,
+        "columnDefs": [
+          {
+            "targets": [2],
+            "visible": false,
+            "searchable":true
+          }
+        ]
+      });
+      $('#category').change(function(){
+        table.columns(2).search(this.value).draw(); 
+      })
+
+      function deleteQuestion(e){
+      let id = $(e).parent().attr('number');
+      if (confirm('Có chắc muốn xoá ? ')) {
+        fetch('/api/store/' + id, {
+          method: 'DELETE'
+        })
+        .then(function (response) {
+          !response.ok ? alert('Xoá thất bại ! thử lại sau') : location.reload();
+        })
+        .catch(function (err) {
+          alert('Something went wrong !')
+        });
+      }
+    }
+    function detailQuestion(e){
+      let id = $(e).parent().attr('number');
+      $('#question').html('');
+      fetch('/api/store/' +id)
+      .then(response => response.json())
+      .then(res => {
+        if(res.data.length == 0 || res.message !== "success") {
+            $('#question').append("<div style='color:red'>Không có dữ liệu!</div>");
+        }
+        else{
+          res.data.forEach((e, i) => {
+            let html ='<div class="style__PlayContestBox-bng1p4-5 iyhlnS">' 
+            + '<div class="style__QuestionWrapper-bng1p4-6 QKNEr"> <div class="noidung_cauhoi"> <span style="font-family: Bookerly; font-size: 16px;">'+e.question+'</span> </div>'
+              + '<div> <div class="answer style__Wrapper-fvwsih-2 Wuuww"> <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX"> <div class="style__AlphaCheck-fvwsih-4 bCNoNL select '+(e.correct == 'A' ? 'aqtS' :'') +'">A</div> </div> '+e.A+'</div>'
+              + ' <div class="answer style__Wrapper-fvwsih-2 Wuuww"> <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX"> <div class="style__AlphaCheck-fvwsih-4 bCNoNL select '+(e.correct == 'B' ? 'aqtS' :'') +'">B</div> </div>' + e.B +' </div>';
+              if(e.C){
+                html += '<div class="answer style__Wrapper-fvwsih-2 Wuuww"> <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX"> <div class="style__AlphaCheck-fvwsih-4 bCNoNL select '+(e.correct == 'C' ? 'aqtS' :'') +'">C</div> </div> ' + e.C +'</div>';
+              }
+              if(e.D){
+                html += '<div class="answer style__Wrapper-fvwsih-2 Wuuww"> <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX"> <div class="style__AlphaCheck-fvwsih-4 bCNoNL select '+(e.correct == 'D' ? 'aqtS' :'') +'">D</div> </div> ' + e.D +'</div>';
+              }
+              if(e.E){
+                html += '<div class="answer style__Wrapper-fvwsih-2 Wuuww"> <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX"> <div class="style__AlphaCheck-fvwsih-4 bCNoNL select '+(e.correct == 'E' ? 'aqtS' :'') +'">E</div> </div> ' + e.E +'</div>';
+              }
+              if(e.F){
+                html += '<div class="answer style__Wrapper-fvwsih-2 Wuuww"> <div class="style__AlphaEditorWrapper-fvwsih-3 iwtTFX"> <div class="style__AlphaCheck-fvwsih-4 bCNoNL select '+(e.correct == 'F' ? 'aqtS' :'') +'">F</div> </div> ' + e.F +'</div>';
+              }
+              html +='<a href="/admin/store/'+ e.id +'" class="question">Chỉnh sửa </a></div> </div> </div>'
+              $('#question').append(html);
+            })
+          }
+            $('#modal-detail').modal('show');
+      })
+      .catch(function(err){
+        console.log(err);
+        alert('Something went wrong!');
+      });
+    }
+  </script>
+</body>
+
+</html>
