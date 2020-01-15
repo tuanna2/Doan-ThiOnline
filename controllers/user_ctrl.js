@@ -41,7 +41,7 @@ class UserController {
             const password = await bcrypt.hash(req.body.password, 5);
             const data = await this.userModel.add({username:req.body.username,email:req.body.email,password:password});
             req.session.idUser = data[0];
-            res.redirect('/')
+            res.redirect('/');
         } catch(e){
             res.render('register',{err:'Email đã có người sử dụng'});
         }
