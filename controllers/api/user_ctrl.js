@@ -3,6 +3,7 @@ const BaseApiCtrl = require('./base_api_ctrl');
 const path = require('path');
 const bcrypt = require("bcryptjs");
 const sharp = require('sharp');
+const jwt = require('../../utils/jwt');
 
 class UserController extends BaseApiCtrl{
     constructor() {
@@ -34,13 +35,32 @@ class UserController extends BaseApiCtrl{
     async addUser(req,res){
         try{
             let data = req.body;
+            const checkUser = await this.userModel.get({email:data.email});
+            if(typeof checkUser !== "undefined"){
+                return res.status(500).json({err:'Tài khoản đã tồn tại'});
+            }
             data.password = await bcrypt.hash(req.body.password, 5);
-            const rs = await this.userModel.add(data);
-            res.json({ message: 'success', data: rs});
+            const id = await this.userModel.add(data);
+            const rs = await this.userModel.get({id: id[0]});
+            const user = {id: rs.id, email: rs.email, role: rs.role};
+            const token = jwt.sign(user);
+            res.json({ message: 'success', data: {token}});
         } catch(e){
-            res.status(500).send({message:'falled',error:e});
+            res.status(500).send({message:'falled', error:e});
         }
-
+    }
+    async loginUser(req, res){
+        const rs = await this.userModel.get({email:req.body.email});
+        if(typeof rs === "undefined"){
+            return res.status(500).json({err:'Tài khoản đã bị khoá hoặc không tồn tại trong hệ thống'});
+        }
+        let checkPass = await bcrypt.compare(req.body.password, rs.password);
+        if(checkPass){
+            const user = {id: rs.id, email: rs.email, role: rs.role};
+            const token = jwt.sign(user);
+            res.json({ message: 'success', data: {token}});
+        }
+        else res.status(500).json({err:'Tài khoản hoặc mật khẩu không chính xác'});
     }
 }
 module.exports = UserController;

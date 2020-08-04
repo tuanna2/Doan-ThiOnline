@@ -18,18 +18,18 @@ class UserController {
         :   res.render('login',{err:''});
     }
     async loginPost(req,res){
-            const rs = await this.userModel.get({email:req.body.email});
-            if(typeof rs === "undefined"){
-                res.render('login',{err:'Tài khoản đã bị khoá hoặc không tồn tại trong hệ thống'});
+        const rs = await this.userModel.get({email:req.body.email});
+        if(typeof rs === "undefined"){
+            res.render('login',{err:'Tài khoản đã bị khoá hoặc không tồn tại trong hệ thống'});
+        }
+        else{
+            let checkPass = await bcrypt.compare(req.body.password, rs.password);
+            if(checkPass){
+                req.session.idUser = rs.id;
+                res.redirect('/');
             }
-            else{
-                let checkPass = await bcrypt.compare(req.body.password, rs.password);
-                if(checkPass){
-                    req.session.idUser = rs.id;
-                    res.redirect('/');
-                }
-                else res.render('login',{err:'Tài khoản hoặc mật khẩu không chính xác'});
-            }
+            else res.render('login',{err:'Tài khoản hoặc mật khẩu không chính xác'});
+        }
     }
     signupGet(req, res) {
         req.session.idUser ?

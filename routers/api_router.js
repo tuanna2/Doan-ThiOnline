@@ -16,6 +16,8 @@ class ApiRouter extends BaseRouter {
     config() {
         const middleware = new Middleware();
         const userCtrl = new UserController();
+        this.router.post('/login', userCtrl.loginUser.bind(userCtrl));
+        this.router.post('/signup', userCtrl.addUser.bind(userCtrl));
         this.router.get('/user', middleware.adminLogged, userCtrl.getAll.bind(userCtrl));
         this.router.get('/user/:id', middleware.adminLogged, userCtrl.get.bind(userCtrl));
         this.router.post('/user', middleware.adminLogged, userCtrl.addUser.bind(userCtrl));

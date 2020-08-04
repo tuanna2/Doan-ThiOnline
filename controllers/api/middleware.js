@@ -1,3 +1,5 @@
+const jwt = require('../../utils/jwt');
+
 class Middleware{
     constructor(){}
 
@@ -8,6 +10,14 @@ class Middleware{
     userLogged(req,res,next){
         req.session.idUser ? next()
         : res.json({message:"failed",err:"Not authenticated !"});
+    }
+    checkToken(req, res, next){
+        let token =  req.headers.authorization || '';
+        const data = jwt.checkToken(token);
+        if(!data){
+            return res.json({message:"failed",err:"Not authenticated !"});
+        }
+        return next();
     }
 }
 module.exports = Middleware;
