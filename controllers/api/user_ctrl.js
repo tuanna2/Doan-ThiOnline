@@ -44,7 +44,7 @@ class UserController extends BaseApiCtrl{
             const rs = await this.userModel.get({id: id[0]});
             const user = {id: rs.id, email: rs.email, role: rs.role};
             const token = jwt.sign(user);
-            res.json({ message: 'success', data: {token}});
+            res.json({ message: 'success', data: {token, email: rs.email, username: rs.username}});
         } catch(e){
             res.status(500).send({message:'falled', error:e});
         }
@@ -58,7 +58,7 @@ class UserController extends BaseApiCtrl{
         if(checkPass){
             const user = {id: rs.id, email: rs.email, role: rs.role};
             const token = jwt.sign(user);
-            res.json({ message: 'success', data: {token}});
+            res.json({ message: 'success', data: {token, email: rs.email, username: rs.username}});
         }
         else res.status(500).json({err:'Tài khoản hoặc mật khẩu không chính xác'});
     }

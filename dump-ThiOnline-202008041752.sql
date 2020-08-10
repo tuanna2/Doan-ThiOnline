@@ -1,4 +1,4 @@
--- MySQL dump 10.13  Distrib 8.0.15, for macos10.14 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.16, for macos10.14 (x86_64)
 --
 -- Host: localhost    Database: ThiOnline
 -- ------------------------------------------------------
@@ -7,7 +7,7 @@
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
- SET NAMES utf8 ;
+ SET NAMES utf8mb4 ;
 /*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
 /*!40103 SET TIME_ZONE='+00:00' */;
 /*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
@@ -254,7 +254,7 @@ CREATE TABLE `users` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
   UNIQUE KEY `email_UNIQUE` (`email`)
-) ENGINE=InnoDB AUTO_INCREMENT=37 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -263,9 +263,13 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Administrator','admin','$2a$05$FITdyTJ5Z6bfPLDNUQ0GcOtN7u90xxJAqw0AuZFzCsw6nhfPFRlv2','/uploads/avatar1.png','1,2,3,4,5,6','Nam',NULL,NULL,0),(2,'Nguyễn Anh Tuấn','mamatmun98@gmail.com','$2b$05$3ZUq.NxRBNbdmYHtAxe9M.7SO2P4apw2V/UdoEktf.dYQ16P2VLDK','/avatar-default.png','1,2,3,4,5,6,7','Nam','030293','ạdsfa sfjdkadfa',1),(3,'đkmasdlfm sdf ','adfakdsf','ádfasfdasd',NULL,'3','Nữ',NULL,NULL,1),(4,'hoj ten','ádfjasdf','adsfasdfa','/avatar-default.png','1,2,3,4,5,7','Nam','ádf','ádf',2),(5,'kajsdfa','ádfdfsa','ádfjaksdf',NULL,'6','Nam','020202','929221',2),(6,'Nguyễn Anh','anasdf2@gmail.com','$2b$05$hvM/SIQeWxACn4JnVtO5c.hbYgN4cXSlemY58Ww6nAPbv4PyrXeU6','/avatar-default.png','1,2,3,4,5,7','Nam','1231234','asdfasdfasfd',1),(7,'adsf','dsaf@gmail','$2b$05$QsqzN5fLVECRJy5i.M0D9O23.sRIyY.EwY9SwvXm9PKWZ.nlXtbke',NULL,NULL,NULL,NULL,NULL,2),(18,'Tran Nang Hieu','dieptran130198@gmail.com','$2b$05$3B5fGfzB5l7LH3lwuseGru9sr8rfH6Fsfd/0OT8soh4fxQIU7D8dW','/avatar-default.png','1,2,3,4,5,6,7','Nữ','','',1),(19,'Liễu Văn Chính','lieuvanchinh@gmail.com','$2b$05$xyfNUea5g2zr28aVq26MOe2ud0hFUGrmBQvSmFyYYiLYdxJx6UQtG',NULL,'1,2,7',NULL,NULL,NULL,2),(21,'Nguyễn Anh Tuấn','anhtuan2@gmail.com','$2b$05$UaVjlUgRjm.porpksnuUYegYPljt2YNyfprHmiyTsIm4WxIzd34k2',NULL,'3',NULL,NULL,NULL,2),(22,'mamatmun98@gmail.com','mamatmun9x@gmail.com','$2b$05$4SXQ2mFhP1uGqrTf/oaNM.J4TpzI5dRgeyWRm77SWGVE5WqJoW11m','/avatar-default.png','','','','',2),(23,'adsfasdf','adsfasdf@gmail.com','$2b$05$i0hEeXfU4V6RkPNexu2GEeyEYkhdur0X/NWEymdMjDI3TtOC.4Hwa',NULL,'2,3',NULL,NULL,NULL,2),(24,'Nguyễn Anh Tuấn','asdfasfdasf@gmail.com','$2b$05$bLWw6tScDMgHdCpF9TdNc.hHZ7ZczUkklSLsug/BPOMpt1FVLhN92',NULL,'3,4',NULL,NULL,NULL,2),(25,'Le Thi Minh Tuyen','hihi@gmail.com','$2a$05$4eDLZ6b9txRtIZrf7e3nwuxx5W7Nfhs9owrZkosg2dIKQyiqY.78S','/avatar-default.png','2','','','',2),(27,'hello world','hello@gmail.com','$2a$05$TGjpwzNuF4sef7xDJEWlDO8dXUlzcv1XAX3OirLHVoImsnisW1rVK',NULL,'2',NULL,NULL,NULL,2),(28,'tuan nguyen','mamatmun98@gmail.co','$2a$05$2EzXdzcGEL44GaKAfjDFBut9k0csz4Y.ZwN0qvyWR58TZiuHhn6Hm',NULL,NULL,NULL,NULL,NULL,2),(30,'Le minh tuyen','tuyen@gmail.com','$2a$05$yiEzLnAyx08wGl6BckdUGuDgYIF9s9iqd.UsJ5eYm6W0P0C.ORaD2',NULL,NULL,NULL,NULL,NULL,2),(32,'nguyen tuann','anhtuan@gmail.com','$2a$05$t7GWXr6mUJ9w1G6SPmwVkejpY/eNBLgPY6Ar/Rk/uur2.BwOdgbfS',NULL,'1,2,3,4,5,6,7',NULL,NULL,NULL,2);
+INSERT INTO `users` VALUES (1,'Administrator','admin','$2a$05$FITdyTJ5Z6bfPLDNUQ0GcOtN7u90xxJAqw0AuZFzCsw6nhfPFRlv2','/uploads/avatar1.png','1,2,3,4,5,6','Nam',NULL,NULL,0),(2,'Nguyễn Anh Tuấn','mamatmun98@gmail.com','$2b$05$3ZUq.NxRBNbdmYHtAxe9M.7SO2P4apw2V/UdoEktf.dYQ16P2VLDK','/avatar-default.png','1,2,3,4,5,6,7','Nam','030293','ạdsfa sfjdkadfa',1),(3,'đkmasdlfm sdf ','adfakdsf','ádfasfdasd',NULL,'3','Nữ',NULL,NULL,1),(4,'hoj ten','ádfjasdf','adsfasdfa','/avatar-default.png','1,2,3,4,5,7','Nam','ádf','ádf',2),(5,'kajsdfa','ádfdfsa','ádfjaksdf',NULL,'6','Nam','020202','929221',2),(6,'Nguyễn Anh','anasdf2@gmail.com','$2b$05$hvM/SIQeWxACn4JnVtO5c.hbYgN4cXSlemY58Ww6nAPbv4PyrXeU6','/avatar-default.png','1,2,3,4,5,7','Nam','1231234','asdfasdfasfd',1),(7,'adsf','dsaf@gmail','$2b$05$QsqzN5fLVECRJy5i.M0D9O23.sRIyY.EwY9SwvXm9PKWZ.nlXtbke',NULL,NULL,NULL,NULL,NULL,2),(18,'Tran Nang Hieu','dieptran130198@gmail.com','$2b$05$3B5fGfzB5l7LH3lwuseGru9sr8rfH6Fsfd/0OT8soh4fxQIU7D8dW','/avatar-default.png','1,2,3,4,5,6,7','Nữ','','',1),(19,'Liễu Văn Chính','lieuvanchinh@gmail.com','$2b$05$xyfNUea5g2zr28aVq26MOe2ud0hFUGrmBQvSmFyYYiLYdxJx6UQtG',NULL,'1,2,7',NULL,NULL,NULL,2),(21,'Nguyễn Anh Tuấn','anhtuan2@gmail.com','$2b$05$UaVjlUgRjm.porpksnuUYegYPljt2YNyfprHmiyTsIm4WxIzd34k2',NULL,'3',NULL,NULL,NULL,2),(22,'mamatmun98@gmail.com','mamatmun9x@gmail.com','$2b$05$4SXQ2mFhP1uGqrTf/oaNM.J4TpzI5dRgeyWRm77SWGVE5WqJoW11m','/avatar-default.png','','','','',2),(23,'adsfasdf','adsfasdf@gmail.com','$2b$05$i0hEeXfU4V6RkPNexu2GEeyEYkhdur0X/NWEymdMjDI3TtOC.4Hwa',NULL,'2,3',NULL,NULL,NULL,2),(24,'Nguyễn Anh Tuấn','asdfasfdasf@gmail.com','$2b$05$bLWw6tScDMgHdCpF9TdNc.hHZ7ZczUkklSLsug/BPOMpt1FVLhN92',NULL,'3,4',NULL,NULL,NULL,2),(25,'Le Thi Minh Tuyen','hihi@gmail.com','$2a$05$4eDLZ6b9txRtIZrf7e3nwuxx5W7Nfhs9owrZkosg2dIKQyiqY.78S','/avatar-default.png','2','','','',2),(27,'hello world','hello@gmail.com','$2a$05$TGjpwzNuF4sef7xDJEWlDO8dXUlzcv1XAX3OirLHVoImsnisW1rVK',NULL,'2',NULL,NULL,NULL,2),(28,'tuan nguyen','mamatmun98@gmail.co','$2a$05$2EzXdzcGEL44GaKAfjDFBut9k0csz4Y.ZwN0qvyWR58TZiuHhn6Hm',NULL,NULL,NULL,NULL,NULL,2),(30,'Le minh tuyen','tuyen@gmail.com','$2a$05$yiEzLnAyx08wGl6BckdUGuDgYIF9s9iqd.UsJ5eYm6W0P0C.ORaD2',NULL,NULL,NULL,NULL,NULL,2),(32,'nguyen tuann','anhtuan@gmail.com','$2a$05$t7GWXr6mUJ9w1G6SPmwVkejpY/eNBLgPY6Ar/Rk/uur2.BwOdgbfS',NULL,'1,2,3,4,5,6,7',NULL,NULL,NULL,2),(37,'adsfasdf','amfmasfd@gmail.com','$2a$05$P54VlBXpAuEv14gSuxbPceL6RtlklcXkhPIijfZRryI6avxmk0yRC',NULL,NULL,NULL,NULL,NULL,2),(38,'kkk','mamatmuna98@gmail.com','$2a$05$5N06a3QCgHg461HDqyskFunU2DOKwET9itZfAbUmz5aCvFUK6bHXe',NULL,NULL,NULL,NULL,NULL,2),(39,'kkk','mamatmuna9a8@gmail.com','$2a$05$Azklm1Xx9HefqGz4j29MZeYJukhF0kXPzkSHYxeMvDtRghnZiKNVa',NULL,NULL,NULL,NULL,NULL,2),(40,'kkk','mamatmuna9a8@gm2ail.com','$2a$05$F4RnjPLZTRJZSzYAOkCN5udYJYZB60OmpJTVOXB1LIMHnDeX7Mm3u',NULL,NULL,NULL,NULL,NULL,2);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
+
+--
+-- Dumping routines for database 'ThiOnline'
+--
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
@@ -276,4 +280,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2020-01-15 20:59:53
+-- Dump completed on 2020-08-04 17:52:49

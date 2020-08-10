@@ -33,7 +33,7 @@ CREATE TABLE `ThiOnline`.`tag` (
   `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `id_category` int(11) NOT NULL,
   PRIMARY KEY (`id`),
-  ADD INDEX `fk_category_idx` (`id_category` ASC) VISIBLE,
+  INDEX `fk_category_idx` (`id_category` ASC) VISIBLE,
   CONSTRAINT `fk_category`
   FOREIGN KEY (`id_category`)
   REFERENCES `ThiOnline`.`category` (`id`)
