@@ -16,8 +16,14 @@ class ApiRouter extends BaseRouter {
     config() {
         const middleware = new Middleware();
         const userCtrl = new UserController();
-        this.router.post('/login', userCtrl.loginUser.bind(userCtrl));
-        this.router.post('/signup', userCtrl.addUser.bind(userCtrl));
+        const categoryCtrl = new CategoryController();
+        const testCtrl = new TestController();
+        const questionCtrl = new QuestionController();
+        const tagCtrl = new TagController();
+        const savedCtrl = new SavedController();
+        const historyCtrl = new HistoryController();
+        const storeCtrl = new StoreController();
+
         this.router.get('/user', middleware.adminLogged, userCtrl.getAll.bind(userCtrl));
         this.router.get('/user/:id', middleware.adminLogged, userCtrl.get.bind(userCtrl));
         this.router.post('/user', middleware.adminLogged, userCtrl.addUser.bind(userCtrl));
@@ -25,56 +31,58 @@ class ApiRouter extends BaseRouter {
         this.router.delete('/user/:id', middleware.adminLogged, userCtrl.delete.bind(userCtrl));
         this.router.post('/upload', middleware.userLogged, userCtrl.upload.bind(userCtrl));
 
-        const categoryCtrl = new CategoryController();
         this.router.get('/category', categoryCtrl.getAll.bind(categoryCtrl));
         this.router.get('/category/:id', categoryCtrl.get.bind(categoryCtrl))
         this.router.post('/category', middleware.adminLogged, categoryCtrl.add.bind(categoryCtrl));
         this.router.put('/category', middleware.adminLogged, categoryCtrl.update.bind(categoryCtrl));
         this.router.delete('/category/:id', middleware.adminLogged, categoryCtrl.delete.bind(categoryCtrl));
 
-        const testCtrl = new TestController();
         this.router.get('/test', testCtrl.getAll.bind(testCtrl));
         this.router.get('/test/:id', testCtrl.get.bind(testCtrl))
         this.router.post('/test', middleware.userLogged, testCtrl.createTest.bind(testCtrl));
         this.router.put('/test', middleware.userLogged, testCtrl.update.bind(testCtrl));
         this.router.delete('/test/:id', middleware.userLogged, testCtrl.delete.bind(testCtrl));
 
-        const questionCtrl = new QuestionController();
         this.router.get('/question', questionCtrl.getQuestionsByTest.bind(questionCtrl));
         this.router.get('/question/:id', questionCtrl.get.bind(questionCtrl))
         this.router.post('/question', middleware.userLogged, questionCtrl.add.bind(questionCtrl));
         this.router.put('/question', middleware.userLogged, questionCtrl.update.bind(questionCtrl));
         this.router.delete('/question/:id', middleware.userLogged, questionCtrl.delete.bind(questionCtrl));
 
-        const tagCtrl = new TagController();
         this.router.get('/tag', tagCtrl.getTag.bind(tagCtrl));
         this.router.get('/tag/:id', tagCtrl.get.bind(tagCtrl))
         this.router.post('/tag', middleware.adminLogged, tagCtrl.add.bind(tagCtrl));
         this.router.put('/tag', middleware.adminLogged, tagCtrl.update.bind(tagCtrl));
         this.router.delete('/tag/:id', middleware.adminLogged, tagCtrl.delete.bind(tagCtrl));
 
-        const savedCtrl = new SavedController();
         this.router.get('/saved', savedCtrl.getAll.bind(savedCtrl));
         this.router.get('/saved/:id', savedCtrl.get.bind(savedCtrl))
         this.router.post('/saved', middleware.userLogged, savedCtrl.add.bind(savedCtrl));
         this.router.put('/saved', middleware.userLogged, savedCtrl.update.bind(savedCtrl));
         this.router.delete('/saved/:id', middleware.userLogged, savedCtrl.delete.bind(savedCtrl));
 
-        const historyCtrl = new HistoryController();
         this.router.get('/history', historyCtrl.getAll.bind(historyCtrl));
         this.router.get('/history/:id', historyCtrl.get.bind(historyCtrl))
         this.router.post('/history', middleware.userLogged, historyCtrl.add.bind(historyCtrl));
         this.router.put('/history', middleware.userLogged, historyCtrl.update.bind(historyCtrl));
         this.router.delete('/history/:id', middleware.userLogged, historyCtrl.delete.bind(historyCtrl));
 
-        const storeCtrl = new StoreController();
         this.router.get('/store', middleware.adminLogged, storeCtrl.getStores.bind(storeCtrl));
         this.router.get('/store/:id', middleware.adminLogged, storeCtrl.get.bind(storeCtrl))
         this.router.post('/store', middleware.adminLogged, storeCtrl.add.bind(storeCtrl));
         this.router.put('/store',  middleware.adminLogged, storeCtrl.update.bind(storeCtrl));
         this.router.delete('/store/:id', middleware.adminLogged, storeCtrl.delete.bind(storeCtrl));
-    }
 
+        //cms
+        this.router.post('/login', userCtrl.loginUser.bind(userCtrl));
+        this.router.post('/signup', userCtrl.addUser.bind(userCtrl));
+        this.router.get('/student/tests', middleware.checkToken, testCtrl.getListTest.bind(testCtrl));
+        this.router.get('/student/test/:id', middleware.checkToken, testCtrl.getDetailTest.bind(testCtrl));
+        this.router.get('/student/tests/saved', middleware.checkToken, testCtrl.getTestSaved.bind(testCtrl));
+        this.router.get('/student/tests/history', middleware.checkToken, testCtrl.getTestDid.bind(testCtrl));
+        this.router.get('/student/test/:id/play', middleware.checkToken, testCtrl.studentPlayTest.bind(testCtrl));
+        this.router.post('/student/test/:id/submit', middleware.checkToken, testCtrl.studentSubmitTest.bind(testCtrl));
+    }
 }
 
 module.exports = ApiRouter;
