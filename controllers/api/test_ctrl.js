@@ -86,7 +86,7 @@ class TestController extends BaseApiCtrl{
         try{
             const info = req.userInfo;
             const selected = req.body.selected;
-            if(typeof selected === "undefined" || typeof req.body.id_test === "undefined" || typeof req.body.time === "undefined"){
+            if(typeof selected === "undefined" || typeof req.body.time === "undefined"){
                 return res.status(500).send({message:'falled', error: "Invalid input params"});
             }
             const test = await this.testModel.getMany({id: req.params.id});
