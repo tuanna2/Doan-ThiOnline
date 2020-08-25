@@ -5,5 +5,6 @@ class CategoryController extends BaseApiCtrl{
     constructor() {
         super(CategoryModel);
     }
+    
 }
 module.exports = CategoryController;

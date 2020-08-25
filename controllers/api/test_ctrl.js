@@ -100,22 +100,24 @@ class TestController extends BaseApiCtrl{
             selected.forEach((e,i) => {
                 e == questions[i].correct ? correct++ : correct;
             })
-            const rs = await this.historyModel.add(
-                {
-                    id_test:req.params.id,
-                    id_user:info.id,
-                    point:correct,
-                    selected:selected.toLocaleString(),
-                    submit_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
-                    time:req.body.time,
-                })
+            const data = {
+                id_test:req.params.id,
+                id_user:info.id,
+                point:correct,
+                selected:selected.toLocaleString(),
+                submit_at: new Date().toISOString().slice(0, 19).replace('T', ' '),
+                time:req.body.time,
+            };
+            const rs = await this.historyModel.add(data);
+            data.selected = data.selected.split(",");
             res.json({
                 message:"success",
-                data:rs
+                data: {...data, id: rs[0]},
             })
         } catch(e){
             return res.status(500).send({message:'falled', error: e});
         }
     }
+    
 }
 module.exports = TestController;
